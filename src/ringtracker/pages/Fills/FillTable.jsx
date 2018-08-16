@@ -1,0 +1,81 @@
+import React from 'react'
+import { Badge,Spin} from 'antd'
+import ListPagination from 'LoopringUI/components/ListPagination'
+import {FillFm} from 'modules/fills/formatters'
+import intl from 'react-intl-universal'
+
+export default function ListMyFills(props) {
+  console.log('ListMyFills render',props.fills)
+  
+  const {fills={items:[],loading:false}}=props // MOCK
+
+  return (
+    <div className="">
+        <ListPagination list={fills}/>
+        <Spin spinning={fills.loading}>
+          <div>
+            <table className="table table-responsive fs14" >
+              <thead className="border-none">
+                  <tr className="border-none">
+                      <th className="border-none">{intl.get('fill.ringIndex')}</th>
+                      <th className="border-none">{intl.get('common.market')}</th>
+                      <th className="border-none">{intl.get('common.side')}</th>
+                      <th className="border-none">{intl.get('common.amount')}</th>
+                      <th className="border-none">{intl.get('common.price')}</th>
+                      <th className="border-none">{intl.get('common.total')}</th>
+                      <th className="border-none">{intl.get('fill.lrc_fee')}</th>
+                      <th className="border-none">{intl.get('fill.created')}</th>
+                  </tr>
+              </thead>
+              <tbody className="">
+                {
+                  fills && fills.items && fills.items.map((item,index)=>{
+                    const fillFm = new FillFm(item)
+                    const actions = {
+                      gotoDetail:()=>props.dispatch({type:'layers/showLayer',payload:{id:'ringDetail',fill:item}})
+                    }
+                    return (
+                      <tr key={index}>
+                        <td>{renders.ringIndex(fillFm,actions)}</td>
+                        <td>{item.market}</td>
+                        <td>{renders.side(fillFm)}</td>
+                        <td>{fillFm.getAmount()}</td>
+                        <td>{fillFm.getPrice()}</td>
+                        <td>{fillFm.getTotal()}</td>
+                        <td>{fillFm.getLRCFee()}</td>
+                        <td>{fillFm.getCreateTime()}</td>
+                     </tr>
+                    )
+                  })
+                }
+                {
+                  fills && fills.items && fills.items.length === 0 &&
+                  <tr><td colSpan='100'><div className="text-center">{intl.get('common.list.no_data')}</div></td></tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </Spin>
+        <ListPagination list={fills}/>
+  </div>
+  )
+}
+  const renders = {
+    ringIndex: (fm,actions) => {
+      return (
+          <a className="text-truncate text-left color-blue-500" onClick={actions && actions.gotoDetail}>
+            {fm.fill.ringIndex}
+            <span hidden>{fm.fill.ringHash}</span>
+          </a>
+      )
+    },
+    side: (fm) => {
+      if (fm.fill.side === 'sell') {
+        return <div className="text-error">{intl.get('common.sell')}</div>
+      }
+      if (fm.fill.side === 'buy') {
+        return <div className="text-success">{intl.get('common.buy')}</div>
+      }
+    },
+  }
+
