@@ -1,6 +1,6 @@
 /* eslint global-require: 0 */
 import React, { Component } from 'react';
-
+import routeActions from 'common/utils/routeActions'
 const navigation = [
   // {
   //   img: require('./images/TB1wdncx1SSBuNjy0FlXXbBpVXa-200-200.png'),
@@ -12,26 +12,31 @@ const navigation = [
     title: 'Trades',
     color: '#37D1AB',
     count: '120',
+    path:'/trades',
   },
   {
     title: 'Tokens',
     color: '#ffa001',
     count: '160',
+    path:'/tokens',
   },
   {
     title: 'Relayers',
     color: '#42C0EA',
     count: '69',
+    path:'/relayers',
   },
   {
     title: 'DEXs',
     color: '#5798F2',
     count: '85',
+    path:'/dexs',
   },
   {
     title: 'Rings',
     color: '#5798F2',
     count: '85',
+    path:'/rings',
   },
 
   // {
@@ -80,7 +85,7 @@ export default class OverviewBoard extends Component {
                     <div className="fs30 font-weight-bold color-black" style={{}}>{item.count}</div>
                     <div className="fs16 color-black-1" style={{}}>{item.title}</div>
                     <div className="">
-                      <a className="mt5 fs12">View All</a>
+                      <a className="mt5 fs12" onClick={routeActions.gotoPath.bind(this,item.path)}>View All</a>
                     </div>
                   </div>
               </div>

@@ -18,7 +18,7 @@ export default class TokenDetail extends Component {
       <div>
         <div class="ui segments">
           <div class="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">WETH Statistics</div>
+            <div className="ml10 mr10 fs18 color-black font-weight-bold">WETH Overview</div>
             <div class="ui buttons basic mr10">
               <button class="ui button">Go Back</button>
             </div>

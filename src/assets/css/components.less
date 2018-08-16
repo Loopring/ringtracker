@@ -304,3 +304,37 @@
 .article .header small{ opacity: 0.6 }
 .article p{}
 
+// ========
+// table
+// ========
+
+ .table{
+    // border:1px solid #DADADA !important;
+ }
+ .table tr {
+  border:none !important;
+ }
+ .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+  border-bottom:1px solid #f9f9f9 !important;
+  font-size: 14px;
+  padding:15px !important;
+  font-weight: normal;
+  color:#333;
+ }
+ .table tr > th{
+   background: #f9f9f9; 
+   color:#999;
+ }
+  .table tr > td{
+     padding:10px 8px !important;
+     font-weight: normal;
+     vertical-align:middle !important;
+  }
+ .tabe tr{
+    &:nth-child(2n){
+      &>td{
+        background: #FBFBFB !important;
+      }
+    }
+ }
+

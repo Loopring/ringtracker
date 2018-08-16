@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TokenTable from './TokenTable';
+import TokensOverview from './TokensOverview';
 
 export default class TokenList extends Component {
   static displayName = 'TokenList';
@@ -15,9 +16,11 @@ export default class TokenList extends Component {
 
   render() {
     return (
+      <div>
+        <TokensOverview />
         <div class="ui segments">
           <div class="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">Listed Tokens</div>
+            <div className="ml10 mr10 fs18 color-black font-weight-bold">Tokens</div>
             <div class="ui buttons basic mr10">
               <button class="ui button">Apply To List</button>
             </div>
@@ -26,6 +29,7 @@ export default class TokenList extends Component {
             <TokenTable />
           </div>
         </div>
+      </div>
     );
   }
 }

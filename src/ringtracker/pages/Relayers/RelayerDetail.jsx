@@ -18,7 +18,7 @@ export default class RelayerDetail extends Component {
       <div>
         <div class="ui segments">
           <div class="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">Relay Statistics</div>
+            <div className="ml10 mr10 fs18 color-black font-weight-bold">LoopringRelay Overview</div>
             <div class="ui buttons basic mr10">
               <button class="ui button">Go Back</button>
             </div>
@@ -29,7 +29,7 @@ export default class RelayerDetail extends Component {
         </div>
         <div class="ui segments">
           <div class="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">Relay Trades</div>
+            <div className="ml10 mr10 fs18 color-black font-weight-bold">LoopringRelay Trades</div>
           </div>
           <div class="ui segment p20">
             <FillTable />

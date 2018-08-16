@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RelayerTable from './RelayerTable';
-
+import RelayersOverview from './RelayersOverview';
 export default class RelayerList extends Component {
   static displayName = 'RelayerList';
 
@@ -16,6 +16,7 @@ export default class RelayerList extends Component {
   render() {
     return (
       <div>
+        <RelayersOverview />
         <div class="ui segments">
           <div class="ui segment d-flex justify-content-between align-items-center">
             <div className="ml10 mr10 fs18 color-black font-weight-bold">Relayers</div>
