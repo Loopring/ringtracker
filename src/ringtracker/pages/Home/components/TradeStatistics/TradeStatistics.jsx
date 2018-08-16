@@ -37,7 +37,7 @@ export default class TradeStatistics extends Component {
     return (
       <div class="ui segments">
         <div class="ui segment d-flex justify-content-between align-items-center">
-          <div className="ml10 mr10 fs18 color-black font-weight-bold">Trade Statistics</div>
+          <div className="ml10 mr10 fs18 color-black font-weight-bold">Trade Overview</div>
           <div class="ui buttons basic mr10">
             <button class="ui button">24H</button>
             <button class="ui button">7D</button>

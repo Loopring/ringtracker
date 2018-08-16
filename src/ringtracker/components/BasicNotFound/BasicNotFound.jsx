@@ -16,7 +16,7 @@ export default class BasicNotFound extends Component {
               className="imgException"
               alt="页面不存在"
             />
-            <div className="prompt">
+            <div className="prompt pl20">
               <h3 style={styles.title} className="title">
                 抱歉，你访问的页面不存在
               </h3>
