@@ -18,7 +18,7 @@ export default class OverviewChart extends Component {
       <div class="ui segments">
         <div class="ui segment d-flex justify-content-between align-items-center">
           <div className="ml10 mr10 fs18 color-black font-weight-bold">Ecosystem Overview</div>
-          <div>
+          <div className="d-none d-sm-block">
             <div class="ui buttons basic mr10">
               <button class="ui button">Volume</button>
               <button class="ui button">Trades</button>

@@ -11,7 +11,7 @@ const navigation = [
   {
     title: 'Trades',
     color: '#37D1AB',
-    count: '120',
+    count: '12,000',
     path:'/trades',
   },
   {
@@ -23,19 +23,19 @@ const navigation = [
   {
     title: 'Relayers',
     color: '#42C0EA',
-    count: '69',
+    count: '15',
     path:'/relayers',
   },
   {
     title: 'DEXs',
     color: '#5798F2',
-    count: '85',
+    count: '5',
     path:'/dexs',
   },
   {
     title: 'Rings',
     color: '#5798F2',
-    count: '85',
+    count: '8,500',
     path:'/rings',
   },
 
@@ -77,13 +77,13 @@ export default class OverviewBoard extends Component {
         <div class="ui segment">
           <div className="ml10 mr10 fs18 color-black font-weight-bold">OverView</div>
         </div>
-        <div class="ui horizontal segments bg-white">
+        <div class="ui horizontal segments bg-white row">
           {navigation.map((item, index) => {
             return (
-              <div class="ui segment m10">
+              <div class="ui segment col-auto p15">
                   <div className="text-center" style={{}}>
-                    <div className="fs30 font-weight-bold color-black" style={{}}>{item.count}</div>
-                    <div className="fs16 color-black-1" style={{}}>{item.title}</div>
+                    <div className="fs30 font-weight-bold color-black text-nowrap" style={{}}>{item.count}</div>
+                    <div className="fs16 color-black-1 text-nowrap" style={{}}>{item.title}</div>
                     <div className="">
                       <a className="mt5 fs12" onClick={routeActions.gotoPath.bind(this,item.path)}>View All</a>
                     </div>

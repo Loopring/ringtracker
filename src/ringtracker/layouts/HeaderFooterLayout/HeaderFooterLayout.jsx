@@ -15,7 +15,7 @@ export default class HeaderFooterLayout extends Component {
         <Header />
         <div className="pt50"></div>
         <div className="pt30"></div>
-        <div className="container" style={styles.mainContent}>{this.props.children}</div>
+        <div className="container pl10 pr10">{this.props.children}</div>
         <Footer />
       </div>
     );
@@ -24,6 +24,6 @@ export default class HeaderFooterLayout extends Component {
 
 const styles = {
   mainContent: {
-    padding: '0 20px',
+    
   },
 };
