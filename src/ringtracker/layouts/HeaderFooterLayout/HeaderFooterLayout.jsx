@@ -11,7 +11,7 @@ export default class HeaderFooterLayout extends Component {
 
   render() {
     return (
-      <div className="">
+      <div className="header-footer-layout">
         <Header />
         <div className="pt50"></div>
         <div className="pt30"></div>
@@ -21,9 +21,3 @@ export default class HeaderFooterLayout extends Component {
     );
   }
 }
-
-const styles = {
-  mainContent: {
-    
-  },
-};

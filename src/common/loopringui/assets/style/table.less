@@ -1,0 +1,34 @@
+ .table{
+   display: table;
+   width: 100%;
+   tbody{
+   	width: 100%;
+   }
+   thead{
+   	width: 100%;
+   }
+   tr{
+   	width: 100%
+   }
+ }
+ .table tr {
+  border:none !important;
+ }
+ .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+  border-bottom:1px solid #f9f9f9 !important;
+  font-size: 14px;
+  padding:15px !important;
+  font-weight: normal;
+  color:#444;
+ }
+ .table>thead>tr>td, .table>thead>tr>th{
+   background: #f9f9f9; 
+   color:#999;
+ }
+ .tabe tr{
+    &:nth-child(2n){
+      &>td{
+        background: #FBFBFB !important;
+      }
+    }
+ }
