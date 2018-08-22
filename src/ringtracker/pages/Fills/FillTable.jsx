@@ -3,6 +3,7 @@ import { Badge,Spin} from 'antd'
 import ListPagination from 'LoopringUI/components/ListPagination'
 import {FillFm} from 'modules/fills/formatters'
 import intl from 'react-intl-universal'
+import routeActions from 'common/utils/routeActions'
 
 export default function ListMyFills(props) {
   console.log('ListMyFills render',props.fills)
@@ -32,7 +33,7 @@ export default function ListMyFills(props) {
                   fills && fills.items && fills.items.map((item,index)=>{
                     const fillFm = new FillFm(item)
                     const actions = {
-                      gotoDetail:()=>props.dispatch({type:'layers/showLayer',payload:{id:'ringDetail',fill:item}})
+                      goToRingDetail:()=>routeActions.gotoPath(`/ring/${item.ringIndex}`)
                     }
                     return (
                       <tr key={index}>
@@ -63,7 +64,7 @@ export default function ListMyFills(props) {
   const renders = {
     ringIndex: (fm,actions) => {
       return (
-          <a className="text-truncate text-left color-blue-500" onClick={actions && actions.gotoDetail}>
+          <a className="text-truncate text-left color-blue-500" onClick={actions && actions.goToRingDetail}>
             {fm.fill.ringIndex}
             <span hidden>{fm.fill.ringHash}</span>
           </a>
