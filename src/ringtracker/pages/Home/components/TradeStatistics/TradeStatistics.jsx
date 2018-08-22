@@ -35,21 +35,21 @@ export default class TradeStatistics extends Component {
 
   render() {
     return (
-      <div class="ui segments">
-        <div class="ui segment d-flex justify-content-between align-items-center">
+      <div className="ui segments">
+        <div className="ui segment d-flex justify-content-between align-items-center">
           <div className="ml10 mr10 fs18 color-black font-weight-bold text-nowrap">Trade Overview</div>
           <div className="d-none d-sm-block">
-            <div class="ui buttons basic mr10 ">
-              <button class="ui button">24H</button>
-              <button class="ui button">7D</button>
-              <button class="ui button">1M</button>
-              <button class="ui button">1Y</button>
-              <button class="ui button">All</button>
+            <div className="ui buttons basic mr10 ">
+              <button className="ui button">24H</button>
+              <button className="ui button">7D</button>
+              <button className="ui button">1M</button>
+              <button className="ui button">1Y</button>
+              <button className="ui button">All</button>
             </div>
           </div>
           
         </div>
-        <div class="ui segment p20">
+        <div className="ui segment p20">
           <Head data={MOCK_DATA.threeMonths} />
           <LineChart />
         </div>
