@@ -318,11 +318,19 @@ export async function getAllTokens({pageIndex = 1, pageSize = 20, sort}) {
           "fee": 200
         },
         {
-          "token": "WETH",
-          "lastPrice": 2000,
-          "trade": 1549,
+          "token": "LRC",
+          "lastPrice": 21,
+          "trade": 98123,
           "legalVolume": 1000000,
-          "tokenVolume": 500,
+          "tokenVolume": 9800,
+          "fee": 200
+        },
+        {
+          "token": "0x",
+          "lastPrice": 14,
+          "trade": 761,
+          "legalVolume": 1000000,
+          "tokenVolume": 10,
           "fee": 200
         }
       ],
