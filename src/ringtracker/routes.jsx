@@ -22,7 +22,7 @@ export default class Routes extends React.Component {
           <Route path={`/`} exact component={Home} />
           <Route path={`/home`} exact component={Home} />
           <Route path={`/trades`}  exact component={Fills.FillList} />
-          <Route path={`/trades/detail`} exact component={Fills.FillDetail} />
+          <Route path={`/trades/:ringIndex/:fillIndex`} exact component={Fills.FillDetail} />
           <Route path={`/tokens`}  exact component={Tokens.TokenList} />
           <Route path={`/tokens/detail`} exact component={Tokens.TokenDetail} />
           <Route path={`/relayers`}  exact component={Relayers.RelayerList} />
