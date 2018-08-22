@@ -73,14 +73,14 @@ export default class OverviewBoard extends Component {
 
   render() {
     return (
-      <div class="ui segments">
-        <div class="ui segment">
+      <div className="ui segments">
+        <div className="ui segment">
           <div className="ml10 mr10 fs18 color-black font-weight-bold">OverView</div>
         </div>
-        <div class="ui horizontal segments bg-white row">
+        <div className="ui horizontal segments bg-white row">
           {navigation.map((item, index) => {
             return (
-              <div class="ui segment col-auto p15">
+              <div key={index} className="ui segment col-auto p15">
                   <div className="text-center" style={{}}>
                     <div className="fs30 font-weight-bold color-black text-nowrap" style={{}}>{item.count}</div>
                     <div className="fs16 color-black-1 text-nowrap" style={{}}>{item.title}</div>
