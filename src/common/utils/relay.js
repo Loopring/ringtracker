@@ -10,6 +10,16 @@ export async function getTokens() {
   })
 }
 
+export async function getMarkets() {
+  let body = {};
+  body.method = 'loopring_getLooprSupportedMarket';
+  body.params = [{}];
+  return request({
+    method: 'post',
+    body
+  })
+}
+
 export async function overview() {
   let body = {};
   body.method = 'getAmount';
@@ -22,7 +32,7 @@ export async function overview() {
     "id":64,
     "jsonrpc": "2.0",
     "result": {
-      "trades": 120,
+      "trades": 12009001,
       "tokens": 160,
       "relayers": 69,
       "dexs": 85,
@@ -40,7 +50,7 @@ export async function overview() {
  * @param dex
  * @returns {Promise<{id: number, jsonrpc: string, result: {data: {time: number, volume: number, trade: number, fee: number}[], volumeAmount: number, tradesAmount: number, feesAmount: number}}>}
  */
-export async function getTrend(duration, currency, token, relay, dex) {
+export async function getTrend({duration, currency, token, relay, dex}) {
   const params = [{duration, currency, token, relay, dex}];
   let body = {};
   body.method = 'getTrend';
@@ -75,7 +85,7 @@ export async function getTrend(duration, currency, token, relay, dex) {
  * @param type: 不传默认三个都返回， token/relayer/dex
  * @returns {Promise<{id: number, jsonrpc: string, result: {data: *[]}}>}
  */
-export async function getEcosystemTrend(duration, indicator, type) {
+export async function getEcosystemTrend({duration, indicator, type}) {
   const params = [{duration, indicator, type}];
   let body = {};
   body.method = 'getEcosystemTrend';
@@ -208,7 +218,7 @@ export async function getEcosystemTrend(duration, indicator, type) {
  * 查询trades
  * @param pageIndex
  * @param pageSize
- * @param currency: "ETH/BTC/CNY/USDT"
+ * @param currency: "ETH/BTC/CNY/USD"
  * @param token: symbol
  * @param relay: relayerId
  * @param dex: dexId
@@ -216,7 +226,7 @@ export async function getEcosystemTrend(duration, indicator, type) {
  * @param keyword: orderHash / txHash / ringHash / ownerAddress / walletAddress / relayAddress
  * @returns {Promise<{id: number, jsonrpc: string, result: {data: {protocol: string, owner: string, ringIndex: number, createTime: number, ringHash: string, txHash: string, orderHash: string, amountS: string, amountB: string, tokenS: string, tokenB: string, lrcReward: string, lrcFee: string, splitS: string, splitB: string, market: string}[], pageIndex: number, pageSize: number, total: number}}>}
  */
-export async function getTrades(pageIndex = 1, pageSize = 20, currency, token, relay, dex, ringHash, keyword) {
+export async function getTrades({pageIndex = 1, pageSize = 20, currency, token, relay, dex, ringHash, keyword}) {
   const params = [{pageIndex, pageSize, currency, token, relay, dex, ringHash, keyword}];
   let body = {};
   body.method = 'getTrades';
@@ -241,12 +251,13 @@ export async function getTrades(pageIndex = 1, pageSize = 20, currency, token, r
           "amountS":"0xde0b6b3a7640000",
           "amountB":"0xde0b6b3a7640001",
           "tokenS":"WETH",
-          "tokenB":"COSS",
+          "tokenB":"LRC",
           "lrcReward":"0xde0b6b3a7640000",
           "lrcFee":"0xde0b6b3a7640000",
           "splitS":"0xde0b6b3a7640000",
           "splitB":"0x0",
-          "market":"LRC-WETH"
+          "market":"LRC-WETH",
+          "side":"buy"
         }
       ],
       "pageIndex" : 1,
@@ -263,7 +274,7 @@ export async function getTrades(pageIndex = 1, pageSize = 20, currency, token, r
  * @param sort: 不传默认volume，volume/trade/fee
  * @returns {Promise<{id: number, jsonrpc: string, result: {data: {protocol: string, owner: string, ringIndex: number, createTime: number, ringHash: string, txHash: string, orderHash: string, amountS: string, amountB: string, tokenS: string, tokenB: string, lrcReward: string, lrcFee: string, splitS: string, splitB: string, market: string}[], pageIndex: number, pageSize: number, total: number}}>}
  */
-export async function getAllTokens(pageIndex = 1, pageSize = 20, sort) {
+export async function getAllTokens({pageIndex = 1, pageSize = 20, sort}) {
   const params = [{pageIndex, pageSize, sort}];
   let body = {};
   body.method = 'getAllTokens';

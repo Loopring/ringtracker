@@ -1,7 +1,9 @@
 //const config = require('./config.json');
 import fetch from 'dva/fetch';
-import storage from 'modules/storage/projects'
+import storage from 'modules/storage'
 
+const data = require('./data')
+const {configs} = data
 
 function getTokenBySymbol(symbol){
   if(!symbol){ return {} }
@@ -14,22 +16,46 @@ function getTokenByAddress(address){
 }
 
 function getTokens(){
-  const configs = storage.getConfigs() || {}
-  return configs.tokens || []
+  return storage.settings.getTokensConfig() || []
+}
+
+function getMarkets() {
+  return storage.settings.getMarketsConfig() || []
+}
+
+function getMarketBySymbol(tokenx, tokeny) {
+  if (tokenx && tokeny) {
+    return getMarkets().find(market=> {
+        return (market.tokenx === tokenx && market.tokeny === tokeny) || (market.tokenx === tokeny && market.tokeny === tokenx)
+      }
+    ) || {
+      "pricePrecision": 8
+    }
+  }else{
+    return {
+      "pricePrecision": 8
+    }
+  }
+}
+
+function getMarketByPair(pair) {
+  if (pair) {
+    const pairArr = pair.split('-')
+    if(pairArr && pairArr.length === 2) {
+      return getMarketBySymbol(pairArr[0], pairArr[1])
+    }
+  }
 }
 
 function getWalletAddress() {
-  const configs = storage.getConfigs() || {}
   return configs.walletAddress
 }
 
 function getDelegateAddress() {
-  const configs = storage.getConfigs() || {}
   return configs.delegateAddress;
 }
 
 function getProtocolAddress() {
-  const configs = storage.getConfigs() || {}
   return configs.contracts[0].address
 }
 
@@ -39,5 +65,8 @@ export default {
   getTokens,
   getWalletAddress,
   getDelegateAddress,
-  getProtocolAddress
+  getProtocolAddress,
+  getMarkets,
+  getMarketBySymbol,
+  getMarketByPair
 }
