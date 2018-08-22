@@ -12,6 +12,7 @@ import {getSupportedToken, getSupportedMarkets} from './init'
 import Notification from 'LoopringUI/components/Notification'
 import intl from 'react-intl-universal'
 import {configs} from './common/config/data'
+import {getTokens} from './common/utils/relay'
 
 const latestVersion = Number(configs.localStorageVersion)
 const oldVersion = Number(storage.getLocalStorageVersion())
@@ -53,6 +54,35 @@ app.router(require('./router').default)
 
 // 5. Start
 app.start('#root')
+
+getTokens().then(res=>{
+  const tokens = new Array()
+  tokens.push({
+    "symbol": "ETH",
+    "digits": 18,
+    "address": "",
+    "precision": 6,
+  })
+  res.result.forEach(item=>{
+    if(!item.deny) {
+      const digit = Math.log10(item.decimals)
+      tokens.push({
+        "symbol": item.symbol,
+        "digits": digit,
+        "address": item.protocol,
+        "precision": Math.min(digit, 6),
+      })
+    }
+  })
+  storage.settings.setTokensConfig(tokens)
+}).catch(error=> {
+  console.log(error)
+  Notification.open({
+    message:intl.get('notifications.title.init_failed'),
+    description:intl.get('notifications.message.failed_fetch_data_from_server'),
+    type:'error'
+  })
+})
 
 // STORE is available when current route has rendered
 // Becarefull to use STORE in render funtion
