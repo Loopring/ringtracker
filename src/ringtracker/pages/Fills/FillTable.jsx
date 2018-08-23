@@ -34,7 +34,7 @@ export default function ListMyFills(props) {
                   fills && fills.items && fills.items.map((item,index)=>{
                     const fillFm = new FillFm(item)
                     const actions = {
-                      goToRingDetail:()=>routeActions.gotoPath(`/ring/${item.ringIndex}`)
+                      goToRingDetail:()=>routeActions.gotoPath(`/rings/${item.ringIndex}`)
                     }
                     return (
                       <tr key={index}>

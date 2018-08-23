@@ -5,6 +5,7 @@ import headerMenuConfig from '../../menuConfig';
 import HeaderMenu from './HeaderMenu';
 import Logo from '../Logo';
 import './Header.scss';
+import settings from 'modules/storage/settings'
 const { SubMenu, Item: MenuItem } = Menu
 const Search = Input.Search;
 
@@ -22,6 +23,14 @@ export default class Header extends Component {
   render() {
     const { location = {} } = this.props;
     const { pathname } = location;
+    const currencyChange = (currenty) => {
+      settings.setCurrency(currenty)
+      window.location.reload()
+    }
+    const languageChange = (language) => {
+      settings.setLanguage(language)
+      window.location.reload()
+    }
     return (
       <div className="header-container">
         <div className="zb-b-b pt5 pb5">
@@ -37,17 +46,17 @@ export default class Header extends Component {
               <div className="col">
               </div>
               <div className="col-auto pl5">
-                <Select size="" defaultValue="USD" onChange={()=>{}}>
-                  <Select.Option value="usd">USD</Select.Option>
-                  <Select.Option value="cny">CNY</Select.Option>
-                  <Select.Option value="eth">ETH</Select.Option>
-                  <Select.Option value="btc">BTC</Select.Option>
+                <Select size="" defaultValue={settings.getCurrency()} onChange={currencyChange}>
+                  <Select.Option value="USD">USD</Select.Option>
+                  <Select.Option value="CNY">CNY</Select.Option>
+                  <Select.Option value="ETH">ETH</Select.Option>
+                  <Select.Option value="BTC">BTC</Select.Option>
                 </Select>
               </div>
               <div className="col-auto pl5">
-                <Select size="" defaultValue="en" onChange={()=>{}}>
-                  <Select.Option value="en">English</Select.Option>
-                  <Select.Option value="ch">中文</Select.Option>
+                <Select size="" defaultValue={settings.getLanguage()} onChange={languageChange}>
+                  <Select.Option value="en-US">English</Select.Option>
+                  <Select.Option value="zh-CN">中文</Select.Option>
                 </Select>
               </div>
             </div>

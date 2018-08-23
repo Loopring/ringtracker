@@ -27,8 +27,7 @@ const host = configs.relays[0].value
 
 window.ETH = new Eth(`${host}/eth`);
 window.RELAY = new Relay(`${host}/rpc/v2`);
-setLocale(storage.settings.get().preference.language);
-
+setLocale(storage.settings.getLanguage());
 
 // 1. Initialize
 const app = dva({

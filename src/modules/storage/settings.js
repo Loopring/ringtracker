@@ -10,11 +10,11 @@ let sortedRelays = relays.map((item, i) => {
   item.id = i;
   return item
 })
+const userAgent = new UserAgent();
 const get = ()=>{
   if(localStorage.settings){
     return JSON.parse(localStorage.settings)
   }else{
-    const userAgent = new UserAgent();
     return {
       preference: {
         language: userAgent.getLanguage() || 'en-US',
@@ -58,24 +58,6 @@ const getContractVersion = ()=>{
   }
 }
 
-const setGas = (gas)=>{
-  localStorage.gas = JSON.stringify(gas)
-}
-
-const getGas = ()=>{
-  if(localStorage.gas){
-    return JSON.parse(localStorage.gas)
-  }else{
-    return {
-      gasPrice:{
-        last:0,
-        estimate:configs.defaultGasPrice,
-        current:1
-      },
-    }
-  }
-}
-
 const setTokensConfig = (tokens)=>{
   localStorage.tokensConfig = JSON.stringify(tokens)
 }
@@ -100,16 +82,34 @@ const getMarketsConfig = ()=>{
   }
 }
 
+const setLanguage = (language)=>{
+  localStorage.languageConfig = language
+}
+
+const getLanguage = ()=>{
+  return localStorage.languageConfig || userAgent.getLanguage() || 'en-US'
+}
+
+const setCurrency = (currency)=>{
+  localStorage.currencyConfig = currency
+}
+
+const getCurrency = ()=>{
+  return localStorage.currencyConfig || userAgent.getLanguage() === 'zh-CN' ? 'CNY':"USD"
+}
+
 export default {
   set,
   get,
-  setGas,
-  getGas,
   getRelay,
   getContractVersion,
   setTokensConfig,
   getTokensConfig,
   setMarketsConfig,
-  getMarketsConfig
+  getMarketsConfig,
+  setLanguage,
+  getLanguage,
+  setCurrency,
+  getCurrency
 }
 
