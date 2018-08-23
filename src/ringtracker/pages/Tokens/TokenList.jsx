@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TokenTable from './TokenTable';
 import TokensOverview from './TokensOverview';
 import {getAllTokens} from 'common/utils/relay'
+import intl from "react-intl-universal";
 
 export default class TokenList extends Component {
   static displayName = 'TokenList';
@@ -30,7 +31,7 @@ export default class TokenList extends Component {
         <TokensOverview />
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">Tokens</div>
+            <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('taps.tokens')}</div>
             <div className="ui buttons basic mr10">
               <button className="ui button">Apply To List</button>
             </div>

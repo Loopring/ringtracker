@@ -28,7 +28,8 @@ const words = {
   trades: "Trades",
   goback: "Go Back",
   viewall: 'View All',
-  ecosystem: "Ecosystem"
+  ecosystem: "Ecosystem",
+  recent_trades: 'Recent Trades'
 }
 const types = {
   trade_side: {
@@ -87,5 +88,17 @@ export default {
     "volume": "Volume",
     "trades": "Trades",
     "fees": "Fees"
+  },
+  title: {
+    lrc_fee: 'LRC Fee',
+    created: 'Created',
+    options: "Options",
+    token: "Token",
+    last_price: "Last Price",
+    trades: "Trades",
+    volume: "Volume",
+  },
+  options: {
+    view_detail: "View Detail"
   },
 }

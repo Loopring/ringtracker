@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PieDonutChart from './PieDonutChart';
+import intl from 'react-intl-universal'
 
 export default class OverviewChart extends Component {
   static displayName = 'OverviewChart';
@@ -17,7 +18,7 @@ export default class OverviewChart extends Component {
     return (
       <div className="ui segments">
         <div className="ui segment d-flex justify-content-between align-items-center">
-          <div className="ml10 mr10 fs18 color-black font-weight-bold">Tokens Overview</div>
+          <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('taps.tokens')} {intl.get('common.overview')}</div>
           <div>
             <div className="ui buttons basic mr10">
               <button className="ui button">24H</button>
@@ -31,15 +32,15 @@ export default class OverviewChart extends Component {
         <div className="ui segment p20">
           <div className="row ml0 mr0">
             <div className="col-md-4">
-              <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">Volume</div>
+              <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">{intl.get('overview.volume')}</div>
               <PieDonutChart />
             </div>
             <div className="col-md-4">
-              <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">Trades</div>
+              <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">{intl.get('overview.trades')}</div>
               <PieDonutChart />
             </div>
             <div className="col-md-4">
-              <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">Fees</div>
+              <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">{intl.get('overview.fees')}</div>
               <PieDonutChart />
             </div>
           </div>

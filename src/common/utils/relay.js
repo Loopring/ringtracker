@@ -277,7 +277,7 @@ export async function getTrades({pageIndex = 1, pageSize = 20, currency, token, 
           "splitB":"0xde0b6b3a7640000",
           "splitS":"0x0",
           "market":"LRC-WETH",
-          "side":"buy",
+          "side":"sell",
           "fillIndex":2
         }
       ],
