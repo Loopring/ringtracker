@@ -14,7 +14,8 @@ export default class HeaderFooterLayout extends Component {
       <div className="header-footer-layout">
         <Header />
         <div className="pt50"></div>
-        <div className="pt30"></div>
+        <div className="pt50"></div>
+        <div className="pt10"></div>
         <div className="container pl10 pr10">{this.props.children}</div>
         <Footer />
       </div>
