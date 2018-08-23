@@ -3,6 +3,7 @@ import { Badge,Spin} from 'antd'
 import ListPagination from 'LoopringUI/components/ListPagination'
 import {FillFm} from 'modules/fills/formatters'
 import intl from 'react-intl-universal'
+import routeActions from 'common/utils/routeActions'
 
 export default function ListMyFills(props) {
   console.log('ListMyFills render',props.fills)
@@ -25,6 +26,7 @@ export default function ListMyFills(props) {
                       <th className="border-none">{intl.get('common.total')}</th>
                       <th className="border-none">{intl.get('fill.lrc_fee')}</th>
                       <th className="border-none">{intl.get('fill.created')}</th>
+                      <th className="border-none">Options</th>
                   </tr>
               </thead>
               <tbody className="">
@@ -32,7 +34,7 @@ export default function ListMyFills(props) {
                   fills && fills.items && fills.items.map((item,index)=>{
                     const fillFm = new FillFm(item)
                     const actions = {
-                      gotoDetail:()=>props.dispatch({type:'layers/showLayer',payload:{id:'ringDetail',fill:item}})
+                      goToRingDetail:()=>routeActions.gotoPath(`/ring/${item.ringIndex}`)
                     }
                     return (
                       <tr key={index}>
@@ -44,6 +46,7 @@ export default function ListMyFills(props) {
                         <td>{fillFm.getTotal()}</td>
                         <td>{fillFm.getLRCFee()}</td>
                         <td>{fillFm.getCreateTime()}</td>
+                        <td><a onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}`)}>View Detail</a></td>
                      </tr>
                     )
                   })
@@ -63,7 +66,7 @@ export default function ListMyFills(props) {
   const renders = {
     ringIndex: (fm,actions) => {
       return (
-          <a className="text-truncate text-left color-blue-500" onClick={actions && actions.gotoDetail}>
+          <a className="text-truncate text-left color-blue-500" onClick={actions && actions.goToRingDetail}>
             {fm.fill.ringIndex}
             <span hidden>{fm.fill.ringHash}</span>
           </a>

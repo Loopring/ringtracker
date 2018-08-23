@@ -5,7 +5,7 @@ import {toBig,toFixed} from 'LoopringJS/common/formatter'
 const schema = [
   {
     title:() => intl.get('ring.ringIndex'),
-    name:'id',
+    name:'ringIndex',
   },
   // {
   //   title:() => intl.get('ring.ringHash'),

@@ -362,7 +362,7 @@ export default {
   // fill
   // -----------
   fill: {
-    ringIndex: "ID",
+    ringIndex: "RingId",
     price: words.price,
     amount: words.amount,
     total: words.total,

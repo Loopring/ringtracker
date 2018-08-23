@@ -1,21 +1,22 @@
 import React from 'react'
 import config from '../../../common/config'
-import {Spin,Card} from 'antd'
+import {Spin, Card} from 'antd'
+import Fills from '../Fills'
 
 export default class RingDetail extends React.Component {
 
   state = {
-    item: null,
+    item: {},
     loading: true
   };
 
   componentWillMount() {
     const {match} = this.props;
     const {id} = match.params;
-    window.RELAY.ring.getRingMinedDetail({protocolAddress: config.getProtocolAddress(), ringIndex: id})
+    window.RELAY.ring.getRingMinedDetail({delegateAddress: config.getDelegateAddress(), ringIndex: id})
       .then(res => {
         if (res.result) {
-          this.setState({item: res.result.data, loading: false})
+          this.setState({item: res.result, loading: false})
         } else {
           this.setState({loading: false})
         }
@@ -25,27 +26,17 @@ export default class RingDetail extends React.Component {
 
 
   render() {
-    const {item, loading} = this.state
+    const {item, loading} = this.state;
 
     return (
-      <Spin spinning={loading}>
+      <div>
         <Card title="Ring Information">
           TODO Chart
         </Card>
-        <Card title="Trades of Ring" loading={loading}>
-          {
-            [].map((field,index)=>
-              <div className="row pb10" key={index}>
-                <div className="col-1 color-grey-700">{field.title}</div>
-                <div className="col color-grey-700 text-left">
-
-                </div>
-              </div>
-            )
-          }
+        <Card title="Trades of Ring">
+          <Fills.FillTable fills = {{items:item.fills,loading:loading}}/>
         </Card>
-
-      </Spin>
+      </div>
     )
   }
 

@@ -363,7 +363,7 @@ export default {
   // fill
   // -----------
   fill: {
-    ringIndex: "ID",
+    ringIndex: "环路ID",
     price: words.price,
     amount: words.amount,
     total: words.total,

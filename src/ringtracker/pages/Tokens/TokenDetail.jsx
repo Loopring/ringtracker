@@ -16,22 +16,22 @@ export default class TokenDetail extends Component {
   render() {
     return (
       <div>
-        <div class="ui segments">
-          <div class="ui segment d-flex justify-content-between align-items-center">
+        <div className="ui segments">
+          <div className="ui segment d-flex justify-content-between align-items-center">
             <div className="ml10 mr10 fs18 color-black font-weight-bold">WETH Overview</div>
-            <div class="ui buttons basic mr10">
-              <button class="ui button">Go Back</button>
+            <div className="ui buttons basic mr10">
+              <button className="ui button">Go Back</button>
             </div>
           </div>
-          <div class="ui segment p20">
+          <div className="ui segment p20">
             Todo
           </div>
         </div>
-        <div class="ui segments">
-          <div class="ui segment d-flex justify-content-between align-items-center">
+        <div className="ui segments">
+          <div className="ui segment d-flex justify-content-between align-items-center">
             <div className="ml10 mr10 fs18 color-black font-weight-bold">WETH Trades</div>
           </div>
-          <div class="ui segment p20">
+          <div className="ui segment p20">
             <FillTable />
           </div>
         </div>

@@ -14,8 +14,7 @@ export default class RingList extends React.Component {
   };
 
   componentWillMount() {
-    console.log("get rings");
-    window.RELAY.ring.getRings({delegateAddress:config.getDelegateAddress()}).then(res => {
+    window.RELAY.ring.getRings({}).then(res => {
       if (res.result) {
         this.setState({items: res.result.data, loading: false})
       } else {
@@ -28,8 +27,8 @@ export default class RingList extends React.Component {
     const {items,loading} = this.state
 
     const renders = {
-      ringHash: (value, item, index) => <Link className="text-truncate d-block" style={{maxWidth: '150px'}}
-                                              to={`/rings/detail/${value}`}>{value}</Link>,
+      ringIndex: (value, item, index) => <Link className="text-truncate d-block" style={{maxWidth: '150px'}}
+                                              to={`/rings/${value}`}>{value}</Link>,
       miner: (value, item, index) => <Link className="text-truncate d-block" style={{maxWidth: '150px'}}
                                            to={`/miner/detail/${value}`}>{value}</Link>,
       feeRecipient: (value, item, index) => <a className="text-truncate d-block" style={{maxWidth: '150px'}}

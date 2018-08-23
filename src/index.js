@@ -8,11 +8,10 @@ import {setLocale} from "./common/utils/localeSetting";
 import storage from './modules/storage';
 import Eth from 'LoopringJS/ethereum/eth';
 import Relay from 'LoopringJS/relay/relay';
-import {getSupportedToken, getSupportedMarkets} from './init'
 import Notification from 'LoopringUI/components/Notification'
 import intl from 'react-intl-universal'
 import {configs} from './common/config/data'
-import {getTokens} from './common/utils/relay'
+import {getTokens, getMarkets} from './common/utils/relay'
 
 const latestVersion = Number(configs.localStorageVersion)
 const oldVersion = Number(storage.getLocalStorageVersion())
@@ -75,6 +74,27 @@ getTokens().then(res=>{
     }
   })
   storage.settings.setTokensConfig(tokens)
+}).catch(error=> {
+  console.log(error)
+  Notification.open({
+    message:intl.get('notifications.title.init_failed'),
+    description:intl.get('notifications.message.failed_fetch_data_from_server'),
+    type:'error'
+  })
+})
+
+getMarkets().then(res=>{
+  if(res.result) {
+    const markets = res.result.map(item=>{
+      const pair = item.split('-')
+      return {
+        "tokenx": pair[0],
+        "tokeny": pair[1],
+        "pricePrecision":8
+      }
+    })
+    storage.settings.setMarketsConfig(markets)
+  }
 }).catch(error=> {
   console.log(error)
   Notification.open({
