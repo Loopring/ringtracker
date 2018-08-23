@@ -11,13 +11,14 @@ export default class FillList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {trades:[]};
+    this.state = {trades:[],loading:false};
   }
 
   componentDidMount() {
+    this.setState({loading:true})
     getTrades({currency:'USD'}).then(resp => {
       if(resp.result) {
-        this.setState({trades:resp.result.data})
+        this.setState({trades:resp.result.data,loading:false})
       }
     })
   }
@@ -33,7 +34,7 @@ export default class FillList extends Component {
             </div>
           </div>
           <div className="ui segment p20">
-            <FillTable fills={{items:this.state.trades,loading:false}}/>
+            <FillTable fills={{items:this.state.trades,loading:this.state.loading}}/>
           </div>
         </div>
       </div>

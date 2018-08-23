@@ -47,26 +47,29 @@ const words = {
   next_page: 'Next Page',
   import: "Import",
   recipient: 'Recipient',
-  help:'Help',
-  feedback:"Feedback",
-  quit:'Quit',
-  asset:'Asset',
-  assets:'Assets',
-  order:'Order',
-  orders:'Orders',
-  fill:'Fill',
-  fills:'Fills',
-  yes:'Yes',
-  no:'No',
-  more:'More',
-  comingsoon:'Coming Soon',
-  depth:'Depth',
-  set:'Set',
-  helper:'Helper',
-  list:{
-    no_data:'No Data',
-    no_data_custom:'No {title}',
-    loading:'Loading...',
+  help: 'Help',
+  feedback: "Feedback",
+  quit: 'Quit',
+  asset: 'Asset',
+  assets: 'Assets',
+  order: 'Order',
+  orders: 'Orders',
+  fill: 'Fill',
+  fills: 'Fills',
+  yes: 'Yes',
+  no: 'No',
+  more: 'More',
+  comingsoon: 'Coming Soon',
+  depth: 'Depth',
+  set: 'Set',
+  helper: 'Helper',
+  suc:'Succeed',
+  fail:'Failed',
+  pending:'Pending',
+  list: {
+    no_data: 'No Data',
+    no_data_custom: 'No {title}',
+    loading: 'Loading...',
   }
 }
 const types = {
@@ -97,15 +100,15 @@ const notifications = {
     copy_suc: 'Copy Successfully',
     copy_fail: 'Copy Failed',
     not_allowed_place_order_worth: 'Order Amount Is Too Small',
-    in_watch_only_mode:'Switched to Watch-only Mode',
-    using_watch_only_mode:'You Are Now using Watch-only Mode',
-    cancel_suc:'{type} Cancel Successfully',
-    cancel_fail:'{type} Cancel Failed',
-    invalid_number:'Please input valid number',
-    convert_suc:'Convert Successfully',
-    convert_fail:'Convert Failed',
-    enable_suc:'Enable Successfully',
-    enable_fail:'Enable failed'
+    in_watch_only_mode: 'Switched to Watch-only Mode',
+    using_watch_only_mode: 'You Are Now using Watch-only Mode',
+    cancel_suc: '{type} Cancel Successfully',
+    cancel_fail: '{type} Cancel Failed',
+    invalid_number: 'Please input valid number',
+    convert_suc: 'Convert Successfully',
+    convert_fail: 'Convert Failed',
+    enable_suc: 'Enable Successfully',
+    enable_fail: 'Enable failed'
   },
   message: {
     wallet_locked: 'Your wallet seems locked yet, please unlock first',
@@ -123,7 +126,7 @@ const notifications = {
     not_allowed_place_order_worth: 'Due to your total worth less than {worth}, you could not place this order',
     eth_is_required: 'ETH is required to pay Ethereum transaction fees, calculated with your current order cost that need to send Ethereum transactions, totally required {required} ETH.',
     lrcfee_is_required: 'LRC is required to pay trade fees, added on your history orders need LRC, totally required {required} LRC.',
-    unlock_by_cookie_address:'Loopr has switched your account to the watch-only mode, and your private-key is no longer available to the browser.  You\'ll need to unlock your wallet again to perform some operations.',
+    unlock_by_cookie_address: 'Loopr has switched your account to the watch-only mode, and your private-key is no longer available to the browser.  You\'ll need to unlock your wallet again to perform some operations.',
   }
 }
 
@@ -195,9 +198,9 @@ export default {
   },
   order_list: {
     actions_cancel_all: 'Cancel All',
-    my_open_orders:'Open Orders',
-    my_all_orders:'All Orders',
-    order_book:'Order Book',
+    my_open_orders: 'Open Orders',
+    my_all_orders: 'All Orders',
+    order_book: 'Order Book',
     no_open_orders: "No open orders of {market}",
     view_all_orders: "View all orders"
   },
@@ -220,10 +223,10 @@ export default {
   order_cancel: {
     cancel_title: "Do you want to cancel this order?",
     cancel_all_title: "Cancel all {market} orders ?",
-    cancel_all_mes:'{amount,number} open {market} orders will be canceled',
-    no_open_orders:'No open orders to cancel',
-    confirm_yes:'Yes, cancel order',
-    confirm_no:words.no
+    cancel_all_mes: '{amount,number} open {market} orders will be canceled',
+    no_open_orders: 'No open orders to cancel',
+    confirm_yes: 'Yes, cancel order',
+    confirm_no: words.no
   },
   helper_of_amount: {
     depth: "Depth"
@@ -288,7 +291,7 @@ export default {
     generate_order: 'Generate Order',
     instruction: '1. 以您希望的兑换率生成一个订单，把不包含鉴权数据（没有这部分数据任何人都无法撮合您的订单）的订单信息提交给relay，同时将生成的订单hash和鉴权信息生成二维码。</br>2. 您可以把这个二维码发送给您的朋友，任何人拿到这个二维码都有可能吃掉您的订单，请注意以安全的方式传播。</br>3. 对方使用Circulr移动端扫描二维码，下一个与您买入卖出量完全匹配的对手单，发送以太坊交易吃掉这个订单，因此吃单方需要消耗油费。',
     notice: '* P2P订单不需要支付LRC手续费</br>',
-    user_center_p2p:'P2P Trade'
+    user_center_p2p: 'P2P Trade'
   },
   sign: {
     not_signed: "You may have some items not signed",
@@ -359,22 +362,22 @@ export default {
   // fill
   // -----------
   fill: {
-    ringIndex: "ID",
+    ringIndex: "RingId",
     price: words.price,
     amount: words.amount,
     total: words.total,
     lrc_fee: words.lrc_fee,
     lrc_reward: words.lrc_reward,
     margin_split: words.margin_split,
-    created:'Created',
+    created: 'Created',
   },
   fill_list: {
-    my_recent_fills:'Recent Fills',
-    my_all_fills:'All Fills',
-    trade_history:'Trade History',
+    my_recent_fills: 'Recent Fills',
+    my_all_fills: 'All Fills',
+    trade_history: 'Trade History',
   },
   fill_detail: {
-    fill_detail:'Fill Detail',
+    fill_detail: 'Fill Detail',
   },
   ring: {
     ringIndex: "RingIndex",
@@ -387,9 +390,16 @@ export default {
     total_lrc_reward: words.lrc_reward,
     total_margin_split: words.margin_split,
     time: words.time,
+    protocol: "Protocol Address",
+    delegate: "Delegate Address",
+    fills: "Fills Amount",
+    status:words.status,
+    suc:words.suc,
+    fail:words.fail,
+    pending:words.pending,
   },
-  ring_detail:{
-    ring_detail:"Ring Detail",
+  ring_detail: {
+    ring_detail: "Ring Detail",
   },
   // -----------
   // ticker
@@ -447,14 +457,14 @@ export default {
     assets_title: 'Total Value',
   },
   convert: {
-    convert_eth_title:'Convert ETH to WETH',
-    convert_weth_title:'Convert WETH to ETH',
+    convert_eth_title: 'Convert ETH to WETH',
+    convert_weth_title: 'Convert WETH to ETH',
     convert_eth_tip: '0.1 ETH is reserved as gas so that you can send additional transactions.',
     actions_confirm_convert: 'Convert Now',
     actions_max: "Convert Max",
-    notification_suc_title:'Succeed to Convert {value} {token}',
-    notification_fail_title:'Failed to Convert {value} {token}',
-    not_enough_tip:'{token} not enough'
+    notification_suc_title: 'Succeed to Convert {value} {token}',
+    notification_fail_title: 'Failed to Convert {value} {token}',
+    not_enough_tip: '{token} not enough'
   },
   receive: {
     receive_title: 'My {token} Address',
@@ -555,39 +565,39 @@ export default {
     error_mnemonic_tip: "Invalid Mnemonic",
     mnemonic_tip_lack: 'Please Input your mnemonic',
   },
-  user_center:{
-    receive:'Receive',
-    send:'Send',
+  user_center: {
+    receive: 'Receive',
+    send: 'Send',
     tab_title: "Me"
   },
-  kline_chart:{
-    kline_chart:'Kline Chart',
+  kline_chart: {
+    kline_chart: 'Kline Chart',
   },
-  price_chart:{
-    price_chart:'Price Chart',
+  price_chart: {
+    price_chart: 'Price Chart',
   },
   todos: {
     tab_title: "Notifications",
     instruction: "There may have some tasks you should do with your available orders to make them available.<br>1. Allowance of tokens you about to sell are not enough. <br>2. Your token balances are not enough to sell."
   },
-  message_list:{
-    message_list_title:'Messages',
+  message_list: {
+    message_list_title: 'Messages',
   },
-  todo_list:{
-    todo_list_title:'Tasks',
-    allowance_not_enough_title:"{symbol} is disabled to trade",
-    balance_not_enough_title:"{symbol} balance is insufficient",
-    balance:"Balance",
-    selling:"Selling",
-    lack:"Lack",
-    actions_enable:"Enable",
-    status_enabling:'Enabling',
-    actions_buy:words.buy,
-    actions_receive:words.receive,
+  todo_list: {
+    todo_list_title: 'Tasks',
+    allowance_not_enough_title: "{symbol} is disabled to trade",
+    balance_not_enough_title: "{symbol} balance is insufficient",
+    balance: "Balance",
+    selling: "Selling",
+    lack: "Lack",
+    actions_enable: "Enable",
+    status_enabling: 'Enabling',
+    actions_buy: words.buy,
+    actions_receive: words.receive,
   },
-  usercenter:{
-    page_title:'My Account',
-    actions_switch_wallet:'Switch Wallet',
+  usercenter: {
+    page_title: 'My Account',
+    actions_switch_wallet: 'Switch Wallet',
   },
   market: {
     tab_charts: "Charts",
