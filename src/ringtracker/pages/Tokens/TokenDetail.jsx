@@ -3,6 +3,7 @@ import FillTable from '../Fills/FillTable';
 import {getTrades} from 'common/utils/relay'
 import LineChart from './TokensOverview/LineChart'
 import routeActions from 'common/utils/routeActions'
+import intl from 'react-intl-universal'
 
 export default class TokenDetail extends Component {
   static displayName = 'TokenDetail';
@@ -30,7 +31,7 @@ export default class TokenDetail extends Component {
       <div>
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">WETH Overview</div>
+            <div className="ml10 mr10 fs18 color-black font-weight-bold">WETH {intl.get('common.overview')}</div>
             <div className="ui buttons basic mr10">
               <button className="ui button" onClick={routeActions.goBack.bind(this)}>Go Back</button>
             </div>
