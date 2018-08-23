@@ -27,13 +27,16 @@ export default class TokenDetail extends Component {
   }
 
   render() {
+    const {location} = this.props
+    const params = location.pathname.split('/')
+    const token = params.length === 3 ? params[2] : ''
     return (
       <div>
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">WETH {intl.get('common.overview')}</div>
+            <div className="ml10 mr10 fs18 color-black font-weight-bold">{token} {intl.get('common.overview')}</div>
             <div className="ui buttons basic mr10">
-              <button className="ui button" onClick={routeActions.goBack.bind(this)}>Go Back</button>
+              <button className="ui button" onClick={routeActions.goBack.bind(this)}>{intl.get('common.goback')}</button>
             </div>
           </div>
           <div className="ui segment p20">
@@ -42,7 +45,7 @@ export default class TokenDetail extends Component {
         </div>
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">WETH Trades</div>
+            <div className="ml10 mr10 fs18 color-black font-weight-bold">{token} {intl.get('common.trades')}</div>
           </div>
           <div className="ui segment p20">
             <FillTable fills={{items:this.state.trades,loading:this.state.loading}}/>

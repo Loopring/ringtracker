@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PieDonutChart from './PieDonutChart';
+import intl from 'react-intl-universal'
 
 export default class OverviewChart extends Component {
   static displayName = 'OverviewChart';
@@ -17,12 +18,12 @@ export default class OverviewChart extends Component {
     return (
       <div className="ui segments">
         <div className="ui segment d-flex justify-content-between align-items-center">
-          <div className="ml10 mr10 fs18 color-black font-weight-bold">Ecosystem Overview</div>
+          <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('common.ecosystem')} {intl.get('common.overview')}</div>
           <div className="d-none d-sm-block">
             <div className="ui buttons basic mr10">
-              <button className="ui button">Volume</button>
-              <button className="ui button">Trades</button>
-              <button className="ui button">Fees</button>
+              <button className="ui button">{intl.get('overview.volume')}</button>
+              <button className="ui button">{intl.get('overview.trades')}</button>
+              <button className="ui button">{intl.get('overview.fees')}</button>
             </div>
             <div className="ui buttons basic mr10">
               <button className="ui button">24H</button>
@@ -36,15 +37,15 @@ export default class OverviewChart extends Component {
         <div className="ui segment p20">
           <div className="row ml0 mr0">
             <div className="col-md-4">
-              <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">Tokens</div>
+              <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">{intl.get('taps.tokens')}</div>
               <PieDonutChart />
             </div>
             <div className="col-md-4">
-              <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">Relayers</div>
+              <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">{intl.get('taps.relays')}</div>
               <PieDonutChart />
             </div>
             <div className="col-md-4">
-              <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">DEXs</div>
+              <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">{intl.get('taps.dexs')}</div>
               <PieDonutChart />
             </div>
           </div>
