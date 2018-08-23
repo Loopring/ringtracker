@@ -27,8 +27,8 @@ export default class Routes extends React.Component {
           <Route path={`/trades/:ringIndex/:fillIndex`} exact component={Fills.FillDetail}/>
           <Route path={`/tokens`} exact component={Tokens.TokenList}/>
           <Route path={`/tokens/:token`} exact component={Tokens.TokenDetail}/>
-          <Route path={`/relayers`} exact component={Relayers.RelayerList}/>
-          <Route path={`/relayers/detail`} exact component={Relayers.RelayerDetail}/>
+          <Route path={`/relays`} exact component={Relayers.RelayerList}/>
+          <Route path={`/relays/detail`} exact component={Relayers.RelayerDetail}/>
           <Route path={`/rings`} exact component={Rings.RingList}/>
           <Route path={'/rings/:id'} component={Rings.RingDetail}/>
           <Route path={`*`} component={NotFound}/>

@@ -1,30 +1,31 @@
+import intl from 'react-intl-universal'
 // 菜单配置
 // headerMenuConfig：头部导航配置
 // asideMenuConfig：侧边导航配置
 
 const asideMenuConfig = [
   {
-    name: 'Home',
+    name: intl.get('taps.home'),
     path: '/',
   },
   {
-    name: 'Trades',
+    name: intl.get('taps.trades'),
     path: '/trades',
   },
   {
-    name: 'Tokens',
+    name: intl.get('taps.tokens'),
     path: '/tokens',
   },
   {
-    name: 'Relayers',
-    path: '/relayers',
+    name: intl.get('taps.relays'),
+    path: '/relays',
   },
   {
-    name: 'DEXs',
+    name: intl.get('taps.dexs'),
     path: '/dexs',
   },
   {
-    name: 'Rings',
+    name: intl.get('taps.rings'),
     path: '/rings',
   },
 ];

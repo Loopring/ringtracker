@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import LineChart from './LineChart';
 import Head from './Head';
+import intl from 'react-intl-universal'
+
 const MOCK_DATA = {
   threeMonths: {
     visits: '4,677',
@@ -37,7 +39,7 @@ export default class TradeStatistics extends Component {
     return (
       <div className="ui segments">
         <div className="ui segment d-flex justify-content-between align-items-center">
-          <div className="ml10 mr10 fs18 color-black font-weight-bold text-nowrap">Trade Overview</div>
+          <div className="ml10 mr10 fs18 color-black font-weight-bold text-nowrap">{intl.get('common.trade')} {intl.get('common.overview')}</div>
           <div className="d-none d-sm-block">
             <div className="ui buttons basic mr10 ">
               <button className="ui button">24H</button>
