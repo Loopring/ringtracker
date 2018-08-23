@@ -16,11 +16,12 @@ export default class Header extends Component {
   render() {
     const { location = {} } = this.props;
     const { pathname } = location;
+    const prefix = `/${pathname.split('/')[1]}`
     return (
       <Menu
         className="header-navbar-menu"
         onClick={()=>{}}
-        selectedKeys={[pathname]}
+        selectedKeys={[prefix]}
         defaultSelectedKeys={[pathname]}
         mode="horizontal"
       >

@@ -16,7 +16,15 @@ export default class FillDetail extends Component {
 
   render() {
     const {location} = this.props
-    console.log(1, location)
+    const params = location.pathname.split('/')
+    let ringIndex = '', fillIndex = 1
+    if(params.length > 2) {
+      ringIndex = params[2]
+      if(params.length === 4) {
+        fillIndex = params[3]
+      }
+    }
+    console.log(params, ringIndex, fillIndex)
     return (
       <div>
         <div className="ui segments">
