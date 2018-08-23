@@ -20,6 +20,7 @@ export default class Header extends Component {
   render() {
     const { location = {} } = this.props;
     const { pathname } = location;
+    const prefix = `/${pathname.split('/')[1]}`
     return (
       <div className="header-container">
         <div className="header-content">
@@ -28,7 +29,7 @@ export default class Header extends Component {
             <Menu
               className="header-navbar-menu"
               onClick={this.handleNavClick}
-              selectedKeys={[pathname]}
+              selectedKeys={[prefix]}
               defaultSelectedKeys={[pathname]}
               mode="horizontal"
             >
