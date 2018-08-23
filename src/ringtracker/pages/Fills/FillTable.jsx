@@ -24,9 +24,9 @@ export default function ListMyFills(props) {
                       <th className="border-none">{intl.get('common.amount')}</th>
                       <th className="border-none">{intl.get('common.price')}</th>
                       <th className="border-none">{intl.get('common.total')}</th>
-                      <th className="border-none">{intl.get('fill.lrc_fee')}</th>
-                      <th className="border-none">{intl.get('fill.created')}</th>
-                      <th className="border-none">Options</th>
+                      <th className="border-none">{intl.get('title.lrc_fee')}</th>
+                      <th className="border-none">{intl.get('title.created')}</th>
+                      <th className="border-none">{intl.get('title.options')}</th>
                   </tr>
               </thead>
               <tbody className="">
@@ -46,7 +46,7 @@ export default function ListMyFills(props) {
                         <td>{fillFm.getTotal()}</td>
                         <td>{fillFm.getLRCFee()}</td>
                         <td>{fillFm.getCreateTime()}</td>
-                        <td><a onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}`)}>View Detail</a></td>
+                        <td><a onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}`)}>{intl.get('options.view_detail')}</a></td>
                      </tr>
                     )
                   })

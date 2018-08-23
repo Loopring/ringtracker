@@ -28,7 +28,8 @@ const words = {
   trades: "成交",
   goback: "返回",
   viewall: '详情',
-  ecosystem: "生态"
+  ecosystem: "生态",
+  recent_trades: '最新成交'
 }
 
 const types = {
@@ -88,6 +89,18 @@ export default {
     "volume": "成交规模",
     "trades": "成交数",
     "fees": "手续费"
+  },
+  title: {
+    lrc_fee: 'LRC 撮合费',
+    created: '提交时间',
+    options: "操作",
+    token: "代币",
+    last_price: "最新成交",
+    trades: "交易数",
+    volume: "交易量",
+  },
+  options: {
+    view_detail: "查看详情"
   }
 }
 

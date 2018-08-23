@@ -19,11 +19,11 @@ export default class TokenTable extends Component {
               <thead className="">
               <tr className="">
                 <th className="">#</th>
-                <th className="">Token</th>
-                <th className="">Last Price</th>
-                <th className="">Trades</th>
-                <th className="">Volume</th>
-                <th className="">Options</th>
+                <th className="">{intl.get('title.token')}</th>
+                <th className="">{intl.get('title.last_price')}</th>
+                <th className="">{intl.get('title.trades')}</th>
+                <th className="">{intl.get('title.volume')}</th>
+                <th className="">{intl.get('title.options')}</th>
               </tr>
               </thead>
               <tbody className="">
@@ -44,7 +44,7 @@ export default class TokenTable extends Component {
                         <div className="color-black-2 fs12">{item.tokenVolume} {item.token}</div>
                       </td>
                       <td>
-                        <a onClick={routeActions.gotoPath.bind(this,`/tokens/${item.token}`)}>View Detail</a>
+                        <a onClick={routeActions.gotoPath.bind(this,`/tokens/${item.token}`)}>{intl.get('options.view_detail')}</a>
                       </td>
                     </tr>
                   )
