@@ -27,9 +27,10 @@ export default class Header extends Component {
         <div className="zb-b-b pt5 pb5">
           <div className="container">
             <div className="row align-items-center ml0 mr0 no-gutters">
-              <div className="col-auto">
-                <a href="https://loopring.org" className="fs14 color-black-3 mr15">Loopring</a>
-                <a href="https://loopring.io" className="fs14 color-black-3 mr15">Loopring Dex</a>
+              <div className="col-auto color-black-3">
+                <a href="https://loopring.org" className="fs14 mr15 color-black-2">Loopring Fund</a>
+                <a href="https://loopring.io" className="fs14 mr15 color-black-2">Loopring Dex</a>
+                <a href="https://loopring.io" className="fs14 mr15 color-black-2">Loopring Wallet</a>
               </div>
               <div className="col-auto">
               </div>
