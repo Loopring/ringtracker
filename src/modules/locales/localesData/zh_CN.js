@@ -86,7 +86,7 @@ export default {
     tokens: '代币',
     relays: '中继',
     dexs: '交易所',
-    rings: '环路'
+    rings: '撮合环路'
   },
   overview: {
     "volume": "成交规模",

@@ -12,7 +12,7 @@ function parseJSON(res) {
 }
 
 let checkHost = () => {
-  const relayHost = storage.settings.getRelay()
+  const relayHost = "//10.137.105.255:8083"
   window.LOOPRING_PROVIDER_HOST = relayHost + '/rpc/v2'
   window.ETH_HOST = relayHost + '/eth'
 

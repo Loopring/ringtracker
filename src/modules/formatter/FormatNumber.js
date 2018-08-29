@@ -29,7 +29,7 @@ export const formatter = (value, precision) => {
 }
 
 export const FormatAmount = ({value, precision = 4, tooptip = true})=>{
-  const formatted = formatter(value)
+  const formatted = formatter(value, precision)
   return (
     <span>
       {tooptip &&

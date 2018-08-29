@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import routeActions from 'common/utils/routeActions'
 import {overview} from 'common/utils/relay'
 import {FormatAmount} from 'modules/formatter/FormatNumber'
+import Currency from 'LoopringUI/components/Currency'
 import intl from 'react-intl-universal'
 
 const navigation = [
@@ -54,11 +55,11 @@ export default class OverviewBoard extends Component {
     overview().then(resp => {
       const arr = new Array()
       if(resp.result) {
-        arr.push({title: intl.get('taps.trades'), count:resp.result.trades, path:'/trades'})
-        arr.push({title: intl.get('taps.tokens'), count:resp.result.tokens, path:'/tokens'})
-        arr.push({title: intl.get('taps.relays'), count:resp.result.relayers, path:'/relays'})
-        arr.push({title: intl.get('taps.dexs'), count:resp.result.dexs, path:'/dexs'})
-        arr.push({title: intl.get('taps.rings'), count:resp.result.rings, path:'/rings'})
+        arr.push({title: intl.get('taps.trades'), count:resp.result.trades, path:'/trades', type:'trades'})
+        arr.push({title: intl.get('taps.tokens'), count:resp.result.tokens, path:'/tokens', type:'tokens'})
+        arr.push({title: intl.get('taps.relays'), count:resp.result.relayers, path:'/relays', type:'relays'})
+        arr.push({title: intl.get('taps.dexs'), count:resp.result.dexs, path:'/dexs', type:'dexs'})
+        arr.push({title: intl.get('taps.rings'), count:resp.result.rings, path:'/rings', type:'rings'})
         this.setState({datas:arr})
       }
     })
@@ -75,7 +76,9 @@ export default class OverviewBoard extends Component {
             return (
               <div key={index} className="ui segment col-auto p15">
                   <div className="text-center" style={{}}>
-                    <div className="fs30 font-weight-bold color-black text-nowrap" style={{}}>{FormatAmount({value:item.count, precision:0})}</div>
+                    <div className="fs30 font-weight-bold color-black text-nowrap" style={{}}>
+                      {FormatAmount({value:item.count, precision:0})}
+                    </div>
                     <div className="fs16 color-black-1 text-nowrap" style={{}}>{item.title}</div>
                     <div className="">
                       <a className="mt5 fs12" onClick={routeActions.gotoPath.bind(this,item.path)}>{intl.get('common.viewall')}</a>
