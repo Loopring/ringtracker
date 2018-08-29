@@ -95,7 +95,11 @@ const setCurrency = (currency)=>{
 }
 
 const getCurrency = ()=>{
-  return localStorage.currencyConfig || userAgent.getLanguage() === 'zh-CN' ? 'CNY':"USD"
+  if(localStorage.currencyConfig) {
+    return localStorage.currencyConfig
+  } else {
+    return userAgent.getLanguage() === 'zh-CN' ? 'CNY':"USD"
+  }
 }
 
 export default {
