@@ -47,10 +47,10 @@ export default class Header extends Component {
               </div>
               <div className="col-auto pl5">
                 <Select size="" defaultValue={settings.getCurrency()} onChange={currencyChange}>
-                  <Select.Option value="USD">USD</Select.Option>
-                  <Select.Option value="CNY">CNY</Select.Option>
-                  <Select.Option value="ETH">ETH</Select.Option>
-                  <Select.Option value="BTC">BTC</Select.Option>
+                  <Select.Option value="USD">$ US Dollar[USD]</Select.Option>
+                  <Select.Option value="CNY">¥ Chinese Yuan[CNY]</Select.Option>
+                  <Select.Option value="ETH">Ξ Ether[ETH]</Select.Option>
+                  <Select.Option value="BTC">Ƀ Bitcoin[BTC]</Select.Option>
                 </Select>
               </div>
               <div className="col-auto pl5">
