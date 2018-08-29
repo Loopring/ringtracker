@@ -29,7 +29,13 @@ const words = {
   goback: "返回",
   viewall: '详情',
   ecosystem: "生态",
-  recent_trades: '最新成交'
+  recent_trades: '最新成交',
+  margin_split: "分润",
+  lrc_fee: '手续费',
+  lrc_reward: 'LRC 撮合奖励',
+  suc:'成功',
+  fail:'失败',
+  pending:'确认中',
 }
 
 const types = {
@@ -101,6 +107,31 @@ export default {
   },
   options: {
     view_detail: "查看详情"
-  }
+  },
+  // ring
+  // -----------
+  ring: {
+    ringIndex: "环路ID",
+    ringHash: "环路哈希",
+    miner: "矿工",
+    txHash: "交易Hash",
+    block: "块高度",
+    recipient: "费用接收地址",
+    total_lrc_fee: "总共的LRC fee",
+    total_lrc_reward: "总共的LRC 奖励",
+    total_margin_split: "总共的分润",
+    time: words.time,
+    protocol:"合约地址",
+    delegate:"授权地址",
+    fills: "交易数量",
+    status:words.status,
+    suc:words.suc,
+    fail:words.fail,
+    pending:words.pending,
+  },
+  ring_detail: {
+    ring_detail:'环路详情',
+    fill_table:"成交列表"
+  },
 }
 

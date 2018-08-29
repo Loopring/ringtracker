@@ -41,7 +41,9 @@ export default class RingList extends React.Component {
       protocol: (value, item, index) => <a className="text-truncate d-block" style={{maxWidth: '150px'}} target="_blank"
                                            href={`https://etherscan.io/address/${value}`}>{value}</a>,
     };
-    const columns = schema.map(field => {
+    const columns =
+      schema.filter(ele=> ele.name !=="ringHash" && ele.name !== "txHash" && ele.name !== "protocol" && ele.name !== "delegateAddress" && ele.name !== "totalSplitFee")
+      .map(field => {
       return {
         title: field.title(),
         dataIndex: field.name,

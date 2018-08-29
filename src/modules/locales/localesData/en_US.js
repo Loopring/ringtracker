@@ -29,7 +29,13 @@ const words = {
   goback: "Go Back",
   viewall: 'View All',
   ecosystem: "Ecosystem",
-  recent_trades: 'Recent Trades'
+  recent_trades: 'Recent Trades',
+  margin_split: "Margin Split",
+  lrc_fee: 'LRC Fee',
+  lrc_reward: 'LRC Reward',
+  suc:'Succeed',
+  fail:'Failed',
+  pending:'Pending',
 }
 const types = {
   trade_side: {
@@ -100,5 +106,28 @@ export default {
   },
   options: {
     view_detail: "View Detail"
+  },
+  ring: {
+    ringIndex: "RingIndex",
+    ringHash: "RingHash",
+    miner: "Miner",
+    txHash: "TxHash",
+    block: "Block",
+    recipient: "Fee Recipient",
+    total_lrc_fee: "Total Lrc Fee",
+    total_lrc_reward: "Total Lrc Reward",
+    total_margin_split: "Total Margin Split",
+    time: words.time,
+    protocol: "Protocol Address",
+    delegate: "Delegate Address",
+    fills: "Fills Amount",
+    status:words.status,
+    suc:words.suc,
+    fail:words.fail,
+    pending:words.pending,
+  },
+  ring_detail: {
+    ring_detail: "Ring Detail",
+    fill_table:"Trades of Fills"
   },
 }
