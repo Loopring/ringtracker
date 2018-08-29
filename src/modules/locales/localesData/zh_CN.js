@@ -33,6 +33,9 @@ const words = {
   margin_split: "分润",
   lrc_fee: '手续费',
   lrc_reward: 'LRC 撮合奖励',
+  suc:'成功',
+  fail:'失败',
+  pending:'确认中',
 }
 
 const types = {

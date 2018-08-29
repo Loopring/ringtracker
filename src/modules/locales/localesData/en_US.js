@@ -33,6 +33,9 @@ const words = {
   margin_split: "Margin Split",
   lrc_fee: 'LRC Fee',
   lrc_reward: 'LRC Reward',
+  suc:'Succeed',
+  fail:'Failed',
+  pending:'Pending',
 }
 const types = {
   trade_side: {
