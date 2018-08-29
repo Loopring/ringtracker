@@ -19,7 +19,7 @@ export default class TradeStatistics extends Component {
         duration:'',
       },
       header:{},
-      trends: {}
+      trends: []
     };
   }
 
@@ -40,7 +40,7 @@ export default class TradeStatistics extends Component {
   }
 
   render() {
-    const ducationChange = (duration) => { //24h/7d/1m/1y
+    const durationChange = (duration) => { //24h/7d/1m/1y
       this.setState({
         filter:{duration}
       })
@@ -52,17 +52,17 @@ export default class TradeStatistics extends Component {
           <div className="ml10 mr10 fs18 color-black font-weight-bold text-nowrap">{intl.get('common.trade')} {intl.get('common.overview')}</div>
           <div className="d-none d-sm-block">
             <div className="ui buttons basic mr10 ">
-              <button className="ui button" onClick={ducationChange.bind(this, '24h')}>24H</button>
-              <button className="ui button" onClick={ducationChange.bind(this, '7d')}>7D</button>
-              <button className="ui button" onClick={ducationChange.bind(this, '1m')}>1M</button>
-              <button className="ui button" onClick={ducationChange.bind(this, '1y')}>1Y</button>
-              {false && <button className="ui button" onClick={ducationChange.bind(this, '')}>All</button>}
+              <button className="ui button" onClick={durationChange.bind(this, '24h')}>24H</button>
+              <button className="ui button" onClick={durationChange.bind(this, '7d')}>7D</button>
+              <button className="ui button" onClick={durationChange.bind(this, '1m')}>1M</button>
+              <button className="ui button" onClick={durationChange.bind(this, '1y')}>1Y</button>
+              {false && <button className="ui button" onClick={durationChange.bind(this, '')}>All</button>}
             </div>
           </div>
         </div>
         <div className="ui segment p20">
           <Head data={this.state.header} />
-          <LineChart />
+          <LineChart trends={this.state.trends}/>
         </div>
       </div>
     );
