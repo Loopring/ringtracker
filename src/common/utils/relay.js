@@ -83,10 +83,11 @@ export async function getTrend({duration='24h', currency, type, keyword, len=50}
  * @param duration: 24h/7d/1m/1y, 默认24h
  * @param indicator: 不传默认三个都返回，volume/trade/fee
  * @param type: 不传默认三个都返回， token/relay/dex
+ * @param currency: "ETH/BTC/CNY/USDT"
  * @returns {Promise<{id: number, jsonrpc: string, result: {data: *[]}}>}
  */
-export async function getEcosystemTrend({duration='24h', indicator, type}) {
-  const params = [{duration, indicator, type}];
+export async function getEcosystemTrend({duration='24h', indicator, type, currency}) {
+  const params = [{duration, indicator, type, currency}];
   let body = {};
   body.method = 'loopring_getEcosystemTrend';
   body.params = params;
