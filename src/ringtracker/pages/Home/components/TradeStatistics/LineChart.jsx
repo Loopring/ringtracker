@@ -24,7 +24,7 @@ export default class LineChart extends Component {
     const dv = ds.createView().source(newTrends);
     dv.transform({
       type: 'fold',
-      fields: ['fee', 'volume', 'trade'], // 展开字段集
+      fields: ['volume', 'trade', 'fee'], // 展开字段集
       key: 'types', // key字段
       value: 'value', // value字段
     });
