@@ -4,6 +4,7 @@ import ListPagination from 'LoopringUI/components/ListPagination'
 import routeActions from 'common/utils/routeActions'
 import intl from 'react-intl-universal'
 import {getFormatNum} from 'modules/formatter/common'
+import Currency from 'LoopringUI/components/Currency'
 
 export default class TokenTable extends Component {
 
@@ -18,7 +19,7 @@ export default class TokenTable extends Component {
             <table className="table table-responsive fs14" >
               <thead className="">
               <tr className="">
-                <th className="">#</th>
+                {false && <th className="">#</th>}
                 <th className="">{intl.get('title.token')}</th>
                 <th className="">{intl.get('title.last_price')}</th>
                 <th className="">{intl.get('title.trades')}</th>
@@ -31,20 +32,22 @@ export default class TokenTable extends Component {
                 tokens.items.map((item,index)=>{
                   return (
                     <tr key={index}>
-                      <td>{index+1}</td>
-                      <td>{item.token}</td>
+                      {false && <td>{index+1}</td>}
                       <td>
-                        ¥{getFormatNum(item.lastPrice)}
+                        <a onClick={routeActions.gotoPath.bind(this,`/tokens/${item.symbol}`)}>{item.symbol}</a>
+                      </td>
+                      <td>
+                        <Currency/>{getFormatNum(item.lastPrice)}
                       </td>
                       <td>
                         {getFormatNum(item.trade)}
                       </td>
                       <td>
-                        <div>¥{getFormatNum(item.legalVolume)}</div>
-                        <div className="color-black-2 fs12">{item.tokenVolume} {item.token}</div>
+                        <div><Currency/>{getFormatNum(item.volume)}</div>
+                        <div className="color-black-2 fs12">{getFormatNum(item.volume)} {item.symbol}</div>
                       </td>
                       <td>
-                        <a onClick={routeActions.gotoPath.bind(this,`/tokens/${item.token}`)}>{intl.get('options.view_detail')}</a>
+                        <a onClick={routeActions.gotoPath.bind(this,`/tokens/${item.symbol}`)}>{intl.get('options.view_detail')}</a>
                       </td>
                     </tr>
                   )
