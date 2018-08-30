@@ -45,7 +45,7 @@ export default class TokenTable extends React.Component {
                         <div><Currency/> {toFixed(item.volume,8)}</div>
                       </td>
                       <td>
-                        <a onClick={routeActions.gotoPath.bind(this, '/relayers/detail',item.relay)}>View Detail</a>
+                        <a onClick={routeActions.gotoPath.bind(this, `/relays/detail/${item.relay}`)}>View Detail</a>
                       </td>
                     </tr>
                   )
