@@ -94,7 +94,9 @@ export default {
   overview: {
     "volume": "成交规模",
     "trades": "成交数",
-    "fees": "手续费"
+    "fees": "手续费",
+    "trade":"成交数",
+    "fee": "手续费"
   },
   title: {
     lrc_fee: 'LRC 撮合费',

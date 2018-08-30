@@ -16,7 +16,7 @@ export default class TradeStatistics extends Component {
     super(props);
     this.state = {
       filter:{
-        duration:'',
+        duration:'24h',
       },
       header:{},
       trends: []
@@ -36,7 +36,7 @@ export default class TradeStatistics extends Component {
   }
 
   componentDidMount() {
-    this.loadData('24h')
+    this.loadData(this.state.filter.duration)
   }
 
   render() {
@@ -52,10 +52,10 @@ export default class TradeStatistics extends Component {
           <div className="ml10 mr10 fs18 color-black font-weight-bold text-nowrap">{intl.get('common.trade')} {intl.get('common.overview')}</div>
           <div className="d-none d-sm-block">
             <div className="ui buttons basic mr10 ">
-              <button className="ui button" onClick={durationChange.bind(this, '24h')}>24H</button>
-              <button className="ui button" onClick={durationChange.bind(this, '7d')}>7D</button>
-              <button className="ui button" onClick={durationChange.bind(this, '1m')}>1M</button>
-              <button className="ui button" onClick={durationChange.bind(this, '1y')}>1Y</button>
+              <button className={this.state.filter.duration === '24h' ? 'ui button active' : 'ui button'} onClick={durationChange.bind(this, '24h')}>24H</button>
+              <button className={this.state.filter.duration === '7d' ? 'ui button active' : 'ui button'} onClick={durationChange.bind(this, '7d')}>7D</button>
+              <button className={this.state.filter.duration === '1m' ? 'ui button active' : 'ui button'} onClick={durationChange.bind(this, '1m')}>1M</button>
+              <button className={this.state.filter.duration === '1y' ? 'ui button active' : 'ui button'} onClick={durationChange.bind(this, '1y')}>1Y</button>
               {false && <button className="ui button" onClick={durationChange.bind(this, '')}>All</button>}
             </div>
           </div>

@@ -66,15 +66,15 @@ export default class OverviewChart extends Component {
           <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('common.ecosystem')} {intl.get('common.overview')}</div>
           <div className="d-none d-sm-block">
             <div className="ui buttons basic mr10">
-              <button className="ui button" onClick={indicatorChange.bind(this, 'volume')}>{intl.get('overview.volume')}</button>
-              <button className="ui button" onClick={indicatorChange.bind(this, 'trade')}>{intl.get('overview.trades')}</button>
-              <button className="ui button" onClick={indicatorChange.bind(this, 'fee')}>{intl.get('overview.fees')}</button>
+              <button className={this.state.filter.indicator === 'volume' ? 'ui button active' : 'ui button'} onClick={indicatorChange.bind(this, 'volume')}>{intl.get('overview.volume')}</button>
+              <button className={this.state.filter.indicator === 'trade' ? 'ui button active' : 'ui button'} onClick={indicatorChange.bind(this, 'trade')}>{intl.get('overview.trades')}</button>
+              <button className={this.state.filter.indicator === 'fee' ? 'ui button active' : 'ui button'} onClick={indicatorChange.bind(this, 'fee')}>{intl.get('overview.fees')}</button>
             </div>
             <div className="ui buttons basic mr10">
-              <button className="ui button" onClick={durationChange.bind(this, '24h')}>24H</button>
-              <button className="ui button" onClick={durationChange.bind(this, '7d')}>7D</button>
-              <button className="ui button" onClick={durationChange.bind(this, '1m')}>1M</button>
-              <button className="ui button" onClick={durationChange.bind(this, '1y')}>1Y</button>
+              <button className={this.state.filter.duration === '24h' ? 'ui button active' : 'ui button'} onClick={durationChange.bind(this, '24h')}>24H</button>
+              <button className={this.state.filter.duration === '7d' ? 'ui button active' : 'ui button'} onClick={durationChange.bind(this, '7d')}>7D</button>
+              <button className={this.state.filter.duration === '1m' ? 'ui button active' : 'ui button'} onClick={durationChange.bind(this, '1m')}>1M</button>
+              <button className={this.state.filter.duration === '1y' ? 'ui button active' : 'ui button'} onClick={durationChange.bind(this, '1y')}>1Y</button>
               {false && <button className="ui button" onClick={durationChange.bind(this, 'volume')}>All</button>}
             </div>
           </div>
