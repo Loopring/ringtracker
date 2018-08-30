@@ -38,7 +38,7 @@ export default class OverviewChart extends Component {
   }
 
   componentDidMount() {
-    this.loadData('7d', 'volume')
+    this.loadData(this.state.filter.duration, this.state.filter.indicator)
   }
 
   render() {

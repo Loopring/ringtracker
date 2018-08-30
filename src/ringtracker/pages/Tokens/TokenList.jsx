@@ -3,6 +3,8 @@ import TokenTable from './TokenTable';
 import TokensOverview from './TokensOverview';
 import {getAllTokens} from 'common/utils/relay'
 import intl from "react-intl-universal";
+import {Pagination} from "antd-mobile";
+import settings from 'modules/storage/settings'
 
 export default class TokenList extends Component {
   static displayName = 'TokenList';
@@ -13,14 +15,35 @@ export default class TokenList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {datas:[],loading:false};
+    this.state = {
+      datas:[],
+      page:{
+        total:0,
+        size:10,
+        current:1
+      },
+      loading:false
+    };
   }
 
   componentDidMount() {
+    this.loadDatas(1)
+  }
+
+  loadDatas(pageIndex) {
     this.setState({loading:true})
-    getAllTokens({}).then(resp => {
+    const currency = settings.getCurrency()
+    getAllTokens({pageIndex, pageSize:this.state.page.size, currency}).then(resp => {
       if(resp.result) {
-        this.setState({datas:resp.result.data, loading:false})
+        this.setState({
+          datas:resp.result.data,
+          page:{ //pageIndex, pageSize, total
+            total: Math.ceil(resp.result.total / resp.result.pageSize),
+            size:10,
+            current:resp.result.pageIndex
+          },
+          loading:false
+        })
       }
     })
   }
@@ -38,6 +61,9 @@ export default class TokenList extends Component {
           </div>
           <div className="ui segment p20">
             <TokenTable tokens={{items:this.state.datas, loading:this.state.loading}}/>
+            <Pagination className="fs14 s-small" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
+              this.loadDatas(page)
+            }} />
           </div>
         </div>
       </div>
