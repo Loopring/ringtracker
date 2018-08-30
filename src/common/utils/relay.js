@@ -28,17 +28,6 @@ export async function overview() {
     method: 'post',
     body
   })
-  // return Promise.resolve({
-  //   "id":64,
-  //   "jsonrpc": "2.0",
-  //   "result": {
-  //     "trades": 12009001,
-  //     "tokens": 160,
-  //     "relayers": 69,
-  //     "dexs": 85,
-  //     "rings": 85
-  //   }
-  // })
 }
 
 /**
@@ -59,23 +48,6 @@ export async function getTrend({duration='24h', currency, type, keyword, len=50}
     method: 'post',
     body
   })
-  // return Promise.resolve({
-  //   "id":64,
-  //   "jsonrpc": "2.0",
-  //   "result": {
-  //     data: [
-  //       {
-  //         "time": 1524142497,
-  //         "volume": 100,
-  //         "trade": 100,
-  //         "fee": 100
-  //       }
-  //     ],
-  //     "volumeAmount": 10000,
-  //     "tradesAmount": 10000,
-  //     "feesAmount": 200
-  //   }
-  // })
 }
 
 /**
@@ -95,124 +67,6 @@ export async function getEcosystemTrend({duration='24h', indicator, type, curren
     method: 'post',
     body
   })
-  // return Promise.resolve({
-  //   "id": 64,
-  //   "jsonrpc": "2.0",
-  //   "result": {
-  //     "data": [{
-  //       "type": "token",
-  //       "indicator": [{
-  //         "name": "volume",
-  //         "data": [{
-  //           "name": "WETH",
-  //           "value": 32.4
-  //         },
-  //           {
-  //             "name": "ETH",
-  //             "value": 50
-  //           }
-  //         ]
-  //       }, {
-  //         "name": "trade",
-  //         "data": [{
-  //           "name": "WETH",
-  //           "value": 32.4
-  //         },
-  //           {
-  //             "name": "ETH",
-  //             "value": 50
-  //           }
-  //         ]
-  //       }, {
-  //         "name": "fee",
-  //         "data": [{
-  //           "name": "WETH",
-  //           "value": 32.4
-  //         },
-  //           {
-  //             "name": "ETH",
-  //             "value": 50
-  //           }
-  //         ]
-  //       }]
-  //     },
-  //       {
-  //         "type": "relayer",
-  //         "indicator": [{
-  //           "name": "volume",
-  //           "data": [{
-  //             "name": "WETH",
-  //             "value": 32.4
-  //           },
-  //             {
-  //               "name": "ETH",
-  //               "value": 50
-  //             }
-  //           ]
-  //         }, {
-  //           "name": "trade",
-  //           "data": [{
-  //             "name": "WETH",
-  //             "value": 32.4
-  //           },
-  //             {
-  //               "name": "ETH",
-  //               "value": 50
-  //             }
-  //           ]
-  //         }, {
-  //           "name": "fee",
-  //           "data": [{
-  //             "name": "WETH",
-  //             "value": 32.4
-  //           },
-  //             {
-  //               "name": "ETH",
-  //               "value": 50
-  //             }
-  //           ]
-  //         }]
-  //       },
-  //       {
-  //         "type": "dex",
-  //         "indicator": [{
-  //           "name": "volume",
-  //           "data": [{
-  //             "name": "WETH",
-  //             "value": 32.4
-  //           },
-  //             {
-  //               "name": "ETH",
-  //               "value": 50
-  //             }
-  //           ]
-  //         }, {
-  //           "name": "trade",
-  //           "data": [{
-  //             "name": "WETH",
-  //             "value": 32.4
-  //           },
-  //             {
-  //               "name": "ETH",
-  //               "value": 50
-  //             }
-  //           ]
-  //         }, {
-  //           "name": "fee",
-  //           "data": [{
-  //             "name": "WETH",
-  //             "value": 32.4
-  //           },
-  //             {
-  //               "name": "ETH",
-  //               "value": 50
-  //             }
-  //           ]
-  //         }]
-  //       }
-  //     ]
-  //   }
-  // })
 }
 
 /**
@@ -234,57 +88,6 @@ export async function getTrades({pageIndex = 1, pageSize = 20, currency, type, k
     method: 'post',
     body
   })
-  // return Promise.resolve({
-  //   "id":64,
-  //   "jsonrpc": "2.0",
-  //   "result": {
-  //     "data" : [
-  //       {
-  //         "protocol":"0x4c44d51CF0d35172fCe9d69e2beAC728de980E9D",
-  //         "owner":"0x66727f5DE8Fbd651Dc375BB926B16545DeD71EC9",
-  //         "ringIndex":100,
-  //         "createTime":1512631182,
-  //         "ringHash":"0x2794f8e4d2940a2695c7ecc68e10e4f479b809601fa1d07f5b4ce03feec289d5",
-  //         "txHash":"0x2794f8e4d2940a2695c7ecc68e10e4f479b809601fa1d07f5b4ce03feec289d5",
-  //         "orderHash":"0x2794f8e4d2940a2695c7ecc68e10e4f479b809601fa1d07f5b4ce03feec289d5",
-  //         "amountS":"0xde0b6b3a7640000",
-  //         "amountB":"0xee0b6b3a7640001",
-  //         "tokenS":"WETH",
-  //         "tokenB":"LRC",
-  //         "lrcReward":"0xde0b6b3a7640000",
-  //         "lrcFee":"0xde0b6b3a7640000",
-  //         "splitS":"0xde0b6b3a7640000",
-  //         "splitB":"0x0",
-  //         "market":"LRC-WETH",
-  //         "side":"buy",
-  //         "fillIndex":1
-  //       },
-  //       {
-  //         "protocol":"0x4c44d51CF0d35172fCe9d69e2beAC728de980E9D",
-  //         "owner":"0x66727f5DE8Fbd651Dc375BB926B16545DeD71EC9",
-  //         "ringIndex":100,
-  //         "createTime":1512631182,
-  //         "ringHash":"0x2794f8e4d2940a2695c7ecc68e10e4f479b809601fa1d07f5b4ce03feec289d5",
-  //         "txHash":"0x2794f8e4d2940a2695c7ecc68e10e4f479b809601fa1d07f5b4ce03feec289d5",
-  //         "orderHash":"0x2794f8e4d2940a2695c7ecc68e10e4f479b809601fa1d07f5b4ce03feec289d5",
-  //         "amountB":"0xde0b6b3a7640000",
-  //         "amountS":"0xee0b6b3a7640001",
-  //         "tokenB":"WETH",
-  //         "tokenS":"LRC",
-  //         "lrcReward":"0xde0b6b3a7640000",
-  //         "lrcFee":"0xde0b6b3a7640000",
-  //         "splitB":"0xde0b6b3a7640000",
-  //         "splitS":"0x0",
-  //         "market":"LRC-WETH",
-  //         "side":"sell",
-  //         "fillIndex":2
-  //       }
-  //     ],
-  //     "pageIndex" : 1,
-  //     "pageSize" : 20,
-  //     "total" : 212
-  //   }
-  // })
 }
 
 /**

@@ -18,7 +18,7 @@ export default function ListMyFills(props) {
             <table className="table table-responsive fs14" >
               <thead className="border-none">
                   <tr className="border-none">
-                      <th className="border-none">{intl.get('fill.ringIndex')}</th>
+                      <th className="border-none">{intl.get('ring.ringIndex')}</th>
                       <th className="border-none">{intl.get('common.market')}</th>
                       <th className="border-none">{intl.get('common.side')}</th>
                       <th className="border-none">{intl.get('common.amount')}</th>
@@ -46,7 +46,7 @@ export default function ListMyFills(props) {
                         <td>{fillFm.getTotal()}</td>
                         <td>{fillFm.getLRCFee()}</td>
                         <td>{fillFm.getCreateTime()}</td>
-                        <td><a onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}`)}>{intl.get('options.view_detail')}</a></td>
+                        <td><a onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)}>{intl.get('options.view_detail')}</a></td>
                      </tr>
                     )
                   })
@@ -59,7 +59,7 @@ export default function ListMyFills(props) {
             </table>
           </div>
         </Spin>
-        <ListPagination list={fills}/>
+      {false && <ListPagination list={fills}/>}
   </div>
   )
 }
