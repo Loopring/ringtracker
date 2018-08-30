@@ -5,6 +5,7 @@ import routeActions from 'common/utils/routeActions'
 import intl from 'react-intl-universal'
 import {getFormatNum} from 'modules/formatter/common'
 import Currency from 'LoopringUI/components/Currency'
+import {toFixed} from 'LoopringJS/common/formatter'
 
 export default class TokenTable extends Component {
 
@@ -13,7 +14,6 @@ export default class TokenTable extends Component {
 
     return (
       <div className="">
-        <ListPagination list={tokens}/>
         <Spin spinning={tokens.loading}>
           <div>
             <table className="table table-responsive fs14" >
@@ -43,7 +43,7 @@ export default class TokenTable extends Component {
                         {getFormatNum(item.trade)}
                       </td>
                       <td>
-                        <div><Currency/>{getFormatNum(item.volume)}</div>
+                        <div><Currency/>{getFormatNum(toFixed(item.volume, 2))}</div>
                         <div className="color-black-2 fs12">{getFormatNum(item.volume)} {item.symbol}</div>
                       </td>
                       <td>
@@ -61,7 +61,6 @@ export default class TokenTable extends Component {
             </table>
           </div>
         </Spin>
-        <ListPagination list={tokens}/>
       </div>
     )
   }

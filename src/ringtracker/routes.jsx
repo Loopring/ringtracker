@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Tokens from './pages/Tokens';
 import Fills from './pages/Fills';
 import Relayers from './pages/Relayers';
+import Dexs from './pages/Dexs'
 import NotFound from './pages/NotFound';
 import Rings from './pages/Rings';
 import './start.js';
@@ -29,6 +30,8 @@ export default class Routes extends React.Component {
           <Route path={`/tokens/:token`} exact component={Tokens.TokenDetail}/>
           <Route path={`/relays`} exact component={Relayers.RelayerList}/>
           <Route path={`/relays/detail/:id`} exact component={Relayers.RelayerDetail}/>
+          <Route path={`/dexs`} exact component={Dexs.DexList}/>
+          <Route path={`/dexs/:dex`} exact component={Dexs.DexDetail}/>
           <Route path={`/rings`} exact component={Rings.RingList}/>
           <Route path={'/rings/:id'} component={Rings.RingDetail}/>
           <Route path={`*`} component={NotFound}/>
