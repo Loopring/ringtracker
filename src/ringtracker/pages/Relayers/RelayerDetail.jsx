@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import FillTable from '../Fills/FillTable';
 
 export default class RelayerDetail extends Component {
-  static displayName = 'RelayerDetail';
 
-  static propTypes = {};
+  state={
 
-  static defaultProps = {};
+  };
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+
+
+
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <div class="ui segments">
