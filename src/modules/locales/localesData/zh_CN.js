@@ -98,6 +98,10 @@ export default {
     "trade":"成交数",
     "fee": "手续费"
   },
+  dexs: {
+    "title": "交易所",
+    "overview": "交易所概况"
+  },
   title: {
     lrc_fee: 'LRC 撮合费',
     created: '提交时间',
