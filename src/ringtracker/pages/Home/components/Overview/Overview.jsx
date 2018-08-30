@@ -6,39 +6,6 @@ import {FormatAmount} from 'modules/formatter/FormatNumber'
 import Currency from 'LoopringUI/components/Currency'
 import intl from 'react-intl-universal'
 
-const navigation = [
-  {
-    title: 'Trades',
-    color: '#37D1AB',
-    count: '12,000',
-    path:'/trades',
-  },
-  {
-    title: 'Tokens',
-    color: '#ffa001',
-    count: '160',
-    path:'/tokens',
-  },
-  {
-    title: 'Relays',
-    color: '#42C0EA',
-    count: '15',
-    path:'/relayers',
-  },
-  {
-    title: 'DEXs',
-    color: '#5798F2',
-    count: '5',
-    path:'/dexs',
-  },
-  {
-    title: 'Rings',
-    color: '#5798F2',
-    count: '8,500',
-    path:'/rings',
-  },
-];
-
 export default class OverviewBoard extends Component {
   static displayName = 'OverviewBoard';
 

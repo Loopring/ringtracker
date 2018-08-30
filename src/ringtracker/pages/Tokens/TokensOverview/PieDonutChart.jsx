@@ -17,18 +17,15 @@ export default class PieDonutChart extends Component {
   }
 
   render() {
-    const data = [
-      { item: '金融', count: 40 },
-      { item: '健康', count: 21 },
-      { item: '娱乐', count: 17 },
-      { item: '家居', count: 13 },
-      { item: '网购', count: 9 },
-    ];
+    const {datas} = this.props
+    const chartDatas = datas.map(item=>{
+      return {...item, value:item.value * 100}
+    })
     const dv = new DataView();
-    dv.source(data).transform({
+    dv.source(chartDatas).transform({
       type: 'percent',
-      field: 'count',
-      dimension: 'item',
+      field: 'value',
+      dimension: 'name',
       as: 'percent',
     });
     const cols = {
@@ -65,13 +62,13 @@ export default class PieDonutChart extends Component {
         <Geom
           type="intervalStack"
           position="percent"
-          color="item"
+          color="name"
           tooltip={[
-            'item*percent',
-            (item, percent) => {
+            'name*percent',
+            (name, percent) => {
               percent = `${percent * 100}%`;
               return {
-                name: item,
+                name: name,
                 value: percent,
               };
             },
