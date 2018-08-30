@@ -194,7 +194,7 @@ export async function getAllTokens({pageIndex = 1, pageSize = 20, currency, sort
 
 export function getAllRelayers(params) {
   let body = {};
-  body.method = 'loopring_getAllRelayers';
+  body.method = 'loopring_getAllRelays';
   body.params = [{...params}];
   return request({
     method: 'post',
@@ -204,7 +204,7 @@ export function getAllRelayers(params) {
 
 export function getRelayerDetail(params) {
   let body = {};
-  body.method = 'loopring_getRelayerDetail';
+  body.method = 'loopring_getRelayDetail';
   body.params = [{...params}];
   return request({
     method: 'post',
