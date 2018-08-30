@@ -93,7 +93,9 @@ export default {
   overview: {
     "volume": "Volume",
     "trades": "Trades",
-    "fees": "Fees"
+    "fees": "Fees",
+    "trade":"Trade",
+    "fee": "Fee"
   },
   title: {
     lrc_fee: 'LRC Fee',

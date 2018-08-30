@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Chart, Axis, Geom, Tooltip, Legend } from 'bizcharts';
 import { DataSet } from '@antv/data-set';
+import intl from 'react-intl-universal'
 
 export default class LineChart extends Component {
   static displayName = 'LineChart';
@@ -34,7 +35,7 @@ export default class LineChart extends Component {
       },
       value: {
         alias: ''
-      }
+      },
     }
     return (
       <Chart
@@ -46,8 +47,8 @@ export default class LineChart extends Component {
       >
         <Axis name="date" />
         <Axis name="value" label={{ formatter: (val) => `${val}` }} />
-        <Tooltip crosshairs={{ type: 'y' }} />
-        <Legend position="top"/>
+        <Tooltip crosshairs={{ type: 'y' }} itemTpl={`<li>{name}: {value}</li>`}/>
+        <Legend position="top" itemFormatter={(val) => intl.get(`overview.${val}`)}/>
         <Geom
           type="line"
           position="date*value"
