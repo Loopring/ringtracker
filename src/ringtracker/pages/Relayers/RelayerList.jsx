@@ -1,22 +1,34 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import RelayerTable from './RelayerTable';
 import RelayersOverview from './RelayersOverview';
+import settings from 'modules/storage/settings'
+import {getAllRelayers} from "../../../common/utils/relay";
+
+
 export default class RelayerList extends Component {
-  static displayName = 'RelayerList';
 
-  static propTypes = {};
+  state = {
+    loading: true,
+    items: [],
+  };
 
-  static defaultProps = {};
+  componentDidMount() {
+    const currency = settings.getCurrency()
+    getAllRelayers({currency}).then(res => {
+      if (!res.error) {
+        this.setState({loading: false,items:res.result.data})
+      } else {
+        this.setState({loading: false})
+      }
+    })
 
-  constructor(props) {
-    super(props);
-    this.state = {};
   }
 
   render() {
+    const {loading, items} = this.state;
     return (
       <div>
-        <RelayersOverview />
+        <RelayersOverview/>
         <div class="ui segments">
           <div class="ui segment d-flex justify-content-between align-items-center">
             <div className="ml10 mr10 fs18 color-black font-weight-bold">Relayers</div>
@@ -25,7 +37,7 @@ export default class RelayerList extends Component {
             </div>
           </div>
           <div class="ui segment p20">
-            <RelayerTable />
+            <RelayerTable data={{loading, items}}/>
           </div>
         </div>
       </div>
