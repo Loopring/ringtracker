@@ -5,7 +5,7 @@ import LineChart from 'ringtracker/components/Charts/LineChart'
 import routeActions from 'common/utils/routeActions'
 import intl from 'react-intl-universal'
 import settings from 'modules/storage/settings'
-import {Pagination} from "antd-mobile";
+import {Pagination} from "antd";
 
 export default class TokenDetail extends Component {
   static displayName = 'TokenDetail';
@@ -112,7 +112,7 @@ export default class TokenDetail extends Component {
           </div>
           <div className="ui segment p20">
             <FillTable fills={{items:this.state.trades,loading:this.state.loadingTrades}}/>
-            <Pagination className="fs14 s-small" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
+            <Pagination className="fs14 s-small mt30 text-right mr50" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
               this.loadTrades(page)
             }} />
           </div>

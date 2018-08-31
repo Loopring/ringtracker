@@ -20,7 +20,6 @@ export default class TokenTable extends React.Component {
             <table className="table table-responsive fs14">
               <thead className="">
               <tr className="">
-                <th className="">#</th>
                 <th className="">Name</th>
                 <th className="">Website</th>
                 <th className="">Trades</th>
@@ -33,7 +32,6 @@ export default class TokenTable extends React.Component {
                 items.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td>{index + 1}</td>
                       <td>{item.relay}</td>
                       <td>
                         {item.webSite}

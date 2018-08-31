@@ -7,7 +7,7 @@ import routeActions from 'common/utils/routeActions'
 
 export default function ListMyFills(props) {
   console.log('ListMyFills render',props.fills)
-  
+
   const {fills={items:[],loading:false}}=props // MOCK
 
   return (
@@ -33,7 +33,7 @@ export default function ListMyFills(props) {
                   fills && fills.items && fills.items.map((item,index)=>{
                     const fillFm = new FillFm(item)
                     const actions = {
-                      goToRingDetail:()=>routeActions.gotoPath(`/rings/${item.ringIndex}`)
+                      goToRingDetail:()=>routeActions.gotoPath(`/rings/${item.ringIndex}?delegateAddress=${item.delegateAddress}`)
                     }
                     return (
                       <tr key={index}>

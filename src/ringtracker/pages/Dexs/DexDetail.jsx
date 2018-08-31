@@ -5,7 +5,7 @@ import settings from 'modules/storage/settings'
 import routeActions from 'common/utils/routeActions'
 import LineChart from 'ringtracker/components/Charts/LineChart'
 import intl from "react-intl-universal";
-import {Pagination} from "antd-mobile";
+import {Pagination} from "antd";
 
 export default class DexDetail extends Component {
 
