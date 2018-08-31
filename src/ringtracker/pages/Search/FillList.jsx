@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import FillTable from './FillTable';
 import {getTrades} from 'common/utils/relay'
 import intl from 'react-intl-universal'
-import {Pagination} from "antd-mobile";
+import {Pagination} from "antd";
 import settings from 'modules/storage/settings'
 
 export default class FillList extends Component {
@@ -15,13 +15,13 @@ export default class FillList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      trades:[],
-      page:{
-        total:0,
-        size:10,
-        current:1
+      trades: [],
+      page: {
+        total: 0,
+        size: 10,
+        current: 1
       },
-      loading:false
+      loading: false
     };
   }
 
@@ -32,23 +32,23 @@ export default class FillList extends Component {
   loadDatas(pageIndex) {
     const currency = settings.getCurrency()
     const search = this.props.match.params.keyword;
-    if(search) {
-      this.setState({loading:true})
+    if (search) {
+      this.setState({loading: true})
       getTrades({
         pageIndex,
-        pageSize:this.state.page.size,
+        pageSize: this.state.page.size,
         search,
         currency
       }).then(resp => {
-        if(resp.result) {
+        if (resp.result) {
           this.setState({
-            trades:resp.result.data,
-            page:{ //pageIndex, pageSize, total
+            trades: resp.result.data,
+            page: { //pageIndex, pageSize, total
               total: Math.ceil(resp.result.total / resp.result.pageSize),
-              size:10,
-              current:resp.result.pageIndex
+              size: 10,
+              current: resp.result.pageIndex
             },
-            loading:false
+            loading: false
           })
         }
       })
@@ -68,10 +68,11 @@ export default class FillList extends Component {
             </div>
           </div>
           <div className="ui segment p20">
-            <FillTable fills={{items:this.state.trades,loading:this.state.loading}}/>
-            <Pagination className="fs14 s-small" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
+            <FillTable fills={{items: this.state.trades, loading: this.state.loading}}/>
+            <Pagination className="fs14 s-small mt30 text-right mr50" total={this.state.page.total}
+                        current={this.state.page.current} onChange={(page) => {
               this.loadDatas(page)
-            }} />
+            }}/>
           </div>
         </div>
       </div>

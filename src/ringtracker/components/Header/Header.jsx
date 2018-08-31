@@ -21,7 +21,6 @@ export default class Header extends Component {
     super(props);
     this.state = {};
   }
-
   render() {
     const { location = {} } = this.props;
     const { pathname } = location;
