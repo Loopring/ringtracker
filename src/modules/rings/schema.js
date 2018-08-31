@@ -4,10 +4,7 @@ import {toBig, toFixed} from 'LoopringJS/common/formatter'
 
 const schema = [
   {
-    title: () => {
-      console.log(intl.get('ring.ringIndex'));
-      return intl.get('ring.ringIndex')
-    },
+    title: () => intl.get('ring.ringIndex'),
     name: 'ringIndex',
   },
   {
@@ -59,7 +56,7 @@ const schema = [
   {
     title: () => intl.get('ring.status'),
     description: 'The ring status.',
-    name: 'Status',
+    name: 'status',
     formatter: (item) => {
       switch (item) {
         case 1:

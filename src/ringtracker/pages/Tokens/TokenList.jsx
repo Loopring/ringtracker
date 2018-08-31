@@ -3,7 +3,7 @@ import TokenTable from './TokenTable';
 import TokensOverview from './TokensOverview';
 import {getAllTokens} from 'common/utils/relay'
 import intl from "react-intl-universal";
-import {Pagination} from "antd-mobile";
+import {Pagination} from "antd";
 import settings from 'modules/storage/settings'
 
 export default class TokenList extends Component {
@@ -61,7 +61,7 @@ export default class TokenList extends Component {
           </div>
           <div className="ui segment p20">
             <TokenTable tokens={{items:this.state.datas, loading:this.state.loading}}/>
-            <Pagination className="fs14 s-small" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
+            <Pagination className="fs14 s-small mt30 text-right mr50" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
               this.loadDatas(page)
             }} />
           </div>

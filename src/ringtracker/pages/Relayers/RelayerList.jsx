@@ -3,7 +3,7 @@ import RelayerTable from './RelayerTable';
 import RelayersOverview from './RelayersOverview';
 import settings from 'modules/storage/settings'
 import {getAllRelayers} from "../../../common/utils/relay";
-import {Pagination} from "antd-mobile";
+import {Pagination} from "antd";
 
 export default class RelayerList extends Component {
 
@@ -55,7 +55,7 @@ export default class RelayerList extends Component {
           </div>
           <div className="ui segment p20">
             <RelayerTable data={{loading, items}}/>
-            <Pagination className="fs14 s-small" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
+            <Pagination className="fs14 s-small mt30 text-right mr50" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
               this.loadDatas(page)
             }} />
           </div>

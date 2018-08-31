@@ -20,7 +20,10 @@ export default class RingDetail extends React.Component {
   componentWillMount() {
     const {match} = this.props;
     const {id} = match.params;
-    window.RELAY.ring.getRingMinedDetail({delegateAddress: config.getDelegateAddress(), ringIndex: id})
+    const reg = new RegExp("(^|&)delegateAddress=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    const r = this.props.location.search.substr(1).match(reg);  //匹配目标参数i
+    const delegateAddress = r ? decodeURI(r[2]): config.getDelegateAddress();
+    window.RELAY.ring.getRingMinedDetail({delegateAddress: delegateAddress, ringIndex: id})
       .then(res => {
         if (res.result) {
           this.setState({item: res.result, loading: false})
@@ -31,7 +34,7 @@ export default class RingDetail extends React.Component {
   }
   render() {
     const {item, loading} = this.state;
-    const fills = item.fills && item.fills.map(fill => {
+    const fills = item.fills && item.fills.filter(fill =>config.getTokenByAddress(fill.tokenS) && config.getTokenByAddress(fill.tokenB)).map(fill => {
       const tokenS = config.getTokenByAddress(fill.tokenS).symbol
       const tokenB = config.getTokenByAddress(fill.tokenB).symbol
       return {...fill,tokenS,tokenB}
