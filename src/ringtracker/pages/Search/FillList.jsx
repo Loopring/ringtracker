@@ -26,38 +26,44 @@ export default class FillList extends Component {
   }
 
   componentDidMount() {
-    this.loadDatas(1)
+    const search = this.props.match.params.keyword;
+    if(search) {
+      this.loadDatas(1, search)
+    }
   }
 
-  loadDatas(pageIndex) {
-    const currency = settings.getCurrency()
-    const search = this.props.match.params.keyword;
-    if (search) {
-      this.setState({loading: true})
-      getTrades({
-        pageIndex,
-        pageSize: this.state.page.size,
-        search,
-        currency
-      }).then(resp => {
-        if (resp.result) {
-          this.setState({
-            trades: resp.result.data,
-            page: { //pageIndex, pageSize, total
-              total: Math.ceil(resp.result.total / resp.result.pageSize),
-              size: 10,
-              current: resp.result.pageIndex
-            },
-            loading: false
-          })
-        }
-      })
+  componentWillReceiveProps(nextProps) {
+    const search = nextProps.match.params.keyword;
+    if(search) {
+      this.loadDatas(1, search)
     }
+  }
+
+  loadDatas(pageIndex, search) {
+    const currency = settings.getCurrency()
+    this.setState({loading:true})
+    getTrades({
+      pageIndex,
+      pageSize:this.state.page.size,
+      search,
+      currency
+    }).then(resp => {
+      if(resp.result) {
+        this.setState({
+          trades:resp.result.data,
+          page:{ //pageIndex, pageSize, total
+            total: Math.ceil(resp.result.total / resp.result.pageSize),
+            size:10,
+            current:resp.result.pageIndex
+          },
+          loading:false
+        })
+      }
+    })
   }
 
   render() {
     const keyword = this.props.match.params.keyword;
-    //this.loadDatas(this.state.page.current)
     return (
       <div>
         <div className="ui segments">
@@ -71,7 +77,8 @@ export default class FillList extends Component {
             <FillTable fills={{items: this.state.trades, loading: this.state.loading}}/>
             <Pagination className="fs14 s-small mt30 text-right mr50" total={this.state.page.total}
                         current={this.state.page.current} onChange={(page) => {
-              this.loadDatas(page)
+              const search = this.props.match.params.keyword;
+              this.loadDatas(page, search)
             }}/>
           </div>
         </div>
