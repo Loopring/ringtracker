@@ -59,15 +59,15 @@ export default class OverviewBoard extends Component {
 
   render() {
     return (
-      <div className="ui segments">
+      <div className="ui segments bg-white">
         <Spin spinning={this.state.loading}>
           <div className="ui segment p10">
             <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('common.overview')}</div>
           </div>
-          <div className="ui horizontal segments bg-white ">
+          <div className="row no-gutters">
             {this.state.datas.map((item, index) => {
               return (
-                <div key={index} className="ui segment p15">
+                <div key={index} className="col pt15 pb15">
                   <div className="text-center" style={{}}>
                     <div className="fs30 font-weight-bold color-black text-nowrap" style={{}}>
                       {FormatAmount({value:item.count, precision:0})}
