@@ -49,9 +49,6 @@ export default class RelayerList extends Component {
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
             <div className="ml10 mr10 fs18 color-black font-weight-bold">Relayers</div>
-            <div className="ui buttons basic mr10">
-              <button className="ui button"></button>
-            </div>
           </div>
           <div className="ui segment p20">
             <RelayerTable data={{loading, items}}/>
