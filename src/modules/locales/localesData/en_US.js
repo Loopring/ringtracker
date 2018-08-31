@@ -143,4 +143,7 @@ export default {
     ring_detail: "Ring Detail",
     fill_table:"Trades of Fills"
   },
+  search: {
+    title: "Search Results"
+  }
 }

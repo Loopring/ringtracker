@@ -146,5 +146,8 @@ export default {
     ring_detail:'环路详情',
     fill_table:"成交列表"
   },
+  search: {
+    title: "搜索结果"
+  }
 }
 

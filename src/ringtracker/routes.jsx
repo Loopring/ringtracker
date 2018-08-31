@@ -8,6 +8,7 @@ import Relayers from './pages/Relayers';
 import Dexs from './pages/Dexs'
 import NotFound from './pages/NotFound';
 import Rings from './pages/Rings';
+import Search from './pages/Search'
 import './start.js';
 
 export default class Routes extends React.Component {
@@ -34,6 +35,7 @@ export default class Routes extends React.Component {
           <Route path={`/dexs/:dex`} exact component={Dexs.DexDetail}/>
           <Route path={`/rings`} exact component={Rings.RingList}/>
           <Route path={'/rings/:id'} component={Rings.RingDetail}/>
+          <Route path={`/search/:keyword`} exact component={Search.SearchFills}/>
           <Route path={`*`} component={NotFound}/>
         </Switch>
       </HeaderFooterLayout>
