@@ -104,7 +104,7 @@ export default class RelayerDetail extends Component {
         </div>
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">{relay} Trades</div>
+            <div className="ml10 mr10 fs18 color-black font-weight-bold">{relay} {intl.get('common.trades')}</div>
           </div>
           <div className="ui segment p20">
             <FillTable fills={{items: fills, loading: loadingFills}}/>
