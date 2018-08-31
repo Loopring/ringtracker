@@ -10,6 +10,7 @@ export default {
     "LoopringUI":`${__dirname}/src/common/loopringui/`,
     "common":`${__dirname}/src/common`,
     "modules":`${__dirname}/src/modules`,
+    "ringtracker":`${__dirname}/src/ringtracker`,
 	},
   "theme": {
     // "@font-family-no-number"  : "Roboto ,PingFang SC",

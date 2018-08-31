@@ -17,10 +17,10 @@ export default class LineChart extends Component {
 
   render() {
     const {trends} = this.props
-    const newTrends = trends.map(item=> {
+    const newTrends = trends ? trends.map(item=> {
       item.date = item.date * 1000
       return item
-    })
+    }) : []
     const ds = new DataSet();
     const dv = ds.createView().source(newTrends);
     dv.transform({
