@@ -25,7 +25,7 @@ const words = {
     loading:'加载中...',
   },
   overview: '概述',
-  trades: "成交",
+  trades: "成交记录",
   goback: "返回",
   viewall: '详情',
   ecosystem: "生态",

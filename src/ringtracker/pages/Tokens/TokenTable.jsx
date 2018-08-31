@@ -44,7 +44,7 @@ export default class TokenTable extends Component {
                       </td>
                       <td>
                         <div><Currency/>{getFormatNum(toFixed(item.volume, 2))}</div>
-                        <div className="color-black-2 fs12">{getFormatNum(item.volume)} {item.symbol}</div>
+                        <div className="color-black-2 fs12">{getFormatNum(item.tokenVolume)} {item.symbol}</div>
                       </td>
                       <td>
                         <a onClick={routeActions.gotoPath.bind(this,`/tokens/${item.symbol}`)}>{intl.get('options.view_detail')}</a>

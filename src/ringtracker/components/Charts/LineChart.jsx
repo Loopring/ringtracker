@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Chart, Axis, Geom, Tooltip, Legend } from 'bizcharts';
 import { DataSet } from '@antv/data-set';
 import intl from 'react-intl-universal'
+import {Spin} from "antd";
 
 export default class LineChart extends Component {
   static displayName = 'LineChart';
@@ -16,7 +17,7 @@ export default class LineChart extends Component {
   }
 
   render() {
-    const {trends} = this.props
+    const {trends, loading} = this.props
     const newTrends = trends ? trends.map(item=> {
       item.date = item.date * 1000
       return item
@@ -38,24 +39,26 @@ export default class LineChart extends Component {
       },
     }
     return (
-      <Chart
-        height={350}
-        data={dv}
-        scale={scale}
-        forceFit
-        padding={[30, 30, 30, 60]}
-      >
-        <Axis name="date" />
-        <Axis name="value" label={{ formatter: (val) => `${val}` }} />
-        <Tooltip crosshairs={{ type: 'y' }} itemTpl={`<li>{name}: {value}</li>`}/>
-        <Legend position="top" itemFormatter={(val) => intl.get(`overview.${val}`)}/>
-        <Geom
-          type="line"
-          position="date*value"
-          size={2}
-          color="types"
-        />
-      </Chart>
+      <Spin spinning={loading}>
+        <Chart
+          height={350}
+          data={dv}
+          scale={scale}
+          forceFit
+          padding={[30, 30, 30, 60]}
+        >
+          <Axis name="date" />
+          <Axis name="value" label={{ formatter: (val) => `${val}` }} />
+          <Tooltip crosshairs={{ type: 'y' }} itemTpl={`<li>{name}: {value}</li>`}/>
+          <Legend position="top" itemFormatter={(val) => intl.get(`overview.${val}`)}/>
+          <Geom
+            type="line"
+            position="date*value"
+            size={2}
+            color="types"
+          />
+        </Chart>
+      </Spin>
     );
   }
 }
