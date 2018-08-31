@@ -6,6 +6,8 @@ import HeaderMenu from './HeaderMenu';
 import Logo from '../Logo';
 import './Header.scss';
 import settings from 'modules/storage/settings'
+import routeActions from 'common/utils/routeActions'
+
 const { SubMenu, Item: MenuItem } = Menu
 const Search = Input.Search;
 
@@ -72,10 +74,9 @@ export default class Header extends Component {
                 <HeaderMenu menus={headerMenuConfig} />
               </div>
               <div className="col">
-
               </div>
               <div className="col-auto">
-                <Search style={{ width: 320 }} onSearch={value => console.log(value)} enterButton={false} placeholder="Address, TxHash, OrderHash, RingHash" />
+                <Search style={{ width: 320 }} onSearch={value => routeActions.gotoPath(`/search/${value}`)} enterButton={true} placeholder="Address, TxHash, OrderHash, RingHash" />
               </div>
             </div>
           </div>
