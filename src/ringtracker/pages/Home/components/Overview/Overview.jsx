@@ -17,7 +17,13 @@ export default class OverviewBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      datas:[],
+      datas:[
+        {title: intl.get('taps.trades'), count:0, path:'/trades', type:'trades'},
+        {title: intl.get('taps.tokens'), count:0, path:'/tokens', type:'tokens'},
+        {title: intl.get('taps.relays'), count:0, path:'/relays', type:'relays'},
+        {title: intl.get('taps.dexs'), count:0, path:'/dexs', type:'dexs'},
+        {title: intl.get('taps.rings'), count:0, path:'/rings', type:'rings'},
+      ],
       loading:false
     };
   }
@@ -27,12 +33,26 @@ export default class OverviewBoard extends Component {
     overview().then(resp => {
       const arr = new Array()
       if(resp.result) {
-        arr.push({title: intl.get('taps.trades'), count:resp.result.trades, path:'/trades', type:'trades'})
-        arr.push({title: intl.get('taps.tokens'), count:resp.result.tokens, path:'/tokens', type:'tokens'})
-        arr.push({title: intl.get('taps.relays'), count:resp.result.relayers, path:'/relays', type:'relays'})
-        arr.push({title: intl.get('taps.dexs'), count:resp.result.dexs, path:'/dexs', type:'dexs'})
-        arr.push({title: intl.get('taps.rings'), count:resp.result.rings, path:'/rings', type:'rings'})
-        this.setState({datas:arr, loading:false})
+        const new_datas =this.state.datas.map((item,index)=>{
+          switch (item.type) {
+            case "trades":
+              return {...item,count:resp.result.trades}
+              break;
+            case "tokens":
+              return {...item,count:resp.result.tokens}
+              break;
+            case "relays":
+              return {...item,count:resp.result.relays}
+              break;
+            case "dexs":
+              return {...item,count:resp.result.dexs}
+              break;
+            case "rings":
+              return {...item,count:resp.result.rings}
+              break;
+          }
+        })
+        this.setState({datas:new_datas, loading:false})
       }
     })
   }
@@ -41,13 +61,13 @@ export default class OverviewBoard extends Component {
     return (
       <div className="ui segments">
         <Spin spinning={this.state.loading}>
-          <div className="ui segment">
+          <div className="ui segment p10">
             <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('common.overview')}</div>
           </div>
-          <div className="ui horizontal segments bg-white row">
+          <div className="ui horizontal segments bg-white ">
             {this.state.datas.map((item, index) => {
               return (
-                <div key={index} className="ui segment col-auto p15">
+                <div key={index} className="ui segment p15">
                   <div className="text-center" style={{}}>
                     <div className="fs30 font-weight-bold color-black text-nowrap" style={{}}>
                       {FormatAmount({value:item.count, precision:0})}
