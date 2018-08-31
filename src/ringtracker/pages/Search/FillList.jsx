@@ -26,33 +26,40 @@ export default class FillList extends Component {
   }
 
   componentDidMount() {
-    this.loadDatas(1)
-  }
-
-  loadDatas(pageIndex) {
-    const currency = settings.getCurrency()
     const search = this.props.match.params.keyword;
     if(search) {
-      this.setState({loading:true})
-      getTrades({
-        pageIndex,
-        pageSize:this.state.page.size,
-        search,
-        currency
-      }).then(resp => {
-        if(resp.result) {
-          this.setState({
-            trades:resp.result.data,
-            page:{ //pageIndex, pageSize, total
-              total: Math.ceil(resp.result.total / resp.result.pageSize),
-              size:10,
-              current:resp.result.pageIndex
-            },
-            loading:false
-          })
-        }
-      })
+      this.loadDatas(1, search)
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const search = this.props.match.params.keyword;
+    if(search) {
+      this.loadDatas(1, search)
+    }
+  }
+
+  loadDatas(pageIndex, search) {
+    const currency = settings.getCurrency()
+    this.setState({loading:true})
+    getTrades({
+      pageIndex,
+      pageSize:this.state.page.size,
+      search,
+      currency
+    }).then(resp => {
+      if(resp.result) {
+        this.setState({
+          trades:resp.result.data,
+          page:{ //pageIndex, pageSize, total
+            total: Math.ceil(resp.result.total / resp.result.pageSize),
+            size:10,
+            current:resp.result.pageIndex
+          },
+          loading:false
+        })
+      }
+    })
   }
 
   render() {
@@ -70,7 +77,8 @@ export default class FillList extends Component {
           <div className="ui segment p20">
             <FillTable fills={{items:this.state.trades,loading:this.state.loading}}/>
             <Pagination className="fs14 s-small" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
-              this.loadDatas(page)
+              const search = this.props.match.params.keyword;
+              this.loadDatas(page, search)
             }} />
           </div>
         </div>
