@@ -63,7 +63,6 @@ export default class TokenTable extends React.Component {
             </table>
           </div>
         </Spin>
-        <ListPagination list={items}/>
       </div>
     )
   }

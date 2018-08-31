@@ -3,25 +3,42 @@ import RelayerTable from './RelayerTable';
 import RelayersOverview from './RelayersOverview';
 import settings from 'modules/storage/settings'
 import {getAllRelayers} from "../../../common/utils/relay";
-
+import {Pagination} from "antd-mobile";
 
 export default class RelayerList extends Component {
 
   state = {
-    loading: true,
+    loading: false,
     items: [],
+    page:{
+      total:0,
+      size:10,
+      current:1
+    },
   };
 
   componentDidMount() {
+    this.loadDatas(1)
+  }
+
+  loadDatas(pageIndex) {
+    this.setState({loading: true})
     const currency = settings.getCurrency()
-    getAllRelayers({currency}).then(res => {
+    getAllRelayers({currency, pageIndex, pageSize:this.state.page.size}).then(res => {
       if (!res.error) {
-        this.setState({loading: false,items:res.result.data})
+        this.setState({
+          loading: false,
+          items:res.result.data,
+          page:{ //pageIndex, pageSize, total
+            total: Math.ceil(res.result.total / res.result.pageSize),
+            size:10,
+            current:res.result.pageIndex
+          },
+        })
       } else {
         this.setState({loading: false})
       }
     })
-
   }
 
   render() {
@@ -29,15 +46,18 @@ export default class RelayerList extends Component {
     return (
       <div>
         <RelayersOverview/>
-        <div class="ui segments">
-          <div class="ui segment d-flex justify-content-between align-items-center">
+        <div className="ui segments">
+          <div className="ui segment d-flex justify-content-between align-items-center">
             <div className="ml10 mr10 fs18 color-black font-weight-bold">Relayers</div>
-            <div class="ui buttons basic mr10">
-              <button class="ui button"></button>
+            <div className="ui buttons basic mr10">
+              <button className="ui button"></button>
             </div>
           </div>
-          <div class="ui segment p20">
+          <div className="ui segment p20">
             <RelayerTable data={{loading, items}}/>
+            <Pagination className="fs14 s-small" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
+              this.loadDatas(page)
+            }} />
           </div>
         </div>
       </div>
