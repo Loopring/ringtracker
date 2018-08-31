@@ -5,6 +5,7 @@ import {overview} from 'common/utils/relay'
 import {FormatAmount} from 'modules/formatter/FormatNumber'
 import Currency from 'LoopringUI/components/Currency'
 import intl from 'react-intl-universal'
+import {Spin} from "antd";
 
 export default class OverviewBoard extends Component {
   static displayName = 'OverviewBoard';
@@ -15,10 +16,14 @@ export default class OverviewBoard extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {datas:[]};
+    this.state = {
+      datas:[],
+      loading:false
+    };
   }
 
   componentDidMount() {
+    this.setState({loading:true})
     overview().then(resp => {
       const arr = new Array()
       if(resp.result) {
@@ -27,7 +32,7 @@ export default class OverviewBoard extends Component {
         arr.push({title: intl.get('taps.relays'), count:resp.result.relayers, path:'/relays', type:'relays'})
         arr.push({title: intl.get('taps.dexs'), count:resp.result.dexs, path:'/dexs', type:'dexs'})
         arr.push({title: intl.get('taps.rings'), count:resp.result.rings, path:'/rings', type:'rings'})
-        this.setState({datas:arr})
+        this.setState({datas:arr, loading:false})
       }
     })
   }
@@ -35,13 +40,14 @@ export default class OverviewBoard extends Component {
   render() {
     return (
       <div className="ui segments">
-        <div className="ui segment">
-          <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('common.overview')}</div>
-        </div>
-        <div className="ui horizontal segments bg-white row">
-          {this.state.datas.map((item, index) => {
-            return (
-              <div key={index} className="ui segment col-auto p15">
+        <Spin spinning={this.state.loading}>
+          <div className="ui segment">
+            <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('common.overview')}</div>
+          </div>
+          <div className="ui horizontal segments bg-white row">
+            {this.state.datas.map((item, index) => {
+              return (
+                <div key={index} className="ui segment col-auto p15">
                   <div className="text-center" style={{}}>
                     <div className="fs30 font-weight-bold color-black text-nowrap" style={{}}>
                       {FormatAmount({value:item.count, precision:0})}
@@ -51,10 +57,11 @@ export default class OverviewBoard extends Component {
                       <a className="mt5 fs12" onClick={routeActions.gotoPath.bind(this,item.path)}>{intl.get('common.viewall')}</a>
                     </div>
                   </div>
-              </div>
-            );
-          })}
-        </div>
+                </div>
+              );
+            })}
+          </div>
+        </Spin>
       </div>
     );
   }

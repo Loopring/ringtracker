@@ -101,6 +101,13 @@ export default {
     "title": "Dexs",
     "overview": "Dexs Overview"
   },
+  dex: {
+    name: "Name",
+    website: "Website",
+    trades: "Trades",
+    volume: "Volume",
+    options: "Options"
+  },
   title: {
     lrc_fee: 'LRC Fee',
     created: 'Created',

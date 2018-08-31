@@ -18,11 +18,11 @@ export default function TokenTable(props) {
               <thead className="">
                   <tr className="">
                     {false && <th className="">#</th>}
-                      <th className="">Name</th>
-                      <th className="">Website</th>
-                      <th className="">Trades</th>
-                      <th className="">Volume</th>
-                      <th className="">Options</th>
+                      <th className="">{intl.get("dex.name")}</th>
+                      <th className="">{intl.get("dex.website")}</th>
+                      <th className="">{intl.get("dex.trades")}</th>
+                      <th className="">{intl.get("dex.volume")}</th>
+                      <th className="">{intl.get("dex.options")}</th>
                   </tr>
               </thead>
               <tbody className="">

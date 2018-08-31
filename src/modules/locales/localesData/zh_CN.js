@@ -102,6 +102,13 @@ export default {
     "title": "交易所",
     "overview": "交易所概况"
   },
+  dex: {
+    name: "名称",
+    website: "网址",
+    trades: "交易数",
+    volume: "成交规模",
+    options: "选项"
+  },
   title: {
     lrc_fee: 'LRC 撮合费',
     created: '提交时间',
