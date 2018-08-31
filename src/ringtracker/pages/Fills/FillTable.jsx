@@ -12,7 +12,6 @@ export default function ListMyFills(props) {
 
   return (
     <div className="">
-        <ListPagination list={fills}/>
         <Spin spinning={fills.loading}>
           <div>
             <table className="table table-responsive fs14" >

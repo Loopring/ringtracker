@@ -40,24 +40,26 @@ export default class LineChart extends Component {
     }
     return (
       <Spin spinning={loading}>
-        <Chart
-          height={350}
-          data={dv}
-          scale={scale}
-          forceFit
-          padding={[30, 30, 30, 60]}
-        >
-          <Axis name="date" />
-          <Axis name="value" label={{ formatter: (val) => `${val}` }} />
-          <Tooltip crosshairs={{ type: 'y' }} itemTpl={`<li>{name}: {value}</li>`}/>
-          <Legend position="top" itemFormatter={(val) => intl.get(`overview.${val}`)}/>
-          <Geom
-            type="line"
-            position="date*value"
-            size={2}
-            color="types"
-          />
-        </Chart>
+        {trends &&
+          <Chart
+            height={350}
+            data={dv}
+            scale={scale}
+            forceFit
+            padding={[30, 30, 30, 60]}
+          >
+            <Axis name="date"/>
+            <Axis name="value" label={{formatter: (val) => `${val}`}}/>
+            <Tooltip crosshairs={{type: 'y'}} itemTpl={`<li>{name}: {value}</li>`}/>
+            <Legend position="top" itemFormatter={(val) => intl.get(`overview.${val}`)}/>
+            <Geom
+              type="line"
+              position="date*value"
+              size={2}
+              color="types"
+            />
+          </Chart>
+        }
       </Spin>
     );
   }
