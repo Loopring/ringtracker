@@ -64,8 +64,8 @@ export default class OverviewChart extends Component {
       this.loadData(this.state.filter.duration, indicator)
     }
     return (
-      <div className="ui segments">
-        <Spin spinning={this.state.loading}>
+      <Spin spinning={this.state.loading}>
+      <div className="ui segments bg-white">
           <div className="ui segment d-flex justify-content-between align-items-center">
             <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('common.ecosystem')} {intl.get('common.overview')}</div>
             <div className="d-none d-sm-block">
@@ -83,7 +83,7 @@ export default class OverviewChart extends Component {
               </div>
             </div>
           </div>
-          <div className="ui segment p20">
+          <div className="ui segment">
             <div className="row ml0 mr0">
               <div className="col-md-4">
                 <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">{intl.get('taps.tokens')}</div>
@@ -99,8 +99,8 @@ export default class OverviewChart extends Component {
               </div>
             </div>
           </div>
-        </Spin>
       </div>
+      </Spin>
     );
   }
 }

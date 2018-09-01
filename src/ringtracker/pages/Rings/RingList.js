@@ -81,8 +81,11 @@ export default class RingList extends React.Component {
       rowKey: record => record.id,
     }
     return (
-      <div>
-        <div className="">
+      <div className="ui segments">
+        <div className="ui segment d-flex justify-content-between align-items-center">
+          <div className="ml10 mr10 fs18 color-black font-weight-bold">Rings</div>
+        </div>
+        <div className="ui segment p20">
           <Table {...tableProps}/>
           <Pagination className="fs14 s-small mt30 text-right mr50" total={page.total} current={page.current}
                       onChange={(page) => {

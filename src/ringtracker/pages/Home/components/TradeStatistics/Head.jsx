@@ -27,19 +27,19 @@ export default class Head extends Component {
       <div className="row">
         <div className="col">
           <div className="text-center">
-            <div className="fs24 color-black font-weight-bold"><Currency/>{data.volumes && getFormatNum(toFixed(toBig(data.volumes), precision))}</div>
+            <div className="fs24 color-black font-weight-bold"><Currency/>{data.volumes ? getFormatNum(toFixed(toBig(data.volumes), precision)) : 0}</div>
             <div className="fs14 color-black-1">{intl.get('overview.volume')}</div>
           </div>
         </div>
         <div className="col">
           <div className="text-center">
-            <div className="fs24 color-black font-weight-bold">{data.trades && getFormatNum(toFixed(toBig(data.trades), 0))}</div>
+            <div className="fs24 color-black font-weight-bold">{data.trades ? getFormatNum(toFixed(toBig(data.trades), 0)) : 0}</div>
             <div className="fs14 color-black-1">{intl.get('overview.trades')}</div>
           </div>
         </div>
         <div className="col">
           <div className="text-center">
-            <div className="fs24 color-black font-weight-bold"><Currency/>{data.fees && getFormatNum(toFixed(toBig(data.fees), precision))}</div>
+            <div className="fs24 color-black font-weight-bold"><Currency/>{data.fees ? getFormatNum(toFixed(toBig(data.fees), precision)) : 0}</div>
             <div className="fs14 color-black-1">{intl.get('overview.fees')}</div>
           </div>
         </div>
