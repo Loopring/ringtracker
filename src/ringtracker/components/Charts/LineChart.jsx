@@ -4,6 +4,7 @@ import { DataSet } from '@antv/data-set';
 import intl from 'react-intl-universal'
 import {Spin} from "antd";
 import Currency from 'LoopringUI/components/Currency'
+import {getFormatNum} from 'modules/formatter/common'
 
 export default class LineChart extends Component {
   static displayName = 'LineChart';
@@ -59,6 +60,9 @@ export default class LineChart extends Component {
       value: {
         alias: ''
       },
+    }
+    const formatNum = (number) => {
+      return getFormatNum(number)
     }
     return (
       <Spin spinning={loading}>
@@ -142,7 +146,10 @@ export default class LineChart extends Component {
                 line={null}
                 tickPixelInterval={30}
           />
-          <Tooltip crosshairs={{type: 'y'}} />
+          <Tooltip
+            crosshairs={{type: 'y'}}
+            itemTpl={'<li data-index={index}><span style="background-color:{color};width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px;"></span>{name}:{value}</li>'}
+          />
           <Legend position="bottom" offsetY={0} />
           <Geom
             type="line"
