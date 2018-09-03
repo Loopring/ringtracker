@@ -69,16 +69,17 @@ export default class PieDonutChart extends Component {
           style={{ lineWidth: 1, stroke: '#fff' }}
         />
         {
-          true &
-          <Guide>
-            <Html
-              visible={false}
-              position={['50%', '50%']}
-              html="<div style=&quot;color:#8c8c8c;font-size:12px;text-align: center;width: 10em;&quot;>行业<br><span style=&quot;color:#262626;font-size:20px&quot;>200</span></div>"
-              alignX="middle"
-              alignY="middle"
-            />
-          </Guide>
+          /**
+           <Guide>
+           <Html
+           visible={false}
+           position={['50%', '50%']}
+           html="<div style=&quot;color:#8c8c8c;font-size:12px;text-align: center;width: 10em;&quot;>行业<br><span style=&quot;color:#262626;font-size:20px&quot;>200</span></div>"
+           alignX="middle"
+           alignY="middle"
+           />
+           </Guide>
+           */
         }
       </Chart>
     );
