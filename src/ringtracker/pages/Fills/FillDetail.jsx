@@ -72,7 +72,6 @@ export default class FillDetail extends Component {
             this.state.fills.map((fill, index) => {
               const protocolInfo = config.getProtocolInfo({protocolAddress:fill.protocol})
               const fillFm = new FillFm(fill)
-              console.log(111, fill)
               return (
                 <div key={index} className="ui segment pl20 pr20">
                   <MetaItem label={intl.get('ring.ringIndex')} value={<a href={`#/rings/${fill.ringIndex}?delegateAddress=${fill.delegateAddress}`}>{fill.ringIndex}</a>} />
