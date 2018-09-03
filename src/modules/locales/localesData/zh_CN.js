@@ -120,7 +120,8 @@ export default {
     volume: "交易量",
   },
   options: {
-    view_detail: "查看详情"
+    view_detail: "查看详情",
+    goback: words.goback,
   },
   // ring
   // -----------
@@ -149,6 +150,18 @@ export default {
   },
   search: {
     title: "搜索结果"
+  },
+  protocol: {
+    state_obsolete: "已废弃",
+    state_alive: "可用",
+  },
+  trade: {
+    title: "交易详情",
+    transaction_hash: "交易哈希",
+    order_hash: "订单哈希",
+    date: "成交时间",
+    relay: "撮合中继",
+    protocol_version: "合约版本",
   }
 }
 

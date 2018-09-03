@@ -8,8 +8,16 @@
   "localStorageVersion":201807241501,
   "contracts": [
     {
-      "address": "0x8d8812b72d1e4ffCeC158D25f56748b7d67c1e78",
-      "version": "v1.5.1"
+      "version": "V1.5",
+      "state": "obsolete",
+      "protocolAddress": "0xb1170dE31c7f72aB62535862C97F5209E356991b",
+      "delegateAddress": "0x5567ee920f7E62274284985D793344351A00142B"
+    },
+    {
+      "version": "V1.5.1",
+      "state": "alive",
+      "protocolAddress": "0x8d8812b72d1e4ffCeC158D25f56748b7d67c1e78",
+      "delegateAddress": "0x17233e07c67d086464fD408148c3ABB56245FA64"
     }
   ],
   "langs": [

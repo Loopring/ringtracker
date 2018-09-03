@@ -4,6 +4,10 @@ import routeActions from 'common/utils/routeActions'
 import {getTradeDetails} from 'common/utils/relay'
 import {toNumber} from "LoopringJS/common/formatter";
 import commonFm from "modules/formatter/common";
+import FillTable from "./FillTable";
+import config from 'common/config'
+import intl from 'react-intl-universal'
+import {FillFm} from 'modules/fills/formatters'
 
 export default class FillDetail extends Component {
   static displayName = 'FillDetail';
@@ -15,12 +19,19 @@ export default class FillDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fill:{}
+      fills:[]
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.readFromParam(nextProps.location)
+  }
+
   componentDidMount() {
-    const {location} = this.props
+    this.readFromParam(this.props.location)
+  }
+
+  readFromParam(location) {
     const params = location.pathname.split('/')
     let ringIndex = 0, fillIndex = 0, delegateAddress = ''
     if(params.length > 2) {
@@ -41,7 +52,7 @@ export default class FillDetail extends Component {
   loadData(ringIndex, fillIndex, delegateAddress) {
     getTradeDetails({delegateAddress, ringIndex, fillIndex}).then(resp => {
       if(resp.result) {
-        this.setState({fill:resp.result[0]})
+        this.setState({fills:resp.result})
       }
     })
   }
@@ -51,18 +62,38 @@ export default class FillDetail extends Component {
       <div>
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">Trade Detail</div>
+            <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('trade.title')}</div>
             <div className="ui buttons basic mr10">
-              <button className="ui button" onClick={routeActions.goBack.bind(this)}>Go Back</button>
+              <button className="ui button" onClick={routeActions.goBack.bind(this)}>{intl.get('options.goback')}</button>
             </div>
           </div>
-          <div className="ui segment pl20 pr20">
-            <MetaItem label="Transaction Hash" value={this.state.fill.txHash} />
-            <MetaItem label="Order Hash" value={this.state.fill.orderHash} />
-            <MetaItem label="Date" value={this.state.fill.createTime && commonFm.getFormatTime(toNumber(this.state.fill.createTime) * 1e3,'YYYY-MM-DD HH:mm:ss')} />
-            <MetaItem label="Relayer" value={this.state.fill.relay} />
-            {false && <MetaItem label="Status" value="Success" />}
-          </div>
+          {
+            this.state.fills && this.state.fills.length === 1 &&
+            this.state.fills.map((fill, index) => {
+              const protocolInfo = config.getProtocolInfo({protocolAddress:fill.protocol})
+              const fillFm = new FillFm(fill)
+              return (
+                <div key={index} className="ui segment pl20 pr20">
+                  <MetaItem label={intl.get('ring.ringIndex')} value={fill.ringIndex} />
+                  <MetaItem label={intl.get('trade.transaction_hash')} value={<a href={`https://etherscan.io/tx/${fill.txHash}`} target='_blank'>{fill.txHash}</a>} />
+                  <MetaItem label={intl.get('trade.order_hash')} value={fill.orderHash} />
+                  <MetaItem label={intl.get('common.market')} value={fill.market} />
+                  <MetaItem label={intl.get('common.side')} value={fill.side === 'sell' ? intl.get('common.sell') : intl.get('common.buy')} />
+                  <MetaItem label={intl.get('common.amount')} value={fillFm.getAmount()} />
+                  <MetaItem label={intl.get('common.price')} value={fillFm.getPrice()} />
+                  <MetaItem label={intl.get('common.total')} value={fillFm.getTotal()} />
+                  <MetaItem label={intl.get('title.lrc_fee')} value={fillFm.getLRCFee()} />
+                  <MetaItem label={intl.get('trade.relay')} value={fill.relay} />
+                  <MetaItem label={intl.get('trade.protocol_version')} value={`${protocolInfo.version}[${intl.get('protocol.state_'+protocolInfo.state)}]`} />
+                  <MetaItem label={intl.get('trade.date')} value={fill.createTime && commonFm.getFormatTime(toNumber(fill.createTime) * 1e3,'YYYY-MM-DD HH:mm:ss')} />
+                </div>
+              )
+            })
+          }
+          {
+            this.state.fills && this.state.fills.length > 1 &&
+            <FillTable fills={{items:this.state.fills,loading:false}}/>
+          }
         </div>
       </div>
     );
