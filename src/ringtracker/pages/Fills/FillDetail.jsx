@@ -72,9 +72,10 @@ export default class FillDetail extends Component {
             this.state.fills.map((fill, index) => {
               const protocolInfo = config.getProtocolInfo({protocolAddress:fill.protocol})
               const fillFm = new FillFm(fill)
+              console.log(111, fill)
               return (
                 <div key={index} className="ui segment pl20 pr20">
-                  <MetaItem label={intl.get('ring.ringIndex')} value={fill.ringIndex} />
+                  <MetaItem label={intl.get('ring.ringIndex')} value={<a href={`#/rings/${fill.ringIndex}?delegateAddress=${fill.delegateAddress}`}>{fill.ringIndex}</a>} />
                   <MetaItem label={intl.get('trade.transaction_hash')} value={<a href={`https://etherscan.io/tx/${fill.txHash}`} target='_blank'>{fill.txHash}</a>} />
                   <MetaItem label={intl.get('trade.order_hash')} value={fill.orderHash} />
                   <MetaItem label={intl.get('common.market')} value={fill.market} />
