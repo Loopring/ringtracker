@@ -47,7 +47,7 @@ export default class Header extends Component {
               <div className="col">
               </div>
               <div className="col-auto pl5">
-                <Select size="" defaultValue={settings.getCurrency()} onChange={currencyChange}>
+                <Select defaultValue={settings.getCurrency()} onChange={currencyChange}>
                   <Select.Option value="USD">$ US Dollar[USD]</Select.Option>
                   <Select.Option value="CNY">¥ Chinese Yuan[CNY]</Select.Option>
                   <Select.Option value="ETH">Ξ Ether[ETH]</Select.Option>
@@ -55,7 +55,7 @@ export default class Header extends Component {
                 </Select>
               </div>
               <div className="col-auto pl5">
-                <Select size="" defaultValue={settings.getLanguage()} onChange={languageChange}>
+                <Select defaultValue={settings.getLanguage()} onChange={languageChange}>
                   <Select.Option value="en-US">English</Select.Option>
                   <Select.Option value="zh-CN">中文</Select.Option>
                 </Select>

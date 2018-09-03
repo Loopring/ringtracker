@@ -96,7 +96,8 @@ export default {
     "trades": "成交数",
     "fees": "手续费",
     "trade":"成交数",
-    "fee": "手续费"
+    "fee": "手续费",
+    "date": "时间"
   },
   dexs: {
     "title": "交易所",

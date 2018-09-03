@@ -95,7 +95,8 @@ export default {
     "trades": "Trades",
     "fees": "Fees",
     "trade":"Trade",
-    "fee": "Fee"
+    "fee": "Fee",
+    "date": "Date"
   },
   dexs: {
     "title": "Dexs",

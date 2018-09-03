@@ -30,6 +30,27 @@ export default class LineChart extends Component {
     //   key: 'types', // key字段
     //   value: 'value', // value字段
     // });
+    const volume = intl.get('overview.volume')
+    const trade = intl.get('overview.trade')
+    const fee = intl.get('overview.fee')
+    dv.transform({
+      type: 'rename',
+      map: {
+        volume: volume
+      }
+    });
+    dv.transform({
+      type: 'rename',
+      map: {
+        trade: trade
+      }
+    });
+    dv.transform({
+      type: 'rename',
+      map: {
+        fee: fee
+      }
+    });
     const scale = {
       date: {
         type: 'time'
@@ -49,14 +70,14 @@ export default class LineChart extends Component {
           padding={[30, 120, 60, 60]}
         >
           <Axis name="date"/>
-          <Axis name="volume"
+          <Axis name={volume}
                 label={{
                   offset: 0, // 距离坐标轴距离
                   textStyle: {
                     //textAlign: 'end', // 文本对齐方向，可取值为： start center end
                     fontSize: '12', // 文本大小
-                    //fontWeight: 'bold', // 文本粗细
-                    fill: 'blue', // 文本的颜色
+                    fontWeight: 'bold', // 文本粗细
+                    fill: '#009e73', // 文本的颜色
                     textBaseline: 'bottom' // 文本基准线，可取 top middle bottom，默认为middle
                   },
                   formatter: (val) => `${val}`
@@ -64,21 +85,21 @@ export default class LineChart extends Component {
                 position={'left'}
                 title={{
                   textStyle: {
-                    content:"Volume",
                     fontSize: 12, // 文本大小
+                    fontWeight: 'bold', // 文本粗细
                     textAlign: 'center', // 文本对齐方式
-                    fill: 'blue', // 文本颜色
-                  }
+                    fill: '#009e73', // 文本颜色
+                  },
                 }}
                 line={null}
           />
-          <Axis name="trade"
+          <Axis name={trade}
                 label={{
                   textStyle: {
                     //textAlign: 'end', // 文本对齐方向，可取值为： start center end
                     fontSize: '12', // 文本大小
-                    //fontWeight: 'bold', // 文本粗细
-                    fill: '#fec514', // 文本的颜色
+                    fontWeight: 'bold', // 文本粗细
+                    fill: '#ff9f00', // 文本的颜色
                     textBaseline: 'bottom' // 文本基准线，可取 top middle bottom，默认为middle
                   },
                   formatter: (val) => `${val}`
@@ -87,21 +108,22 @@ export default class LineChart extends Component {
                 title={{
                   textStyle: {
                     fontSize: 12, // 文本大小
+                    fontWeight: 'bold', // 文本粗细
                     textAlign: 'center', // 文本对齐方式
-                    fill: '#fec514', // 文本颜色
+                    fill: '#ff9f00', // 文本颜色
                   },
                 }}
                 line={null}
                 tickPixelInterval={30}
           />
-          <Axis name="fee"
+          <Axis name={fee}
                 label={{
                   offset: 80,
                   textStyle: {
                     //textAlign: 'end', // 文本对齐方向，可取值为： start center end
                     fontSize: '12', // 文本大小
-                    //fontWeight: 'bold', // 文本粗细
-                    fill: 'red', // 文本的颜色
+                    fontWeight: 'bold', // 文本粗细
+                    fill: '#56b4e9', // 文本的颜色
                     textBaseline: 'bottom' // 文本基准线，可取 top middle bottom，默认为middle
                   },
                   formatter: (val) => `${val}`
@@ -111,32 +133,33 @@ export default class LineChart extends Component {
                   offset: 100,
                   textStyle: {
                     fontSize: 12, // 文本大小
+                    fontWeight: 'bold', // 文本粗细
                     textAlign: 'center', // 文本对齐方式
-                    fill: 'red', // 文本颜色
+                    fill: '#56b4e9', // 文本颜色
                   }
                 }}
                 line={null}
                 tickPixelInterval={30}
           />
-          <Tooltip crosshairs={{type: 'y'}} itemTpl={`<li>{name}: {value}</li>`}/>
-          <Legend position="bottom" offsetY={0} itemFormatter={(val) => intl.get(`overview.${val}`)}/>
+          <Tooltip crosshairs={{type: 'y'}} />
+          <Legend position="bottom" offsetY={0} />
           <Geom
             type="line"
-            position="date*volume"
+            position={`date*${volume}`}
             size={2}
-            color={'blue'}
+            color={'#009e73'}
           />
           <Geom
             type="line"
-            position="date*trade"
+            position={`date*${trade}`}
             size={2}
-            color={'#fec514'}
+            color={'#ff9f00'}
           />
           <Geom
             type="line"
-            position="date*fee"
+            position={`date*${fee}`}
             size={2}
-            color={'red'}
+            color={'#56b4e9'}
           />
         </Chart>
         }
