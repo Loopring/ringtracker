@@ -3,6 +3,7 @@ import { Chart, Axis, Geom, Tooltip, Legend } from 'bizcharts';
 import { DataSet } from '@antv/data-set';
 import intl from 'react-intl-universal'
 import {Spin} from "antd";
+import Currency from 'LoopringUI/components/Currency'
 
 export default class LineChart extends Component {
   static displayName = 'LineChart';
@@ -30,9 +31,9 @@ export default class LineChart extends Component {
     //   key: 'types', // key字段
     //   value: 'value', // value字段
     // });
-    const volume = intl.get('overview.volume')
+    const volume = `${intl.get('overview.volume')}(${Currency()})`
     const trade = intl.get('overview.trade')
-    const fee = intl.get('overview.fee')
+    const fee = `${intl.get('overview.fee')}(${Currency()})`
     dv.transform({
       type: 'rename',
       map: {
