@@ -55,8 +55,14 @@ function getDelegateAddress() {
   return configs.delegateAddress;
 }
 
-function getProtocolAddress() {
-  return configs.contracts[0].address
+function getProtocolInfo({protocolAddress, delegateAddress}) {
+  if(protocolAddress) {
+    return configs.contracts.find(item => item.protocolAddress === protocolAddress)
+  } else if (delegateAddress) {
+    return configs.contracts.find(item => item.delegateAddress === delegateAddress)
+  } else {
+    return {}
+  }
 }
 
 export default {
@@ -65,7 +71,7 @@ export default {
   getTokens,
   getWalletAddress,
   getDelegateAddress,
-  getProtocolAddress,
+  getProtocolInfo,
   getMarkets,
   getMarketBySymbol,
   getMarketByPair

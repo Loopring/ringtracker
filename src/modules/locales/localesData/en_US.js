@@ -119,7 +119,8 @@ export default {
     volume: "Volume",
   },
   options: {
-    view_detail: "View Detail"
+    view_detail: "View Detail",
+    goback: words.goback,
   },
   ring: {
     ringIndex: "RingIndex",
@@ -146,5 +147,17 @@ export default {
   },
   search: {
     title: "Search Results"
+  },
+  protocol: {
+    state_obsolete: "Obsolete",
+    state_alive: "Alive",
+  },
+  trade: {
+    title: "Trade Detail",
+    transaction_hash: "Transaction Hash",
+    order_hash: "Order Hash",
+    date: "Date",
+    relay: "Relay",
+    protocol_version: "Protocol Version",
   }
 }
