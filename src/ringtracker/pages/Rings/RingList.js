@@ -1,9 +1,5 @@
 import React from 'react'
-import {Table} from 'antd'
-import {Link} from 'dva/router';
-import schema from '../../../modules/rings/schema';
-import config from '../../../common/config'
-import {Pagination} from 'antd'
+import RingTable from './RingTable'
 
 
 export default class RingList extends React.Component {
@@ -46,51 +42,14 @@ export default class RingList extends React.Component {
   render() {
     const {items, loading,page} = this.state
 
-    const renders = {
-      ringIndex: (value, item, index) => <Link className="text-truncate d-block" style={{maxWidth: '150px'}}
-                                               to={`/rings/${value}?delegateAddress=${item.delegateAddress}`}>{value}</Link>,
-      miner: (value, item, index) => <Link className="text-truncate d-block" style={{maxWidth: '150px'}}
-                                           to={`/miner/detail/${value}`}>{value}</Link>,
-      feeRecipient: (value, item, index) => <a className="text-truncate d-block" style={{maxWidth: '150px'}}
-                                               target="_blank"
-                                               href={`https://etherscan.io/address/${value}`}>{value}</a>,
-      txHash: (value, item, index) => <a className="text-truncate d-block" style={{maxWidth: '150px'}} target="_blank"
-                                         href={`https://etherscan.io/tx/${value}`}>{value}</a>,
-      blockNumber: (value, item, index) => <a className="text-truncate d-block" style={{maxWidth: '150px'}}
-                                              target="_blank" href={`https://etherscan.io/block/${value}`}>{value}</a>,
-      protocol: (value, item, index) => <a className="text-truncate d-block" style={{maxWidth: '150px'}} target="_blank"
-                                           href={`https://etherscan.io/address/${value}`}>{value}</a>,
-    };
-    const columns =
-      schema.filter(ele => ele.name !== "ringHash" && ele.name !== "txHash" && ele.name !== "protocol" && ele.name !== "delegateAddress" && ele.name !== "totalSplitFee")
-        .map(field => {
-          return {
-            title: field.title(),
-            dataIndex: field.name,
-            render: renders[field.name] || field.formatter,
-            className: 'text-nowrap'
-          }
-        })
-    const tableProps = {
-      dataSource: items,
-      columns: columns,
-      pagination: false,
-      scroll: {x: 1000},
-      bordered: false,
-      loading,
-      rowKey: record => record.id,
-    }
+
     return (
       <div className="ui segments">
         <div className="ui segment d-flex justify-content-between align-items-center">
           <div className="ml10 mr10 fs18 color-black font-weight-bold">Rings</div>
         </div>
         <div className="ui segment p20">
-          <Table {...tableProps}/>
-          <Pagination className="fs14 s-small mt30 text-right mr50" total={page.total} current={page.current}
-                      onChange={(page) => {
-                        this.pageChange(page)
-                      }}/>
+          <RingTable items={items} loading={loading} page={page} pageChange={this.pageChange}/>
         </div>
       </div>
     )

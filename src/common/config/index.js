@@ -64,6 +64,12 @@ function getProtocolInfo({protocolAddress, delegateAddress}) {
     return {}
   }
 }
+function getContracts() {
+
+  return configs.contracts
+
+}
+
 
 export default {
   getTokenBySymbol,
@@ -74,5 +80,6 @@ export default {
   getProtocolInfo,
   getMarkets,
   getMarketBySymbol,
-  getMarketByPair
+  getMarketByPair,
+  getContracts
 }
