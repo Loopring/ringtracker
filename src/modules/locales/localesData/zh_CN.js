@@ -154,6 +154,7 @@ export default {
   protocol: {
     state_obsolete: "已废弃",
     state_alive: "可用",
+    unknown: "未知合约"
   },
   trade: {
     title: "交易详情",
