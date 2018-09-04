@@ -81,85 +81,86 @@ export default class LineChart extends Component {
           forceFit
           padding={[30, 120, 60, 60]}
         >
-          <Axis name={volume}
-                label={{
-                  offset: 0, // 距离坐标轴距离
-                  textStyle: {
-                    //textAlign: 'end', // 文本对齐方向，可取值为： start center end
-                    fontSize: '12', // 文本大小
-                    fontWeight: 'bold', // 文本粗细
-                    fill: '#009e73', // 文本的颜色
-                    textBaseline: 'bottom' // 文本基准线，可取 top middle bottom，默认为middle
-                  },
-                  formatter: (val) => `${val}`
-                }}
-                position={'left'}
-                title={{
-                  textStyle: {
-                    fontSize: 12, // 文本大小
-                    fontWeight: 'bold', // 文本粗细
-                    textAlign: 'center', // 文本对齐方式
-                    fill: '#009e73', // 文本颜色
-                  },
-                }}
-                line={null}
-                tickLine={{
-                  type: 'timeCat', // 声明该数据的类型
-                }}
+          <Axis
+            name={volume}
+            label={{
+              offset: 0, // 距离坐标轴距离
+              textStyle: {
+                //textAlign: 'end', // 文本对齐方向，可取值为： start center end
+                fontSize: '12', // 文本大小
+                fontWeight: 'bold', // 文本粗细
+                fill: '#009e73', // 文本的颜色
+                textBaseline: 'bottom' // 文本基准线，可取 top middle bottom，默认为middle
+              },
+              formatter: (val) => `${val}`
+            }}
+            position={'left'}
+            title={{
+              textStyle: {
+                fontSize: 12, // 文本大小
+                fontWeight: 'bold', // 文本粗细
+                textAlign: 'center', // 文本对齐方式
+                fill: '#009e73', // 文本颜色
+              },
+            }}
+            line={null}
+            tickLine={{
+              type: 'timeCat', // 声明该数据的类型
+            }}
           />
-          <Axis name={trade}
-                label={{
-                  textStyle: {
-                    //textAlign: 'end', // 文本对齐方向，可取值为： start center end
-                    fontSize: '12', // 文本大小
-                    fontWeight: 'bold', // 文本粗细
-                    fill: '#ff9f00', // 文本的颜色
-                    textBaseline: 'bottom' // 文本基准线，可取 top middle bottom，默认为middle
-                  },
-                  formatter: (val) => `${val}`
-                }}
-                position={'right'}
-                title={{
-                  textStyle: {
-                    fontSize: 12, // 文本大小
-                    fontWeight: 'bold', // 文本粗细
-                    textAlign: 'center', // 文本对齐方式
-                    fill: '#ff9f00', // 文本颜色
-                  },
-                }}
-                line={null}
-                tickLine={{
-                  type: 'timeCat', // 声明该数据的类型
-                  tickCount: 9
-                }}
+          <Axis
+            name={trade}
+            label={{
+              textStyle: {
+                //textAlign: 'end', // 文本对齐方向，可取值为： start center end
+                fontSize: '12', // 文本大小
+                fontWeight: 'bold', // 文本粗细
+                fill: '#ff9f00', // 文本的颜色
+                textBaseline: 'bottom' // 文本基准线，可取 top middle bottom，默认为middle
+              },
+              formatter: (val) => `${val}`
+            }}
+            position={'right'}
+            title={{
+              textStyle: {
+                fontSize: 12, // 文本大小
+                fontWeight: 'bold', // 文本粗细
+                textAlign: 'center', // 文本对齐方式
+                fill: '#ff9f00', // 文本颜色
+              },
+            }}
+            line={null}
+            tickLine={{
+              type: 'timeCat', // 声明该数据的类型
+            }}
           />
-          <Axis name={fee}
-                label={{
-                  offset: 80,
-                  textStyle: {
-                    //textAlign: 'end', // 文本对齐方向，可取值为： start center end
-                    fontSize: '12', // 文本大小
-                    fontWeight: 'bold', // 文本粗细
-                    fill: '#56b4e9', // 文本的颜色
-                    textBaseline: 'bottom' // 文本基准线，可取 top middle bottom，默认为middle
-                  },
-                  formatter: (val) => `${val}`
-                }}
-                position={'right'}
-                title={{
-                  offset: 100,
-                  textStyle: {
-                    fontSize: 12, // 文本大小
-                    fontWeight: 'bold', // 文本粗细
-                    textAlign: 'center', // 文本对齐方式
-                    fill: '#56b4e9', // 文本颜色
-                  }
-                }}
-                line={null}
-                tickLine={{
-                  type: 'timeCat', // 声明该数据的类型
-                  tickCount: 9
-                }}
+          <Axis
+            name={fee}
+            label={{
+              offset: 80,
+              textStyle: {
+                //textAlign: 'end', // 文本对齐方向，可取值为： start center end
+                fontSize: '12', // 文本大小
+                fontWeight: 'bold', // 文本粗细
+                fill: '#56b4e9', // 文本的颜色
+                textBaseline: 'bottom' // 文本基准线，可取 top middle bottom，默认为middle
+              },
+              formatter: (val) => `${val}`
+            }}
+            position={'right'}
+            title={{
+              offset: 100,
+              textStyle: {
+                fontSize: 12, // 文本大小
+                fontWeight: 'bold', // 文本粗细
+                textAlign: 'center', // 文本对齐方式
+                fill: '#56b4e9', // 文本颜色
+              }
+            }}
+            line={null}
+            tickLine={{
+              type: 'timeCat', // 声明该数据的类型
+            }}
           />
           <Tooltip
             crosshairs={{type: 'line'}}
