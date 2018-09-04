@@ -40,14 +40,12 @@ export default class LineChart extends Component {
       map: {
         volume: volume
       }
-    });
-    dv.transform({
+    }).transform({
       type: 'rename',
       map: {
         trade: trade
       }
-    });
-    dv.transform({
+    }).transform({
       type: 'rename',
       map: {
         fee: fee
@@ -57,8 +55,17 @@ export default class LineChart extends Component {
       date: {
         type: 'time'
       },
-      value: {
-        alias: ''
+      [volume]: {
+        type: 'linear',
+        tickCount:6
+      },
+      [trade]: {
+        type: 'linear',
+        tickCount:6
+      },
+      [fee]: {
+        type: 'linear',
+        tickCount:6
       },
     }
     const formatNum = (number) => {
@@ -74,7 +81,6 @@ export default class LineChart extends Component {
           forceFit
           padding={[30, 120, 60, 60]}
         >
-          <Axis name="date"/>
           <Axis name={volume}
                 label={{
                   offset: 0, // 距离坐标轴距离
@@ -97,6 +103,9 @@ export default class LineChart extends Component {
                   },
                 }}
                 line={null}
+                tickLine={{
+                  type: 'timeCat', // 声明该数据的类型
+                }}
           />
           <Axis name={trade}
                 label={{
@@ -119,7 +128,10 @@ export default class LineChart extends Component {
                   },
                 }}
                 line={null}
-                tickPixelInterval={30}
+                tickLine={{
+                  type: 'timeCat', // 声明该数据的类型
+                  tickCount: 9
+                }}
           />
           <Axis name={fee}
                 label={{
@@ -144,10 +156,13 @@ export default class LineChart extends Component {
                   }
                 }}
                 line={null}
-                tickPixelInterval={30}
+                tickLine={{
+                  type: 'timeCat', // 声明该数据的类型
+                  tickCount: 9
+                }}
           />
           <Tooltip
-            crosshairs={{type: 'y'}}
+            crosshairs={{type: 'line'}}
             itemTpl={'<li data-index={index}><span style="background-color:{color};width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:8px;"></span>{name}:{value}</li>'}
           />
           <Legend position="bottom" offsetY={0} />
