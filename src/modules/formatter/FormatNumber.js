@@ -44,3 +44,27 @@ export const FormatAmount = ({value, precision = 4, tooptip = true})=>{
   )
 }
 
+export const simpleShortInteger = (value) => {
+  if(isNaN(value)) return {d:0, o:0, s:false};
+  const x = toBig(value)
+  if(x.lt(9999)) {
+    return getFormatNum(toFixed(x, 0));
+  }
+  if(x.lt(1000000)) {
+    const shortNumber = toFixed(x.div(1000), 0)
+    return `${getFormatNum(shortNumber)}K`;
+  }
+  if(x.lt(10000000)) {
+    const shortNumber = toFixed(x.div(1000000), 0)
+    return `${getFormatNum(shortNumber)}M`;
+  }
+  if(x.lt(1000000000)) {
+    const shortNumber = toFixed(x.div(1000000), 0)
+    return `${getFormatNum(shortNumber)}M`;
+  }
+  if(x.lt(1000000000000)) {
+    const shortNumber = toFixed(x.div(1000000000), 0)
+    return `${getFormatNum(shortNumber)}B`;
+  }
+  return {d:"1T+", o:x.toString(10), s:true};
+}
