@@ -5,6 +5,7 @@ import intl from 'react-intl-universal'
 import {Spin} from "antd";
 import Currency from 'LoopringUI/components/Currency'
 import {getFormatNum} from 'modules/formatter/common'
+import {simpleShortInteger} from 'modules/formatter/FormatNumber'
 
 export default class LineChart extends Component {
   static displayName = 'LineChart';
@@ -71,6 +72,9 @@ export default class LineChart extends Component {
     const formatNum = (number) => {
       return getFormatNum(number)
     }
+    const shortNum = (number) => {
+
+    }
     return (
       <Spin spinning={loading}>
         {trends &&
@@ -79,7 +83,7 @@ export default class LineChart extends Component {
           data={dv}
           scale={scale}
           forceFit
-          padding={[30, 120, 60, 60]}
+          padding={[30, 140, 60, 60]}
         >
           <Axis
             name={volume}
@@ -92,7 +96,7 @@ export default class LineChart extends Component {
                 fill: '#009e73', // 文本的颜色
                 textBaseline: 'bottom' // 文本基准线，可取 top middle bottom，默认为middle
               },
-              formatter: (val) => `${val}`
+              formatter: (val) => `${Currency()}${simpleShortInteger(val, 0)}`
             }}
             position={'left'}
             title={{
@@ -118,7 +122,7 @@ export default class LineChart extends Component {
                 fill: '#ff9f00', // 文本的颜色
                 textBaseline: 'bottom' // 文本基准线，可取 top middle bottom，默认为middle
               },
-              formatter: (val) => `${val}`
+              formatter: (val) => `${simpleShortInteger(val, 0)}`
             }}
             position={'right'}
             title={{
@@ -145,11 +149,11 @@ export default class LineChart extends Component {
                 fill: '#56b4e9', // 文本的颜色
                 textBaseline: 'bottom' // 文本基准线，可取 top middle bottom，默认为middle
               },
-              formatter: (val) => `${val}`
+              formatter: (val) => `${Currency()}${simpleShortInteger(val, 0)}`
             }}
             position={'right'}
             title={{
-              offset: 100,
+              offset: 130,
               textStyle: {
                 fontSize: 12, // 文本大小
                 fontWeight: 'bold', // 文本粗细
