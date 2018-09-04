@@ -16,7 +16,7 @@ export default class OverviewChart extends Component {
     super(props);
     this.state = {
       filter:{
-        duration:'7d',
+        duration:'24h',
         indicator:'volume'
       },
       datas: {
