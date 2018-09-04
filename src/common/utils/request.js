@@ -12,7 +12,7 @@ function parseJSON(res) {
 }
 
 let checkHost = () => {
-  const relayHost = "//13.112.62.24"
+  const relayHost = "//relay1.loopr.io"
   window.LOOPRING_PROVIDER_HOST = relayHost + '/rpc/v2'
   window.ETH_HOST = relayHost + '/eth'
 

@@ -28,7 +28,13 @@ export default class ListMyFills extends Component {
     this.setState({loadingFills:true})
     const {sourceType, source} = this.props
     const currency = settings.getCurrency();
-    getTrades({pageIndex, pageSize:this.state.page.size, currency, type: sourceType, keyword: source}).then(res => {
+    const params = {pageIndex, pageSize:this.state.page.size, currency}
+    if(sourceType && sourceType !== 'trades' && source) {
+      params.type = sourceType
+      params.keyword = source
+    }
+    console.log(1111, params)
+    getTrades(params).then(res => {
       if (res.result) {
         this.setState({
           loadingFills: false,
@@ -41,6 +47,28 @@ export default class ListMyFills extends Component {
         })
       } else {
         this.setState({loadingFills: false})
+      }
+    })
+  }
+
+  loadDatas(pageIndex) {
+    this.setState({loading:true})
+    const currency = settings.getCurrency()
+    getTrades({
+      pageIndex,
+      pageSize:this.state.page.size,
+      currency
+    }).then(resp => {
+      if(resp.result) {
+        this.setState({
+          trades:resp.result.data,
+          page:{ //pageIndex, pageSize, total
+            total: Math.ceil(resp.result.total / resp.result.pageSize),
+            size:10,
+            current:resp.result.pageIndex
+          },
+          loading:false
+        })
       }
     })
   }
