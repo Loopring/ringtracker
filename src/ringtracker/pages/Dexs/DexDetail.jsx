@@ -5,18 +5,19 @@ import settings from 'modules/storage/settings'
 import routeActions from 'common/utils/routeActions'
 import LineChart from 'ringtracker/components/Charts/LineChart'
 import intl from "react-intl-universal";
-import {Pagination} from "antd";
 
 export default class DexDetail extends Component {
 
   state = {
-    loadingFills: false,
     loadingTrend: false,
+    header: {
+      fees:0,
+      trades:0,
+      volumes:0
+    },
     filter:{
       duration:'24h',
     },
-    trades:[],
-    fills: [],
     page:{
       total:0,
       size:10,
@@ -25,29 +26,7 @@ export default class DexDetail extends Component {
   };
 
   componentWillMount() {
-    this.loadTrades(this.state.page.current)
     this.loadTrend(this.state.filter.duration)
-  }
-
-  loadTrades(pageIndex) {
-    this.setState({loadingFills:true})
-    const currency = settings.getCurrency();
-    const dex = this.props.match.params.dex;
-    getTrades({pageIndex, pageSize:this.state.page.size, currency, type: 'dex', keyword: dex}).then(res => {
-      if (res.result) {
-        this.setState({
-          loadingFills: false,
-          fills:res.result.data,
-          page:{ //pageIndex, pageSize, total
-            total: Math.ceil(res.result.total / res.result.pageSize),
-            size:10,
-            current:res.result.pageIndex
-          },
-        })
-      } else {
-        this.setState({loadingFills: false})
-      }
-    })
   }
 
   loadTrend(duration) {
@@ -74,7 +53,7 @@ export default class DexDetail extends Component {
       })
       this.loadTrend(duration)
     }
-    const {fills, loadingFills, loadingTrend} = this.state;
+    const {loadingTrend} = this.state;
     const dex = this.props.match.params.dex;
     return (
       <div>
@@ -106,10 +85,7 @@ export default class DexDetail extends Component {
             <div className="ml10 mr10 fs18 color-black font-weight-bold">{dex} {intl.get('common.trades')}</div>
           </div>
           <div className="ui segment p20">
-            <FillTable fills={{items: fills, loading: loadingFills}}/>
-            <Pagination className="fs14 s-small mt30 text-right mr50" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
-              this.loadTrades(page)
-            }} />
+            <FillTable sourceType='dex' source={dex}/>
           </div>
         </div>
       </div>

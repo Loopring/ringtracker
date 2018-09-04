@@ -5,18 +5,19 @@ import settings from 'modules/storage/settings'
 import routeActions from 'common/utils/routeActions'
 import intl from "react-intl-universal";
 import LineChart from 'ringtracker/components/Charts/LineChart'
-import {Pagination} from "antd";
 
 export default class RelayerDetail extends Component {
 
   state = {
-    loadingFills: false,
     loadingTrend: false,
     filter:{
       duration:'24h',
     },
-    trades:[],
-    fills: [],
+    header: {
+      fees:0,
+      trades:0,
+      volumes:0
+    },
     page:{
       total:0,
       size:10,
@@ -25,29 +26,7 @@ export default class RelayerDetail extends Component {
   };
 
   componentWillMount() {
-    this.loadTrades(this.state.page.current)
     this.loadTrend(this.state.filter.duration)
-  }
-
-  loadTrades(pageIndex) {
-    this.setState({loadingFills:true})
-    const currency = settings.getCurrency();
-    const relay = this.props.match.params.relay;
-    getTrades({pageIndex, pageSize:this.state.page.size, currency, type: 'relay', keyword: relay}).then(res => {
-      if (res.result) {
-        this.setState({
-          loadingFills: false,
-          fills:res.result.data,
-          page:{ //pageIndex, pageSize, total
-            total: Math.ceil(res.result.total / res.result.pageSize),
-            size:10,
-            current:res.result.pageIndex
-          },
-        })
-      } else {
-        this.setState({loadingFills: false})
-      }
-    })
   }
 
   loadTrend(duration) {
@@ -67,7 +46,6 @@ export default class RelayerDetail extends Component {
     })
   }
 
-
   render() {
     const durationChange = (duration) => { //24h/7d/1m/1y
       this.setState({
@@ -75,7 +53,7 @@ export default class RelayerDetail extends Component {
       })
       this.loadTrend(duration)
     }
-    const {fills, loadingFills, loadingTrend} = this.state;
+    const {loadingTrend} = this.state;
     const relay = this.props.match.params.relay;
     return (
       <div>
@@ -107,10 +85,7 @@ export default class RelayerDetail extends Component {
             <div className="ml10 mr10 fs18 color-black font-weight-bold">{relay} {intl.get('common.trades')}</div>
           </div>
           <div className="ui segment p20">
-            <FillTable fills={{items: fills, loading: loadingFills}}/>
-            <Pagination className="fs14 s-small mt30 text-right mr50" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
-              this.loadTrades(page)
-            }} />
+            <FillTable sourceType='relay' source={relay}/>
           </div>
         </div>
       </div>
