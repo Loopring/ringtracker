@@ -151,6 +151,7 @@ export default {
   protocol: {
     state_obsolete: "Obsolete",
     state_alive: "Alive",
+    unknown: "Unknown Contract"
   },
   trade: {
     title: "Trade Detail",

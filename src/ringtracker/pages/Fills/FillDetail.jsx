@@ -70,7 +70,7 @@ export default class FillDetail extends Component {
           {
             this.state.fills && this.state.fills.length === 1 &&
             this.state.fills.map((fill, index) => {
-              const protocolInfo = config.getProtocolInfo({protocolAddress:fill.protocol})
+              const protocolInfo = config.getProtocolInfo({protocolAddress:fill.protocol}) || {}
               const fillFm = new FillFm(fill)
               return (
                 <div key={index} className="ui segment pl20 pr20">
@@ -84,7 +84,7 @@ export default class FillDetail extends Component {
                   <MetaItem label={intl.get('common.total')} value={fillFm.getTotal()} />
                   <MetaItem label={intl.get('title.lrc_fee')} value={fillFm.getLRCFee()} />
                   <MetaItem label={intl.get('trade.relay')} value={fill.relay} />
-                  <MetaItem label={intl.get('trade.protocol_version')} value={`${protocolInfo.version}[${intl.get('protocol.state_'+protocolInfo.state)}]`} />
+                  <MetaItem label={intl.get('trade.protocol_version')} value={protocolInfo.version ? `${protocolInfo.version}[${intl.get('protocol.state_'+protocolInfo.state)}]` : intl.get('protocol.unknown')} />
                   <MetaItem label={intl.get('trade.date')} value={fill.createTime && commonFm.getFormatTime(toNumber(fill.createTime) * 1e3,'YYYY-MM-DD HH:mm:ss')} />
                 </div>
               )
