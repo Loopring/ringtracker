@@ -107,7 +107,7 @@ export default class DexDetail extends Component {
           </div>
           <div className="ui segment p20">
             <FillTable fills={{items: fills, loading: loadingFills}}/>
-            <Pagination className="fs14 s-small" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
+            <Pagination className="fs14 s-small mt30 text-right mr50" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
               this.loadTrades(page)
             }} />
           </div>
