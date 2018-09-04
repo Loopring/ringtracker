@@ -33,7 +33,6 @@ export default class ListMyFills extends Component {
       params.type = sourceType
       params.keyword = source
     }
-    console.log(1111, params)
     getTrades(params).then(res => {
       if (res.result) {
         this.setState({
