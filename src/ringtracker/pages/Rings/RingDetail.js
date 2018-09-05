@@ -72,9 +72,10 @@ export default class RingDetail extends React.Component {
 
   render() {
     const {item, loading, items} = this.state;
-    const fills =  item.fills && item.fills.filter(fill => config.getTokenByAddress(fill.tokenS) && config.getTokenByAddress(fill.tokenB)).map(fill => {
-      const tokenS = config.getTokenByAddress(fill.tokenS).symbol
-      const tokenB = config.getTokenByAddress(fill.tokenB).symbol
+    const fills =  item.fills && item.fills.map(fill => {
+      
+      const tokenS = config.getTokenByAddress(fill.tokenS) ? config.getTokenByAddress(fill.tokenS).symbol : fill.tokenS
+      const tokenB =  config.getTokenByAddress(fill.tokenB)? config.getTokenByAddress(fill.tokenB).symbol : fill.tokenB
       return {...fill, tokenS, tokenB}
     });
     const getSplitFee = (splitFee) => {
