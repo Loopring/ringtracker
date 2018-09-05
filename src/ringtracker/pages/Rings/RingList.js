@@ -24,7 +24,7 @@ export default class RingList extends React.Component {
     if(r){
       pageIndex = Number(decodeURI(r[2]))
     }
-    window.RELAY.ring.getRings({pageIndex, pageSize: this.state.page.size}).then(res => {
+    window.RELAY.ring.getRings({pageIndex, pageSize: this.state.page.size,status:2}).then(res => {
       if (res.result) {
         this.setState({items: res.result.data, loading: false, page:{...this.state.page,total:res.result.total,current:pageIndex}})
       } else {
@@ -34,10 +34,10 @@ export default class RingList extends React.Component {
   }
 
   pageChange = (pageIndex) => {
-    routeActions.gotoPath(`/rings?page=${pageIndex}`)
+    routeActions.gotoPath(`/rings?page=${pageIndex}`);
     const {page} = this.state;
     this.setState({loading:true});
-    window.RELAY.ring.getRings({pageIndex: pageIndex, pageSize: page.size}).then(res => {
+    window.RELAY.ring.getRings({pageIndex: pageIndex, pageSize: page.size,status:2}).then(res => {
       if (res.result) {
         this.setState({items: res.result.data, loading: false, page:{...page,total:res.result.total,current:pageIndex}})
       } else {
@@ -45,7 +45,7 @@ export default class RingList extends React.Component {
       }
     })
   };
-  
+
   render() {
     const {items, loading,page} = this.state
 

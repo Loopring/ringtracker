@@ -24,7 +24,7 @@ export default class RingTable extends React.Component {
                                            href={`https://etherscan.io/address/${value}`}>{value}</a>,
     };
     const columns =
-      schema.filter(ele => ele.name !== "ringHash" && ele.name !== "blockNumber" && ele.name !== "protocol" && ele.name !== "delegateAddress" && ele.name !== "totalSplitFee")
+      schema.filter(ele => ele.name !== "ringHash" && ele.name !== "blockNumber"&& ele.name !== "status" && ele.name !== "protocol" && ele.name !== "delegateAddress" && ele.name !== "totalSplitFee")
         .map(field => {
           return {
             title: field.title(),
