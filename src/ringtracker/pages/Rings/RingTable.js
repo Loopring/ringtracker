@@ -11,7 +11,7 @@ export default class RingTable extends React.Component {
     const renders = {
       ringIndex: (value, item, index) => <Link className="text-truncate d-block" style={{maxWidth: '150px'}}
                                                to={`/rings/${value}?delegateAddress=${item.delegateAddress}`}>{value}</Link>,
-      miner: (value, item, index) => <a className="text-truncate d-block" style={{maxWidth: '150px'}}
+      miner: (value, item, index) => <a className="text-truncate d-block" style={{maxWidth: '150px'}} target="_blank"
                                            href={`https://etherscan.io/address/${value}`}>{value}</a>,
       feeRecipient: (value, item, index) => <a className="text-truncate d-block" style={{maxWidth: '150px'}}
                                                target="_blank"
@@ -24,7 +24,7 @@ export default class RingTable extends React.Component {
                                            href={`https://etherscan.io/address/${value}`}>{value}</a>,
     };
     const columns =
-      schema.filter(ele => ele.name !== "ringHash" && ele.name !== "txHash" && ele.name !== "protocol" && ele.name !== "delegateAddress" && ele.name !== "totalSplitFee")
+      schema.filter(ele => ele.name !== "ringHash" && ele.name !== "blockNumber" && ele.name !== "protocol" && ele.name !== "delegateAddress" && ele.name !== "totalSplitFee")
         .map(field => {
           return {
             title: field.title(),
