@@ -61,6 +61,7 @@ const schema = [
       switch (item) {
         case 1:
           return intl.get('ring.pending');
+        case 0:
         case 2:
           return intl.get('ring.suc');
         default:
