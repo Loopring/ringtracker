@@ -39,7 +39,7 @@ export default class ListMyFills extends Component {
           loadingFills: false,
           fills:res.result.data,
           page:{ //pageIndex, pageSize, total
-            total: Math.ceil(res.result.total / res.result.pageSize),
+            total: res.result.total,
             size:10,
             current:res.result.pageIndex
           },
