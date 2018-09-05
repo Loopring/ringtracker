@@ -5,6 +5,7 @@ import LineChart from 'ringtracker/components/Charts/LineChart'
 import routeActions from 'common/utils/routeActions'
 import intl from 'react-intl-universal'
 import settings from 'modules/storage/settings'
+import config from 'common/config'
 
 export default class TokenDetail extends Component {
   static displayName = 'TokenDetail';
@@ -37,7 +38,8 @@ export default class TokenDetail extends Component {
     const {location} = this.props
     const params = location.pathname.split('/')
     const token = params.length === 3 ? params[2] : ''
-    this.loadTrend(this.state.filter.duration, token)
+    const tokenConfig = config.getTokenBySymbol(token)
+    this.loadTrend(this.state.filter.duration, tokenConfig.address)
   }
 
   loadTrend(duration, token) {
@@ -55,15 +57,16 @@ export default class TokenDetail extends Component {
   }
 
   render() {
+    const {location} = this.props
+    const params = location.pathname.split('/')
+    const token = params.length === 3 ? params[2] : ''
+    const tokenConfig = config.getTokenBySymbol(token)
     const durationChange = (duration) => { //24h/7d/1m/1y
       this.setState({
         filter:{duration}
       })
-      this.loadTrend(duration)
+      this.loadTrend(duration, tokenConfig.address)
     }
-    const {location} = this.props
-    const params = location.pathname.split('/')
-    const token = params.length === 3 ? params[2] : ''
     return (
       <div>
         <div className="ui segments">
@@ -94,7 +97,7 @@ export default class TokenDetail extends Component {
             <div className="ml10 mr10 fs18 color-black font-weight-bold">{token} {intl.get('common.trades')}</div>
           </div>
           <div className="ui segment p20">
-            <FillTable sourceType='token' source={token}/>
+            <FillTable sourceType='token' source={tokenConfig.address}/>
           </div>
         </div>
       </div>

@@ -44,7 +44,7 @@ export default function TokenTable(props) {
                           <div><Currency/>{getFormatNum(toFixed(item.volume, 2))}</div>
                         </td>
                         <td>
-                          <a onClick={routeActions.gotoPath.bind(this,`/dexs/${item.dex}`)}>View Detail</a>
+                          <a onClick={routeActions.gotoPath.bind(this,`/dexs/${item.dex}`)}>{intl.get('options.view_detail')}</a>
                         </td>
                      </tr>
                     )

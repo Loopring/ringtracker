@@ -20,11 +20,11 @@ export default class TokenTable extends React.Component {
             <table className="table table-responsive fs14">
               <thead className="">
               <tr className="">
-                <th className="">Name</th>
-                <th className="">Website</th>
-                <th className="">Trades</th>
-                <th className="">Volume</th>
-                <th className="">Options</th>
+                <th className="">{intl.get("dex.name")}</th>
+                <th className="">{intl.get("dex.website")}</th>
+                <th className="">{intl.get("dex.trades")}</th>
+                <th className="">{intl.get("dex.volume")}</th>
+                <th className="">{intl.get("dex.options")}</th>
               </tr>
               </thead>
               <tbody className="">
@@ -43,7 +43,7 @@ export default class TokenTable extends React.Component {
                         <div><Currency/> {toFixed(item.volume,8)}</div>
                       </td>
                       <td>
-                        <a onClick={routeActions.gotoPath.bind(this, `/relays/${item.relay}`)}>View Detail</a>
+                        <a onClick={routeActions.gotoPath.bind(this, `/relays/${item.relay}`)}>{intl.get('options.view_detail')}</a>
                       </td>
                     </tr>
                   )
