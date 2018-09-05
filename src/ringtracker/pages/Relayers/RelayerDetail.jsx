@@ -53,6 +53,7 @@ export default class RelayerDetail extends Component {
       })
       this.loadTrend(duration)
     }
+    const {location} = this.props
     const {loadingTrend} = this.state;
     const relay = this.props.match.params.relay;
     return (
@@ -85,7 +86,7 @@ export default class RelayerDetail extends Component {
             <div className="ml10 mr10 fs18 color-black font-weight-bold">{relay} {intl.get('common.trades')}</div>
           </div>
           <div className="ui segment p20">
-            <FillTable sourceType='relay' source={relay}/>
+            <FillTable sourceType='relay' source={relay} location={location}/>
           </div>
         </div>
       </div>
