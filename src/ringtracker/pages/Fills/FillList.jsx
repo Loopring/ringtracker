@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FillTable from './FillTable';
 import {getTrades} from 'common/utils/relay'
 import intl from 'react-intl-universal'
+import {toNumber} from "LoopringJS/common/formatter";
 
 export default class FillList extends Component {
   static displayName = 'FillList';
@@ -12,7 +13,29 @@ export default class FillList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      pageIndex:1
+    };
+  }
+
+  componentDidMount() {
+    const {location} = this.props
+    if(location.search) {
+      const arr = location.search.substring(1).split('=')
+      if(arr.length === 2 && arr[0] === 'page'){
+        this.setState({pageIndex : arr[1]})
+      }
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const location = nextProps.location
+    if(location.search) {
+      const arr = location.search.substring(1).split('=')
+      if(arr.length === 2 && arr[0] === 'page'){
+        this.setState({pageIndex : toNumber(arr[1])})
+      }
+    }
   }
 
   render() {
@@ -23,7 +46,7 @@ export default class FillList extends Component {
             <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('common.recent_trades')}</div>
           </div>
           <div className="ui segment p20">
-            <FillTable sourceType='trades'/>
+            <FillTable sourceType='trades' pageIndex={this.state.pageIndex} location={this.props.location}/>
           </div>
         </div>
       </div>
