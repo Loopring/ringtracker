@@ -5,6 +5,7 @@ import intl from 'react-intl-universal'
 import routeActions from 'common/utils/routeActions'
 import {getTrades} from "../../../common/utils/relay";
 import settings from 'modules/storage/settings'
+import {toNumber} from "LoopringJS/common/formatter";
 
 export default class ListMyFills extends Component {
   state = {
@@ -20,8 +21,16 @@ export default class ListMyFills extends Component {
     },
   };
 
-  componentWillMount() {
-    this.loadTrades(this.state.page.current)
+  componentDidMount() {
+    this.loadTrades(1)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.pageIndex) {
+      this.loadTrades(toNumber(nextProps.pageIndex))
+    } else {
+      this.loadTrades(1)
+    }
   }
 
   loadTrades(pageIndex) {
@@ -73,6 +82,7 @@ export default class ListMyFills extends Component {
   }
 
   render() {
+    const {location} = this.props;
     return (
       <div className="">
         <Spin spinning={this.state.loadingFills}>
@@ -122,7 +132,11 @@ export default class ListMyFills extends Component {
           </div>
         </Spin>
         <Pagination className="fs14 s-small mt30 text-right mr50" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
-          this.loadTrades(page)
+          if(location.pathname.split('/').length === 2) {
+            routeActions.gotoPath(`${location.pathname}?page=${page}`)
+          } else {
+            this.loadTrades(page)
+          }
         }} />
       </div>
     )

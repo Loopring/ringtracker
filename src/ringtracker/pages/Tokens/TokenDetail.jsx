@@ -97,7 +97,7 @@ export default class TokenDetail extends Component {
             <div className="ml10 mr10 fs18 color-black font-weight-bold">{token} {intl.get('common.trades')}</div>
           </div>
           <div className="ui segment p20">
-            <FillTable sourceType='token' source={tokenConfig.address}/>
+            <FillTable sourceType='token' source={tokenConfig.address} location={location}/>
           </div>
         </div>
       </div>

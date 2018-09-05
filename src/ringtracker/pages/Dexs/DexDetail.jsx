@@ -53,6 +53,7 @@ export default class DexDetail extends Component {
       })
       this.loadTrend(duration)
     }
+    const {location} = this.props
     const {loadingTrend} = this.state;
     const dex = this.props.match.params.dex;
     return (
@@ -85,7 +86,7 @@ export default class DexDetail extends Component {
             <div className="ml10 mr10 fs18 color-black font-weight-bold">{dex} {intl.get('common.trades')}</div>
           </div>
           <div className="ui segment p20">
-            <FillTable sourceType='dex' source={dex}/>
+            <FillTable sourceType='dex' source={dex} location={location}/>
           </div>
         </div>
       </div>
