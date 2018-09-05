@@ -41,14 +41,15 @@ export default class RingDetail extends React.Component {
           window.RELAY.ring.getRingMinedDetail({delegateAddress: contract.delegateAddress, ringIndex: id})
             .then(res => {
               if (res.result) {
-                items.push(res.result.ringInfo)
+                items.push(res.result)
               }
               callback();
             })
         }
       }, (err) => {
+        console.log(JSON.stringify(items))
         if (items.length > 1) {
-          this.setState({items, loading: false, item: {}})
+          this.setState({items:items.map(item => item.ringInfo), loading: false, item: {}})
         } else if (items.length === 1) {
           this.setState({items: [], loading: false, item: items[0]})
         } else {
