@@ -1,7 +1,7 @@
 import React from 'react'
 import config from '../../../common/config'
 import {Card} from 'antd'
-import Fills from '../Fills'
+import FillTable from './FillTable'
 import schema from '../../../modules/rings/schema';
 import intl from 'react-intl-universal'
 import {toBig} from "LoopringJS/common/formatter"
@@ -71,7 +71,7 @@ export default class RingDetail extends React.Component {
 
   render() {
     const {item, loading, items} = this.state;
-    const fills = items.length > 1 && item.fills && item.fills.filter(fill => config.getTokenByAddress(fill.tokenS) && config.getTokenByAddress(fill.tokenB)).map(fill => {
+    const fills =  item.fills && item.fills.filter(fill => config.getTokenByAddress(fill.tokenS) && config.getTokenByAddress(fill.tokenB)).map(fill => {
       const tokenS = config.getTokenByAddress(fill.tokenS).symbol
       const tokenB = config.getTokenByAddress(fill.tokenB).symbol
       return {...fill, tokenS, tokenB}
@@ -124,7 +124,7 @@ export default class RingDetail extends React.Component {
             }
           </Card>
           <Card title={intl.get('ring_detail.fill_table')}>
-            <Fills.FillTable fills={{items: fills, loading: loading}}/>
+            <FillTable fills={{items: fills, loading: loading}}/>
           </Card>
         </div>}
         {

@@ -1,5 +1,7 @@
 import React from 'react'
 import RingTable from './RingTable'
+import routeActions from 'common/utils/routeActions'
+
 
 
 export default class RingList extends React.Component {
@@ -16,17 +18,23 @@ export default class RingList extends React.Component {
   };
 
   componentWillMount() {
-    window.RELAY.ring.getRings({pageIndex: this.state.page.current, pageSize: this.state.page.size}).then(res => {
+    const reg = new RegExp("(^|&)page=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    const r = this.props.location.search.substr(1).match(reg);  //匹配目标参数i
+    let pageIndex= this.state.page.current
+    if(r){
+      pageIndex = Number(decodeURI(r[2]))
+    }
+    window.RELAY.ring.getRings({pageIndex, pageSize: this.state.page.size}).then(res => {
       if (res.result) {
-        this.setState({items: res.result.data, loading: false, page:{...this.state.page,total:res.result.total}})
+        this.setState({items: res.result.data, loading: false, page:{...this.state.page,total:res.result.total,current:pageIndex}})
       } else {
-        this.setState({loading: false})
+        this.setState({loading: false,page:{...this.state.page,current:pageIndex}})
       }
     })
   }
 
-
   pageChange = (pageIndex) => {
+    routeActions.gotoPath(`/rings?page=${pageIndex}`)
     const {page} = this.state;
     this.setState({loading:true});
     window.RELAY.ring.getRings({pageIndex: pageIndex, pageSize: page.size}).then(res => {
@@ -37,11 +45,9 @@ export default class RingList extends React.Component {
       }
     })
   };
-
-
+  
   render() {
     const {items, loading,page} = this.state
-
 
     return (
       <div className="ui segments">

@@ -26,7 +26,7 @@ const asideMenuConfig = [
   },
   {
     name: intl.get('taps.rings'),
-    path: '/rings',
+    path: '/rings?page=1',
   },
 ];
 
