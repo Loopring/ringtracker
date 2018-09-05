@@ -62,7 +62,7 @@ export default class ListMyFills extends Component {
         this.setState({
           trades:resp.result.data,
           page:{ //pageIndex, pageSize, total
-            total: Math.ceil(resp.result.total / resp.result.pageSize),
+            total: resp.result.total,
             size:10,
             current:resp.result.pageIndex
           },
