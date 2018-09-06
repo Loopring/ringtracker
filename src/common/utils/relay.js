@@ -42,7 +42,7 @@ export async function overview() {
 export async function getTrend({duration='24h', currency, type, keyword, len=50}) {
   const params = [{duration, currency, type, keyword, len}];
   let body = {};
-  body.method = 'loopring_getTrend';
+  body.method = 'loopring_getRingTrackerTrend';
   body.params = params;
   return request({
     method: 'post',
