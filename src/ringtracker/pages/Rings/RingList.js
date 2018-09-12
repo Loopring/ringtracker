@@ -52,7 +52,7 @@ export default class RingList extends React.Component {
     return (
       <div className="ui segments">
         <div className="ui segment d-flex justify-content-between align-items-center">
-          <div className="ml10 mr10 fs18 color-black font-weight-bold">Rings</div>
+          <div className="ml10 mr10 fs18 color-black ">Rings</div>
         </div>
         <div className="ui segment p20">
           <RingTable items={items} loading={loading} page={page} pageChange={this.pageChange}/>

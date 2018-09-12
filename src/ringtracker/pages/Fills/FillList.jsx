@@ -43,7 +43,7 @@ export default class FillList extends Component {
       <div>
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('common.recent_trades')}</div>
+            <div className="ml10 mr10 fs18 color-black ">{intl.get('common.recent_trades')}</div>
           </div>
           <div className="ui segment p20">
             <FillTable sourceType='trades' pageIndex={this.state.pageIndex} location={this.props.location}/>

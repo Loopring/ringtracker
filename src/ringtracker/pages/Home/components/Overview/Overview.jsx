@@ -62,21 +62,18 @@ export default class OverviewBoard extends Component {
       <Spin spinning={this.state.loading}>
       <div className="ui segments bg-white">
           <div className="ui segment p10">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('common.overview')}</div>
+            <div className="ml10 mr10 fs18 color-black ">{intl.get('common.overview')}</div>
           </div>
           <div className="ui segment">
-            <div className="row no-gutters ml0 mr0 pt15 pb15">
+            <div className="row no-gutters ml0 mr0 pt25 pb25">
               {this.state.datas.map((item, index) => {
                 return (
-                  <div key={index} className="col">
+                  <div key={index} className="col pointer" onClick={routeActions.gotoPath.bind(this,item.path)}>
                     <div className="text-center" style={{}}>
-                      <div className="fs30 font-weight-bold color-black text-nowrap" style={{}}>
+                      <div className="fs20 color-black-1 text-nowrap" style={{}}>
                         {FormatAmount({value:item.count, precision:0})}
                       </div>
-                      <div className="fs16 color-black-1 text-nowrap" style={{}}>{item.title}</div>
-                      <div className="">
-                        <a className="mt5 fs12" onClick={routeActions.gotoPath.bind(this,item.path)}>{intl.get('common.viewall')}</a>
-                      </div>
+                      <div className="fs16 color-black-2 text-nowrap" style={{}}>{item.title}</div>
                     </div>
                   </div>
                 );

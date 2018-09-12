@@ -67,7 +67,7 @@ export default class OverviewChart extends Component {
       <Spin spinning={this.state.loading}>
       <div className="ui segments bg-white">
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('common.ecosystem')} {intl.get('common.overview')}</div>
+            <div className="ml10 mr10 fs18 color-black ">{intl.get('common.ecosystem')} {intl.get('common.overview')}</div>
             <div className="d-none d-sm-block">
               <div className="ui buttons basic mr10">
                 <button className={this.state.filter.indicator === 'volume' ? 'ui button active' : 'ui button'} onClick={indicatorChange.bind(this, 'volume')}>{intl.get('overview.volume')}</button>

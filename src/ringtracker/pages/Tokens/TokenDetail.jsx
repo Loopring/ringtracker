@@ -71,7 +71,7 @@ export default class TokenDetail extends Component {
       <div>
         <div className="ui segments">
           {false && <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">{token} {intl.get('common.overview')}</div>
+            <div className="ml10 mr10 fs18 color-black ">{token} {intl.get('common.overview')}</div>
             <div className="ui buttons basic mr10">
               <button className="ui button" onClick={routeActions.goBack.bind(this)}>{intl.get('common.goback')}</button>
             </div>
@@ -94,7 +94,7 @@ export default class TokenDetail extends Component {
         </div>
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">{token} {intl.get('common.trades')}</div>
+            <div className="ml10 mr10 fs18 color-black ">{token} {intl.get('common.trades')}</div>
           </div>
           <div className="ui segment p20">
             <FillTable sourceType='token' source={tokenConfig.address} location={location}/>

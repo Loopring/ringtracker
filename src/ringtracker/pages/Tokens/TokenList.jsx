@@ -54,7 +54,7 @@ export default class TokenList extends Component {
         <TokensOverview />
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('taps.tokens')}</div>
+            <div className="ml10 mr10 fs18 color-black ">{intl.get('taps.tokens')}</div>
             <div className="ui buttons basic mr10">
               <button className="ui button">Apply To List</button>
             </div>

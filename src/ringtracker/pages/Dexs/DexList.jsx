@@ -54,7 +54,7 @@ export default class DexList extends Component {
         <DexOverview />
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold">{intl.get('dexs.title')}</div>
+            <div className="ml10 mr10 fs18 color-black ">{intl.get('dexs.title')}</div>
           </div>
           <div className="ui segment p20">
             <DexTable dexs={{items:this.state.datas, loading:this.state.loading}}/>
