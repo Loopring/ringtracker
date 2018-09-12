@@ -45,8 +45,8 @@ export default class Header extends Component {
               </div>
               <div className="col">
               </div>
-              <div className="col-auto pt10 pb10">
-                  <div className="row align-items-center ml0 mr0 no-gutters mb10">
+              <div className="col-auto" style={{padding:'7px 0px 8px'}}>
+                  <div className="row align-items-center ml0 mr0 no-gutters mb5">
                     <div hidden className="col-auto color-black-3">
                       <a href="https://loopring.org" target="_blank" className="fs14 mr15 color-black-2">Loopring Fund</a>
                       <a href="https://loopring.io" target="_blank" className="fs14 mr15 color-black-2">Loopring Dex</a>
@@ -55,21 +55,21 @@ export default class Header extends Component {
                     <div className="col">
                     </div>
                     <div className="col-auto pl5">
-                      <Select size="small" defaultValue={settings.getCurrency()} onChange={currencyChange}>
-                        <Select.Option value="USD">$ US Dollar[USD]</Select.Option>
-                        <Select.Option value="CNY">¥ Chinese Yuan[CNY]</Select.Option>
-                        <Select.Option value="ETH">Ξ Ether[ETH]</Select.Option>
-                        <Select.Option value="BTC">Ƀ Bitcoin[BTC]</Select.Option>
+                      <Select size="" defaultValue={settings.getCurrency()} onChange={currencyChange}>
+                        <Select.Option value="USD">$ USD</Select.Option>
+                        <Select.Option value="CNY">¥ CNY</Select.Option>
+                        <Select.Option value="ETH">Ξ ETH</Select.Option>
+                        <Select.Option value="BTC">Ƀ BTC</Select.Option>
                       </Select>
                     </div>
                     <div className="col-auto pl5">
-                      <Select size="small" defaultValue={settings.getLanguage()} onChange={languageChange}>
+                      <Select size="" defaultValue={settings.getLanguage()} onChange={languageChange}>
                         <Select.Option value="en-US">English</Select.Option>
                         <Select.Option value="zh-CN">中文</Select.Option>
                       </Select>
                     </div>
                   </div>
-                <Search style={{ width: 320 }} onSearch={value => routeActions.gotoPath(`/search/${value}`)} enterButton={true} placeholder="Address, TxHash, OrderHash, RingHash" />
+                <Search style={{ width: 320 }} onSearch={value => routeActions.gotoPath(`/search/${value}`)} enterButton={false} placeholder="Address, TxHash, OrderHash, RingHash" />
               </div>
             </div>
           </div>
