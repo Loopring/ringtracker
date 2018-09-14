@@ -14,7 +14,7 @@ export default {
 	},
   "theme": {
     // "@font-family-no-number"  : "Roboto ,PingFang SC",
-    "@font-family"            : "Roboto-Light , Helvetica Neue, Helvetica,sans-serif",
+    "@font-family"            : "Roboto , Helvetica Neue, Helvetica,sans-serif",
     "@primary-color": "#1c60ff",
     "@link-color": "#1c60ff",
     "@border-radius-base": "0px",
