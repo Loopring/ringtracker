@@ -1,18 +1,22 @@
+.ant-menu-horizontal{
+  line-height: 40px !important;
+}
 .ant-menu-item, .ant-menu-submenu-title{
-  padding:0 12px !important;
+  padding:0 0px !important;
+  margin:0 13px
 }
 .ant-menu-horizontal{
   border-bottom: none !important;
 }
 .ant-menu-horizontal > .ant-menu-item-selected{
-  border-bottom:none !important;
+  // border-bottom:none !important;
   color:#1c60ff !important;
   a{
     color:#1c60ff !important;
   }
 }
 .ant-menu-horizontal > .ant-menu-item-active{
-  border-bottom:none !important;
+  // border-bottom:none !important;
   a{
     color:#1c60ff !important;
   }
@@ -28,7 +32,7 @@
   z-index: 999;
   background: #fff;
   min-width: 1280px;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
   .header-content {
     width: 100%;
     padding: 0 20px;

@@ -75,7 +75,7 @@ export default class Header extends Component {
               linkProps.href = nav.path;
               return (
                 <MenuItem key={nav.path}>
-                  <a {...linkProps} className="fs16 pt15 pb15">
+                  <a {...linkProps} className="fs16">
                     <span>
                       {nav.name}
                     </span>
@@ -86,7 +86,7 @@ export default class Header extends Component {
             linkProps.to = nav.path;
             return (
               <MenuItem key={nav.path}>
-                <Link {...linkProps} className="fs16 pt10 pb10">
+                <Link {...linkProps} className="fs16">
                   <span>
                     {nav.name}
                   </span>
