@@ -70,14 +70,8 @@ export default class TokenDetail extends Component {
     return (
       <div>
         <div className="ui segments">
-          {false && <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black ">{token} {intl.get('common.overview')}</div>
-            <div className="ui buttons basic mr10">
-              <button className="ui button" onClick={routeActions.goBack.bind(this)}>{intl.get('common.goback')}</button>
-            </div>
-          </div>}
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black font-weight-bold text-nowrap">{token} {intl.get('common.trade')} {intl.get('common.overview')}</div>
+            <div className="ml10 mr10 fs18 color-black text-nowrap">{token} {intl.get('common.overview')}</div>
             <div className="d-none d-sm-block">
               <div className="ui buttons basic mr10 ">
                 <button className={this.state.filter.duration === '24h' ? 'ui button active' : 'ui button'} onClick={durationChange.bind(this, '24h')}>24H</button>

@@ -99,6 +99,7 @@ export default class ListMyFills extends Component {
                 <th className="border-none">{intl.get('title.lrc_fee')}</th>
                 <th className="border-none">{intl.get('title.created')}</th>
                 <th className="border-none">{intl.get('ring.ringIndex')}</th>
+                <th className="border-none">{intl.get('trade.relay')}</th>
                 <th className="border-none">{intl.get('title.options')}</th>
               </tr>
               </thead>
@@ -119,6 +120,7 @@ export default class ListMyFills extends Component {
                       <td>{fillFm.getLRCFee()}</td>
                       <td>{fillFm.getCreateTime()}</td>
                       <td>{renders.ringIndex(fillFm,actions)}</td>
+                      <td>{fillFm.relay}</td>
                       <td><a onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)}>{intl.get('options.view_detail')}</a></td>
                     </tr>
                   )
