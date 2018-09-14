@@ -33,9 +33,8 @@ const styles = {
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     marginLeft: '10px',
-    fontSize: '18px',
+    fontSize: '20px',
     // color: window.themeConfig && window.themeConfig.primaryColor,
     color: "#1c60ff",
-    fontWeight: 'bold',
   },
 };
