@@ -20,11 +20,12 @@ export default class TokenTable extends React.Component {
             <table className="table table-responsive fs14">
               <thead className="">
               <tr className="">
-                <th className="">{intl.get("dex.name")}</th>
-                <th className="">{intl.get("dex.website")}</th>
-                <th className="">{intl.get("dex.trades")}</th>
-                <th className="">{intl.get("dex.volume")}</th>
-                <th className="">{intl.get("dex.options")}</th>
+                <th className="">{intl.get("ring.ringIndex")}</th>
+                <th className="">{intl.get("ring.fills")}</th>
+                <th className="">{intl.get("ring.miner")}</th>
+                <th className="">{intl.get("ring.ringHash")}</th>
+                <th className="">{intl.get("ring.total_lrc_fee")}</th>
+                <th className="">{intl.get("ring.time")}</th>
               </tr>
               </thead>
               <tbody className="">

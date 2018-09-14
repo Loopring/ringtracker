@@ -90,7 +90,7 @@ export default class ListMyFills extends Component {
             <table className="table table-responsive fs14" >
               <thead className="border-none">
               <tr className="border-none">
-                <th className="border-none">{intl.get('ring.ringIndex')}</th>
+                
                 <th className="border-none">{intl.get('common.market')}</th>
                 <th className="border-none">{intl.get('common.side')}</th>
                 <th className="border-none">{intl.get('common.amount')}</th>
@@ -98,6 +98,7 @@ export default class ListMyFills extends Component {
                 <th className="border-none">{intl.get('common.total')}</th>
                 <th className="border-none">{intl.get('title.lrc_fee')}</th>
                 <th className="border-none">{intl.get('title.created')}</th>
+                <th className="border-none">{intl.get('ring.ringIndex')}</th>
                 <th className="border-none">{intl.get('title.options')}</th>
               </tr>
               </thead>
@@ -110,7 +111,6 @@ export default class ListMyFills extends Component {
                   }
                   return (
                     <tr key={index}>
-                      <td>{renders.ringIndex(fillFm,actions)}</td>
                       <td>{item.market}</td>
                       <td>{renders.side(fillFm)}</td>
                       <td>{fillFm.getAmount()}</td>
@@ -118,6 +118,7 @@ export default class ListMyFills extends Component {
                       <td>{fillFm.getTotal()}</td>
                       <td>{fillFm.getLRCFee()}</td>
                       <td>{fillFm.getCreateTime()}</td>
+                      <td>{renders.ringIndex(fillFm,actions)}</td>
                       <td><a onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)}>{intl.get('options.view_detail')}</a></td>
                     </tr>
                   )
@@ -146,7 +147,7 @@ export default class ListMyFills extends Component {
 const renders = {
   ringIndex: (fm,actions) => {
     return (
-        <a className="text-truncate text-left color-blue-500" onClick={actions && actions.goToRingDetail}>
+        <a className="text-truncate text-left" onClick={actions && actions.goToRingDetail}>
           {fm.fill.ringIndex}
           <span hidden>{fm.fill.ringHash}</span>
         </a>

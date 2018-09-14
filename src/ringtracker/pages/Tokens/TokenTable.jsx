@@ -19,7 +19,6 @@ export default class TokenTable extends Component {
             <table className="table table-responsive fs14" >
               <thead className="">
               <tr className="">
-                {false && <th className="">#</th>}
                 <th className="">{intl.get('title.token')}</th>
                 <th className="">{intl.get('title.last_price')}</th>
                 <th className="">{intl.get('title.trades')}</th>
@@ -32,7 +31,6 @@ export default class TokenTable extends Component {
                 tokens.items.map((item,index)=>{
                   return (
                     <tr key={index}>
-                      {false && <td>{index+1}</td>}
                       <td>
                         <a onClick={routeActions.gotoPath.bind(this,`/tokens/${item.symbol}`)}>{item.symbol}</a>
                       </td>
@@ -41,10 +39,13 @@ export default class TokenTable extends Component {
                       </td>
                       <td>
                         {getFormatNum(item.trade)}
+
                       </td>
-                      <td className="text-left">
-                        <div><Currency/>{getFormatNum(toFixed(item.volume, 2))}</div>
-                        <div className="color-black-3 fs10 text-left">{getFormatNum(item.tokenVolume)} {item.symbol}</div>
+                      <td>
+                        <div className="text-left">
+                          <div><Currency/>{getFormatNum(toFixed(item.volume, 2))}</div>
+                          <div className="color-black-4 fs12 text-left w-100 d-block">{getFormatNum(item.tokenVolume)} {item.symbol}</div>
+                        </div>
                       </td>
                       <td>
                         <a onClick={routeActions.gotoPath.bind(this,`/tokens/${item.symbol}`)}>{intl.get('options.view_detail')}</a>

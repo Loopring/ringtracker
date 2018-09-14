@@ -119,7 +119,7 @@ export default {
     volume: "Volume",
   },
   options: {
-    view_detail: "View Detail",
+    view_detail: "Detail",
     goback: words.goback,
   },
   ring: {
