@@ -27,7 +27,7 @@ export default class Head extends Component {
       <div className="row pt15 pb15">
         <div className="col">
           <div className="text-center">
-            <div className="fs18 color-black-1"><Currency/>{data.volumes ? getFormatNum(toFixed(toBig(data.volumes), precision)) : 0}</div>
+            <div className="fs18 color-black-1"><Currency/> {data.volumes ? getFormatNum(toFixed(toBig(data.volumes), precision)) : 0}</div>
             <div className="fs16 color-black-2">{intl.get('overview.volume')}</div>
           </div>
         </div>
@@ -39,7 +39,7 @@ export default class Head extends Component {
         </div>
         <div className="col">
           <div className="text-center">
-            <div className="fs18 color-black-1"><Currency/>{data.fees ? getFormatNum(toFixed(toBig(data.fees), precision)) : 0}</div>
+            <div className="fs18 color-black-1"><Currency/> {data.fees ? getFormatNum(toFixed(toBig(data.fees), precision)) : 0}</div>
             <div className="fs16 color-black-2">{intl.get('overview.fees')}</div>
           </div>
         </div>
