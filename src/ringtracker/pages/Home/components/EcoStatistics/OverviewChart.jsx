@@ -86,16 +86,13 @@ export default class OverviewChart extends Component {
           <div className="ui segment">
             <div className="row ml0 mr0">
               <div className="col-md-4">
-                <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">{intl.get('taps.tokens')}</div>
-                <PieDonutChart datas={this.state.datas.token}/>
+                <PieDonutChart title={intl.get('taps.tokens')} datas={this.state.datas.token}/>
               </div>
               <div className="col-md-4">
-                <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">{intl.get('taps.relays')}</div>
-                <PieDonutChart datas={this.state.datas.relay}/>
+                <PieDonutChart title={intl.get('taps.relays')} datas={this.state.datas.relay}/>
               </div>
               <div className="col-md-4">
-                <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">{intl.get('taps.dexs')}</div>
-                <PieDonutChart datas={this.state.datas.dex}/>
+                <PieDonutChart title={intl.get('taps.dexs')}  datas={this.state.datas.dex}/>
               </div>
             </div>
           </div>

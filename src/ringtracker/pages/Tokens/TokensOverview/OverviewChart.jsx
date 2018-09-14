@@ -71,16 +71,13 @@ export default class OverviewChart extends Component {
             <div className="ui segment p20">
               <div className="row ml0 mr0">
                 <div className="col-md-4">
-                  <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">{intl.get('overview.volume')}</div>
-                  <PieDonutChart datas={this.state.datas.volume}/>
+                  <PieDonutChart title={intl.get('overview.volume')} datas={this.state.datas.volume}/>
                 </div>
                 <div className="col-md-4">
-                  <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">{intl.get('overview.trades')}</div>
-                  <PieDonutChart datas={this.state.datas.trade}/>
+                  <PieDonutChart title={intl.get('overview.trades')} datas={this.state.datas.trade}/>
                 </div>
                 <div className="col-md-4">
-                  <div className="text-center fs16 pb5 pt10 font-weight-bold color-black">{intl.get('overview.fees')}</div>
-                  <PieDonutChart datas={this.state.datas.fee}/>
+                  <PieDonutChart title={intl.get('overview.fees')} datas={this.state.datas.fee}/>
                 </div>
               </div>
             </div>
