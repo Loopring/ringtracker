@@ -1,0 +1,20 @@
+
+@brand-primary: #1c60ff;
+@brand-primary-light: fade(@brand-primary,10%);
+@brand-primary-tap: fade(@brand-primary,95%);
+@brand-error: #FF6858; 
+@brand-important: @brand-error; // hot dot
+@brand-success: #007E51; 
+
+@fill-body: fade(@brand-primary,3%);
+// @fill-body: lighten(@brand-primary,4%);
+
+@color-text-placeholder:rgba(255,255,255,0.25) ;
+
+body{
+  background: @fill-body !important;
+}
+
+.bg-fill{
+  background:@fill-body !important;
+}

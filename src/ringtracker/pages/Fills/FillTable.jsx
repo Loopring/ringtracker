@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Badge, Pagination, Spin} from 'antd'
+import {Badge, Pagination, Spin,Button} from 'antd'
 import {FillFm} from 'modules/fills/formatters'
 import intl from 'react-intl-universal'
 import routeActions from 'common/utils/routeActions'
@@ -121,7 +121,9 @@ export default class ListMyFills extends Component {
                       <td>{fillFm.getCreateTime()}</td>
                       <td>{renders.ringIndex(fillFm,actions)}</td>
                       <td>{fillFm.relay}</td>
-                      <td><a onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)}>{intl.get('options.view_detail')}</a></td>
+                      <td>
+                        <Button type="primary" onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)}>{intl.get('options.view_detail')}</Button>
+                      </td>
                     </tr>
                   )
                 })
@@ -157,10 +159,10 @@ const renders = {
   },
   side: (fm) => {
     if (fm.fill.side === 'sell') {
-      return <div className="text-error">{intl.get('common.sell')}</div>
+      return <div className="color-error">{intl.get('common.sell')}</div>
     }
     if (fm.fill.side === 'buy') {
-      return <div className="text-success">{intl.get('common.buy')}</div>
+      return <div className="color-success">{intl.get('common.buy')}</div>
     }
   },
 }
