@@ -74,8 +74,27 @@ export default class FillDetail extends Component {
               const fillFm = new FillFm(fill)
               return (
                 <div key={index} className="ui segment pl20 pr20">
-                  <MetaItem label={intl.get('ring.ringIndex')} value={<a href={`#/rings/${fill.ringIndex}?delegateAddress=${fill.delegateAddress}`}>{fill.ringIndex}</a>} />
+                  <MetaItem label={"Type"} value={"P2P"} />
                   <MetaItem label={intl.get('trade.transaction_hash')} value={<a href={`https://etherscan.io/tx/${fill.txHash}`} target='_blank'>{fill.txHash}</a>} />
+                  <MetaItem label={"Ring"} value={
+                    <a className="fs13" onClick={()=>{}}>
+                      0x8b327e5e60a7b387b850734cb3be412832ce81426069d42f5e8318212f316afb
+                    </a>
+                  } />
+                  {
+                    false && 
+                    <MetaItem label={intl.get('ring.ringIndex')} value={<a href={`#/rings/${fill.ringIndex}?delegateAddress=${fill.delegateAddress}`}>{fill.ringIndex}</a>} />
+                  }
+                  <MetaItem label={"Miner"} value={
+                    <a className="fs13" onClick={()=>{}}>
+                     0x8b327e5e60a7b387b850734cb3be412832ce81426069d42f5e8318212f316afb
+                    </a>
+                  } />
+                  <MetaItem label={"Relayer"} value={
+                    <a className="fs13" onClick={()=>{}}>
+                     Loopring
+                    </a>
+                  } />
                   <MetaItem label={intl.get('trade.order_hash')} value={fill.orderHash} />
                   <MetaItem label={intl.get('common.market')} value={fill.market} />
                   <MetaItem label={intl.get('common.side')} value={fill.side === 'sell' ? intl.get('common.sell') : intl.get('common.buy')} />
@@ -83,7 +102,6 @@ export default class FillDetail extends Component {
                   <MetaItem label={intl.get('common.price')} value={fillFm.getPrice()} />
                   <MetaItem label={intl.get('common.total')} value={fillFm.getTotal()} />
                   <MetaItem label={intl.get('title.lrc_fee')} value={fillFm.getLRCFee()} />
-                  <MetaItem label={intl.get('trade.relay')} value={fill.relay} />
                   <MetaItem label={intl.get('trade.protocol_version')} value={protocolInfo.version ? `${protocolInfo.version}[${intl.get('protocol.state_'+protocolInfo.state)}]` : intl.get('protocol.unknown')} />
                   <MetaItem label={intl.get('trade.date')} value={fill.createTime && commonFm.getFormatTime(toNumber(fill.createTime) * 1e3,'YYYY-MM-DD HH:mm:ss')} />
                 </div>

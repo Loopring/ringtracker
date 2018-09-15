@@ -92,7 +92,7 @@ export default class ListMyFills extends Component {
               <thead className="border-none">
               <tr className="border-none">
                 <th className="border-none">{intl.get('ring.txHash')}</th>
-                
+                <th className="border-none">Type</th>
                 <th className="border-none">{intl.get('common.market')}</th>
                 <th className="border-none">{intl.get('common.side')}</th>
                 <th className="border-none">{intl.get('common.amount')}</th>
@@ -124,6 +124,7 @@ export default class ListMyFills extends Component {
                           0x327e...3f6afb
                         </a>
                       </td>
+                      <td className="text-nowrap">P2P</td>
                       <td className="text-nowrap">{item.market}</td>
                       <td className="text-nowrap">{renders.side(fillFm)}</td>
                       <td className="text-nowrap">{fillFm.getAmount()}</td>
