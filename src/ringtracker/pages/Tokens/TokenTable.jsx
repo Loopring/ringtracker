@@ -43,8 +43,10 @@ export default class TokenTable extends Component {
                       </td>
                       <td>
                         <div className="text-left">
-                          <div><Currency/>{getFormatNum(toFixed(item.volume, 2))}</div>
-                          <div className="color-black-4 fs12 text-left w-100 d-block">{getFormatNum(item.tokenVolume)} {item.symbol}</div>
+                          <div>
+                            <Currency/>{getFormatNum(toFixed(item.volume, 2))}
+                            <span className="color-black-4 ml10">{getFormatNum(item.tokenVolume)} {item.symbol}</span>
+                          </div>
                         </div>
                       </td>
                       <td>
