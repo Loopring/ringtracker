@@ -68,7 +68,7 @@ export default class TokenDetail extends Component {
       this.loadTrend(duration, tokenConfig.address)
     }
     return (
-      <div>
+      <div className="container pl15 pr15">
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
             <div className="ml10 mr10 fs18 color-black text-nowrap">{token} {intl.get('common.overview')}</div>

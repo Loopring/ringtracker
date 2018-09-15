@@ -57,7 +57,7 @@ export default class DexDetail extends Component {
     const {loadingTrend} = this.state;
     const dex = this.props.match.params.dex;
     return (
-      <div>
+      <div className="container pl15 pr15">
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
             <div className="ml10 mr10 fs18 color-black text-nowrap">{dex} {intl.get('common.overview')}</div>

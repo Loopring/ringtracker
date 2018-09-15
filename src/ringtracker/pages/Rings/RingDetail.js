@@ -116,7 +116,7 @@ export default class RingDetail extends React.Component {
       }
     };
     return (
-      <div>
+      <div className="container pl15 pr15">
         {items.length === 0 && <div>
           <Card title={intl.get('ring_detail.ring_detail')}>
             {
@@ -130,7 +130,6 @@ export default class RingDetail extends React.Component {
             <FillTable fills={{items: fills, loading: loading}}/>
           </Card>
         </div>}
-        <div className="pt15"></div>
         {
           items.length > 1 && <div>
             <RingTable items={items} loading={loading} pagination={false}/>

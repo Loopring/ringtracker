@@ -44,7 +44,7 @@ export default class RelayerList extends Component {
   render() {
     const {loading, items} = this.state;
     return (
-      <div>
+      <div className="container pl15 pr15">
         <RelayersOverview/>
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
@@ -52,7 +52,7 @@ export default class RelayerList extends Component {
           </div>
           <div className="ui segment p20">
             <RelayerTable data={{loading, items}}/>
-            <Pagination className="fs14 s-small mt30 text-right mr50" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
+            <Pagination className="fs14 s-small mt20 text-right mr0" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
               this.loadDatas(page)
             }} />
           </div>

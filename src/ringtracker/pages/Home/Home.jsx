@@ -13,7 +13,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div className="">
+      <div className="container pl15 pr15">
         <Overview />
         <TradeStatistics />
         <EcoStatistics />

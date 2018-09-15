@@ -47,7 +47,7 @@ export default class RingTable extends React.Component {
       <div>
         <Table {...tableProps}/>
         {pagination &&
-        <Pagination className="fs14 s-small mt30 text-right mr50" total={page.total} current={page.current}
+        <Pagination className="fs14 s-small mt20 text-right mr0" total={page.total} current={page.current}
                     onChange={(page) => pageChange(page)}/>}
       </div>
     )

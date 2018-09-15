@@ -59,7 +59,7 @@ export default class FillDetail extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container pl15 pr15">
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
             <div className="ml10 mr10 fs18 color-black ">{intl.get('trade.title')}</div>

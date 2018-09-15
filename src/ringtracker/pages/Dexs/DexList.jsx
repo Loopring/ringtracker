@@ -50,7 +50,7 @@ export default class DexList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container pl15 pr15">
         <DexOverview />
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
@@ -58,7 +58,7 @@ export default class DexList extends Component {
           </div>
           <div className="ui segment p20">
             <DexTable dexs={{items:this.state.datas, loading:this.state.loading}}/>
-            <Pagination className="fs14 s-small mt30 text-right mr50" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
+            <Pagination className="fs14 s-small mt20 text-right mr0" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
               this.loadDatas(page)
             }} />
           </div>

@@ -65,7 +65,7 @@ export default class FillList extends Component {
   render() {
     const keyword = this.props.match.params.keyword;
     return (
-      <div>
+      <div className="container pl15 pr15">
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
             <div className="ml10 mr10 fs18 color-black ">{intl.get('search.title')}</div>
