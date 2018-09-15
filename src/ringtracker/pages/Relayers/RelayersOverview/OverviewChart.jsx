@@ -10,7 +10,7 @@ export default class OverviewChart extends Component {
     super(props);
     this.state = {
       filter:{
-        duration:'24h',
+        duration:'1y',
       },
       datas: {
         'fee':[],
