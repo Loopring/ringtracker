@@ -4,6 +4,7 @@
   src: url('Roboto-Regular.ttf'); /* IE9*/
   src: url('Roboto-Regular.ttf') format('truetype'), url('Roboto-Regular.ttf') format('svg'),
       url('Roboto-Bold.ttf') format('truetype'), url('Roboto-Bold.ttf') format('svg'),
+      url('Roboto-Medium.ttf') format('truetype'), url('Roboto-Medium.ttf') format('svg'),
       url('Roboto-Light.ttf') format('truetype'), url('Roboto-Light.ttf') format('svg');
 }
 @font-face {

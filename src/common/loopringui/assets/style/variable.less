@@ -1,20 +1,48 @@
 
 @brand-primary: #1c60ff;
-@brand-primary-light: fade(@brand-primary,10%);
+@brand-primary-1: fade(@brand-primary,3%);
+@brand-primary-3: fade(@brand-primary,8%);
+@brand-primary-10: darken(@brand-primary,25%);
 @brand-primary-tap: fade(@brand-primary,95%);
-@brand-error: #FF6858; 
-@brand-important: @brand-error; // hot dot
-@brand-success: #007E51; 
+@brand-error: fade(#f5222d,80%); 
+@brand-success: fade(#389e0d,80 %);
+@brand-success: #67C23A;
+@brand-error: #F56C6C;
+@brand-important: @brand-error;
 
-@fill-body: fade(@brand-primary,3%);
+
+// http://element.eleme.io/#/zh-CN/component/color
+
 // @fill-body: lighten(@brand-primary,4%);
 
 @color-text-placeholder:rgba(255,255,255,0.25) ;
 
 body{
-  background: @fill-body !important;
+  background: @brand-primary-1 !important;
 }
 
-.bg-fill{
-  background:@fill-body !important;
+
+.text-success{
+  color:@brand-success !important;
 }
+.text-error{
+  color:@brand-error !important;
+}
+.text-primary{
+  color:@brand-primary !important;
+}
+
+.bg-success{
+  background:@brand-success !important;
+}
+.bg-error{
+  background:@brand-error !important;
+}
+.bg-primary-1{
+  background:@brand-primary-1 !important;
+}
+.bg-primary-3{
+  background:@brand-primary-3 !important;
+}
+
+

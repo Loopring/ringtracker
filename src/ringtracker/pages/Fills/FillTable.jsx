@@ -83,6 +83,7 @@ export default class ListMyFills extends Component {
 
   render() {
     const {location} = this.props;
+    console.log('this.state.fills',this.state.fills)
     return (
       <div className="">
         <Spin spinning={this.state.loadingFills}>
@@ -90,6 +91,7 @@ export default class ListMyFills extends Component {
             <table className="table table-responsive fs14" >
               <thead className="border-none">
               <tr className="border-none">
+                <th className="border-none">{intl.get('ring.txHash')}</th>
                 
                 <th className="border-none">{intl.get('common.market')}</th>
                 <th className="border-none">{intl.get('common.side')}</th>
@@ -97,10 +99,15 @@ export default class ListMyFills extends Component {
                 <th className="border-none">{intl.get('common.price')}</th>
                 <th className="border-none">{intl.get('common.total')}</th>
                 <th className="border-none">{intl.get('title.lrc_fee')}</th>
-                <th className="border-none">{intl.get('title.created')}</th>
-                <th className="border-none">{intl.get('ring.ringIndex')}</th>
-                <th className="border-none">{intl.get('trade.relay')}</th>
-                <th className="border-none">{intl.get('title.options')}</th>
+                <th className="border-none">Miner</th>
+                <th className="border-none">Relayer</th>
+                <th className="border-none">Ring</th>
+                <th className="border-none">{intl.get('common.time')}</th>
+                {
+                  false &&
+                  <th className="border-none">{intl.get('title.options')}</th>
+                }
+                
               </tr>
               </thead>
               <tbody className="">
@@ -112,18 +119,40 @@ export default class ListMyFills extends Component {
                   }
                   return (
                     <tr key={index}>
-                      <td>{item.market}</td>
-                      <td>{renders.side(fillFm)}</td>
-                      <td>{fillFm.getAmount()}</td>
-                      <td>{fillFm.getPrice()}</td>
-                      <td>{fillFm.getTotal()}</td>
-                      <td>{fillFm.getLRCFee()}</td>
-                      <td>{fillFm.getCreateTime()}</td>
-                      <td>{renders.ringIndex(fillFm,actions)}</td>
-                      <td>{fillFm.relay}</td>
-                      <td>
-                        <Button type="primary" onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)}>{intl.get('options.view_detail')}</Button>
+                      <td className="text-nowrap">
+                        <a className="fs13" onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)}>
+                          0x327e...3f6afb
+                        </a>
                       </td>
+                      <td className="text-nowrap">{item.market}</td>
+                      <td className="text-nowrap">{renders.side(fillFm)}</td>
+                      <td className="text-nowrap">{fillFm.getAmount()}</td>
+                      <td className="text-nowrap">{fillFm.getPrice()}</td>
+                      <td className="text-nowrap">{fillFm.getTotal()}</td>
+                      <td className="text-nowrap">{fillFm.getLRCFee()}</td>
+                      <td className="text-nowrap">
+                        <a className="fs13" onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)}>
+                          0x327e...3f6afb
+                        </a>
+                      </td>
+                      <td className="text-nowrap">
+                        <a className="fs13" onClick={()=>{}}>
+                          {fillFm.relay || 'Loopring'}
+                        </a>
+                      </td>
+                      <td className="text-nowrap">
+                        <a className="fs13" onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)}>
+                          0x327e...3f6afb
+                        </a>
+                      </td>
+                      <td className="text-nowrap">{fillFm.getCreateTime()}</td>
+                      {
+                        false &&
+                        <td className="text-nowrap">
+                          <a className="fs13 rounded bg-primary-3 text-primary pl10 pr10 pt5 pb5 text-center" onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)}>{intl.get('options.view_detail')}</a>
+                        </td>
+                      }
+                      
                     </tr>
                   )
                 })
@@ -136,7 +165,7 @@ export default class ListMyFills extends Component {
             </table>
           </div>
         </Spin>
-        <Pagination className="fs14 s-small mt30 text-right mr50" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
+        <Pagination className="fs14 s-small mt20 text-right mr0" total={this.state.page.total} current={this.state.page.current} onChange={(page)=>{
           if(location.pathname.split('/').length === 2) {
             routeActions.gotoPath(`${location.pathname}?page=${page}`)
           } else {
@@ -159,10 +188,10 @@ const renders = {
   },
   side: (fm) => {
     if (fm.fill.side === 'sell') {
-      return <div className="color-error">{intl.get('common.sell')}</div>
+      return <div className="color-white bg-error rounded text-center pl10 pr10 pt5 pb5">{intl.get('common.sell')}</div>
     }
     if (fm.fill.side === 'buy') {
-      return <div className="color-success">{intl.get('common.buy')}</div>
+      return <div className="color-white bg-success rounded text-center pl10 pr10 pt5 pb5">{intl.get('common.buy')}</div>
     }
   },
 }

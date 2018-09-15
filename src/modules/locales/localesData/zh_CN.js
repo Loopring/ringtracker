@@ -120,7 +120,7 @@ export default {
     volume: "交易量",
   },
   options: {
-    view_detail: "查看详情",
+    view_detail: "详情",
     goback: words.goback,
   },
   // ring
@@ -129,7 +129,7 @@ export default {
     ringIndex: "环路ID",
     ringHash: "环路哈希",
     miner: "矿工",
-    txHash: "交易Hash",
+    txHash: "交易哈希",
     block: "块高度",
     recipient: "费用接收地址",
     total_lrc_fee: "总共的LRC fee",
