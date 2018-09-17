@@ -1,12 +1,10 @@
 import React from 'react'
 import RingTable from './RingTable'
 import routeActions from 'common/utils/routeActions'
-
-
+import intl from 'react-intl-universal'
 
 export default class RingList extends React.Component {
-
-
+  
   state = {
     items: [],
     loading: true,
@@ -53,7 +51,7 @@ export default class RingList extends React.Component {
       <div className="container pl15 pr15">
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black ">Rings</div>
+            <div className="ml10 mr10 fs18 color-black ">{intl.get('taps.rings')}</div>
           </div>
           <div className="ui segment p20">
             <RingTable items={items} loading={loading} page={page} pageChange={this.pageChange}/>
