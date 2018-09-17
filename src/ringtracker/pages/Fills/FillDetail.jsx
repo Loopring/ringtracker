@@ -123,7 +123,7 @@ export default class FillDetail extends Component {
                   <MetaItem label={intl.get('common.side')} value={fill.side === 'sell' ? intl.get('common.sell') : intl.get('common.buy')} />
                   <MetaItem label={intl.get('common.buy')} value={fillFm.getBuy()} />
                   <MetaItem label={intl.get('common.sell')} value={fillFm.getSell()} />
-                  <MetaItem label={intl.get('common.price')} value={`${fillFm.getPrice()}${tokens[1]}`} />
+                  <MetaItem label={intl.get('common.price')} value={`${fillFm.getPrice()} ${tokens[1]}`} />
                   <MetaItem label={intl.get('title.lrc_fee')} value={fillFm.getLRCFee()} />
                   <MetaItem label={intl.get('trade.protocol_version')} value={protocolInfo.version ? `${protocolInfo.version}[${intl.get('protocol.state_'+protocolInfo.state)}]` : intl.get('protocol.unknown')} />
                   <MetaItem label={intl.get('trade.date')} value={fill.createTime && commonFm.getFormatTime(toNumber(fill.createTime) * 1e3,'YYYY-MM-DD HH:mm:ss')} />
