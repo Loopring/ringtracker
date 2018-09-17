@@ -4,6 +4,7 @@ import RelayersOverview from './RelayersOverview';
 import settings from 'modules/storage/settings'
 import {getAllRelayers} from "../../../common/utils/relay";
 import {Pagination} from "antd";
+import intl from 'react-intl-universal'
 
 export default class RelayerList extends Component {
 
@@ -48,7 +49,7 @@ export default class RelayerList extends Component {
         <RelayersOverview/>
         <div className="ui segments">
           <div className="ui segment d-flex justify-content-between align-items-center">
-            <div className="ml10 mr10 fs18 color-black ">Relayers</div>
+            <div className="ml10 mr10 fs18 color-black ">{intl.get('relays.title')}</div>
           </div>
           <div className="ui segment p20">
             <RelayerTable data={{loading, items}}/>

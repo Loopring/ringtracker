@@ -109,6 +109,10 @@ export default {
     volume: "Volume",
     options: "Options"
   },
+  relays: {
+    "title": "Relays",
+    "overview": "Relays Overview"
+  },
   title: {
     lrc_fee: 'LRC Fee',
     created: 'Created',
@@ -123,6 +127,7 @@ export default {
     goback: words.goback,
   },
   ring: {
+    title: 'Ring',
     ringIndex: "RingIndex",
     ringHash: "RingHash",
     miner: "Miner",
