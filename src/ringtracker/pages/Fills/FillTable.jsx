@@ -92,16 +92,15 @@ export default class ListMyFills extends Component {
               <thead className="border-none">
               <tr className="border-none">
                 <th className="border-none">{intl.get('ring.txHash')}</th>
-                <th className="border-none">Type</th>
                 <th className="border-none">{intl.get('common.market')}</th>
                 <th className="border-none">{intl.get('common.side')}</th>
-                <th className="border-none">{intl.get('common.amount')}</th>
+                <th className="border-none">{intl.get('common.buy')}</th>
+                <th className="border-none">{intl.get('common.sell')}</th>
                 <th className="border-none">{intl.get('common.price')}</th>
-                <th className="border-none">{intl.get('common.total')}</th>
                 <th className="border-none">{intl.get('title.lrc_fee')}</th>
-                <th className="border-none">Miner</th>
-                <th className="border-none">Relayer</th>
-                <th className="border-none">Ring</th>
+                <th className="border-none">{intl.get('ring.miner')}</th>
+                <th className="border-none">{intl.get('trade.relay')}</th>
+                <th className="border-none">{intl.get('ring.title')}</th>
                 <th className="border-none">{intl.get('common.time')}</th>
                 {
                   false &&
@@ -115,35 +114,54 @@ export default class ListMyFills extends Component {
                 this.state.fills && this.state.fills.map((item,index)=>{
                   const fillFm = new FillFm(item)
                   const actions = {
-                    goToRingDetail:()=>routeActions.gotoPath(`/rings/${item.ringIndex}?delegateAddress=${item.delegateAddress}`)
+                    goToRingDetail:(e)=>{
+                      e.stopPropagation()
+                      e.preventDefault()
+                      routeActions.gotoPath(`/rings/${item.ringIndex}?delegateAddress=${item.delegateAddress}`)
+                    },
+                    goToTradeDetail:(e)=>{
+                      routeActions.gotoPath(`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)
+                    },
+                    goToEtherscan:(url, e) => {
+                      e.stopPropagation()
+                      e.preventDefault()
+                      window.open(url)
+                    },
+                    goToRelay:(relayName, e)=>{
+                      e.stopPropagation()
+                      e.preventDefault()
+                      if(relayName) {
+                        routeActions.gotoPath(`/relays/${relayName}`)
+                      }
+                    }
                   }
+                  const tokens = item.market.split('-')
                   return (
-                    <tr key={index}>
+                    <tr key={index} onClick={actions.goToTradeDetail} className="cursor-pointer">
                       <td className="text-nowrap">
-                        <a className="fs13" onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)}>
-                          0x327e...3f6afb
+                        <a className="fs13" onClick={actions.goToEtherscan.bind(this, `https://etherscan.io/tx/${item.txHash}`)}>
+                          {fillFm.getShortTxHash()}
                         </a>
                       </td>
-                      <td className="text-nowrap">P2P</td>
                       <td className="text-nowrap">{item.market}</td>
                       <td className="text-nowrap">{renders.side(fillFm)}</td>
-                      <td className="text-nowrap">{fillFm.getAmount()}</td>
-                      <td className="text-nowrap">{fillFm.getPrice()}</td>
-                      <td className="text-nowrap">{fillFm.getTotal()}</td>
+                      <td className="text-nowrap">{fillFm.getBuy()}</td>
+                      <td className="text-nowrap">{fillFm.getSell()}</td>
+                      <td className="text-nowrap">{`${fillFm.getPrice()}${tokens[1]}`}</td>
                       <td className="text-nowrap">{fillFm.getLRCFee()}</td>
                       <td className="text-nowrap">
-                        <a className="fs13" onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)}>
-                          0x327e...3f6afb
+                        <a className="fs13" onClick={actions.goToEtherscan.bind(this, `https://etherscan.io/address/${item.Miner}`)}>
+                          {fillFm.getShortMiner()}
                         </a>
                       </td>
                       <td className="text-nowrap">
-                        <a className="fs13" onClick={()=>{}}>
-                          {fillFm.relay || 'Loopring'}
+                        <a className="fs13" onClick={actions.goToRelay.bind(this, item.relay)}>
+                          {item.relay || 'Loopring'}
                         </a>
                       </td>
                       <td className="text-nowrap">
-                        <a className="fs13" onClick={routeActions.gotoPath.bind(this,`/trades/${item.ringIndex}/${item.fillIndex}?d=${item.delegateAddress}`)}>
-                          0x327e...3f6afb
+                        <a className="fs13" onClick={actions.goToRingDetail}>
+                          {fillFm.getRingIndex()}
                         </a>
                       </td>
                       <td className="text-nowrap">{fillFm.getCreateTime()}</td>

@@ -24,8 +24,16 @@ export class FillFm {
     return this.fill.txHash
   }
 
+  getShortTxHash() {
+    return `${this.fill.txHash.substring(0, 6)}...${this.fill.txHash.substring(this.fill.txHash.length - 6, this.fill.txHash.length)}`
+  }
+
   getMiner() {
-    return this.fill.miner
+    return this.fill.Miner
+  }
+
+  getShortMiner() {
+    return `${this.fill.Miner.substring(0, 6)}...${this.fill.Miner.substring(this.fill.Miner.length - 6, this.fill.Miner.length)}`
   }
 
   getBlockNumber() {
@@ -64,6 +72,18 @@ export class FillFm {
     const amount = this.fill.side.toLowerCase() === 'buy' ? fmS.getUnitAmount(this.fill.amountS) : fmS.getUnitAmount(this.fill.amountB);
     const symbol = this.fill.side === 'buy' ? this.fill.tokenS : this.fill.tokenB
     return commonFm.getFormatNum(fmS.toPricisionFixed(amount))
+  }
+
+  getBuy() {
+    const fm = new TokenFm({symbol: this.fill.tokenB});
+    const amount = fm.getUnitAmount(this.fill.amountB);
+    return `${formatter(toBig(amount), 4).d} ${this.fill.tokenB}`
+  }
+
+  getSell() {
+    const fm = new TokenFm({symbol: this.fill.tokenS});
+    const amount = fm.getUnitAmount(this.fill.amountS);
+    return `${formatter(toBig(amount), 4).d} ${this.fill.tokenS}`
   }
 
   getPrice() {

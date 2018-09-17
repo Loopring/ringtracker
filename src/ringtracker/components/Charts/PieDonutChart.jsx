@@ -22,6 +22,9 @@ export default class PieDonutChart extends Component {
     const chartDatas = datas.map(item=>{
       return {...item, value:item.value * 100}
     })
+    if(chartDatas.length === 0) {
+      chartDatas.push({name: "No data", rate: 1, value: 1})
+    }
     const dv = new DataView();
     dv.source(chartDatas).transform({
       type: 'percent',

@@ -110,6 +110,10 @@ export default {
     volume: "成交规模",
     options: "选项"
   },
+  relays: {
+    "title": "中继",
+    "overview": "中继概况"
+  },
   title: {
     lrc_fee: 'LRC 撮合费',
     created: '提交时间',
@@ -126,6 +130,7 @@ export default {
   // ring
   // -----------
   ring: {
+    title: '环路',
     ringIndex: "环路ID",
     ringHash: "环路哈希",
     miner: "矿工",
