@@ -4,7 +4,7 @@ import routeActions from 'common/utils/routeActions'
 import intl from 'react-intl-universal'
 
 export default class RingList extends React.Component {
-  
+
   state = {
     items: [],
     loading: true,

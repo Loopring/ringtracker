@@ -35,11 +35,11 @@ export default class TokenTable extends Component {
                         <a onClick={routeActions.gotoPath.bind(this,`/tokens/${item.symbol}`)}>{item.symbol}</a>
                       </td>
                       <td>
-                        <Currency/>{getFormatNum(item.lastPrice)}
+                        {item.lastPrice > 0 && <div><Currency/>{getFormatNum(item.lastPrice)}</div>}
+                        {item.lastPrice === 0 && <div>-</div>}
                       </td>
                       <td>
                         {getFormatNum(item.trade)}
-
                       </td>
                       <td>
                         <div className="text-left">
