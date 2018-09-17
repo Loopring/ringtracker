@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Chart, Geom, Axis, Tooltip, Coord, Legend, Guide } from 'bizcharts';
 import { DataView } from '@antv/data-set';
+import Currency from 'LoopringUI/components/Currency'
+import {toNumber, toFixed} from "LoopringJS/common/formatter";
 
 const { Html } = Guide;
 
@@ -18,7 +20,7 @@ export default class PieDonutChart extends Component {
 
   render() {
     //[{name: "Loopring Relay", rate: 0.9984542761211505, value: 13793.684157923904}]
-    const {datas} = this.props
+    const {datas, currencyDisplay = false} = this.props
     const chartDatas = datas.map(item=>{
       return {...item, value:item.value * 100}
     })
@@ -60,12 +62,15 @@ export default class PieDonutChart extends Component {
           position="percent"
           color="name"
           tooltip={[
-            'name*percent',
-            (name, percent) => {
-              percent = `${percent * 100}%`;
+            'name*percent*value',
+            (name, percent, value) => {
+              const p = toFixed(toNumber(toFixed(percent, 2)) * 100, 0)
+              percent = `${p}%`;
+              value = `${toFixed(value, 2)}(${percent})`
+              if(currencyDisplay) value = `${Currency()}${value}`
               return {
                 name: name,
-                value: percent,
+                value: value,
               };
             },
           ]}
