@@ -6,6 +6,7 @@ import {Spin} from "antd";
 import Currency from 'LoopringUI/components/Currency'
 import {getFormatNum} from 'modules/formatter/common'
 import {simpleShortInteger} from 'modules/formatter/FormatNumber'
+import {toNumber, toFixed} from "LoopringJS/common/formatter";
 
 export default class LineChart extends Component {
   static displayName = 'LineChart';
@@ -50,6 +51,13 @@ export default class LineChart extends Component {
       type: 'rename',
       map: {
         fee: fee
+      }
+    }).transform({
+      type: 'map',
+      callback(row) {
+        row[volume] = toNumber(toFixed(row[volume], 2))
+        row[fee] = toNumber(toFixed(row[fee], 2))
+        return row;
       }
     });
     const scale = {
