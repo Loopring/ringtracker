@@ -98,18 +98,19 @@ export default class FillDetail extends Component {
               return (
                 <div key={index} className="ui segment pl20 pr20">
                   <MetaItem label={intl.get('trade.transaction_hash')} value={<a href={`https://etherscan.io/tx/${fill.txHash}`} target='_blank'>{fill.txHash}</a>} />
-                  <MetaItem label={intl.get('ring.title')} value={
+                  <MetaItem label={intl.get('ring.ringHash')} value={
+                    <a className="fs13" onClick={actions.goToRingDetail}>
+                      {fillFm.getRingHash()}
+                    </a>
+                  } />
+                  <MetaItem label={intl.get('ring.ringIndex')} value={
                     <a className="fs13" onClick={actions.goToRingDetail}>
                       {fillFm.getRingIndex()}
                     </a>
                   } />
-                  {
-                    false && 
-                    <MetaItem label={intl.get('ring.ringIndex')} value={<a href={`#/rings/${fill.ringIndex}?delegateAddress=${fill.delegateAddress}`}>{fill.ringIndex}</a>} />
-                  }
                   <MetaItem label={intl.get('ring.miner')} value={
                     <a className="fs13" onClick={actions.goToEtherscan.bind(this, `https://etherscan.io/address/${fill.Miner}`)}>
-                      {fillFm.getShortMiner()}
+                      {fillFm.getMiner()}
                     </a>
                   } />
                   <MetaItem label={intl.get('trade.relay')} value={
