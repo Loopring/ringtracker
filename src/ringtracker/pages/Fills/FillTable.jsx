@@ -147,7 +147,7 @@ export default class ListMyFills extends Component {
                       <td className="text-nowrap">{renders.side(fillFm)}</td>
                       <td className="text-nowrap">{fillFm.getBuy()}</td>
                       <td className="text-nowrap">{fillFm.getSell()}</td>
-                      <td className="text-nowrap">{`${fillFm.getPrice()}${tokens[1]}`}</td>
+                      <td className="text-nowrap">{`${fillFm.getPrice()} ${tokens[1]}`}</td>
                       <td className="text-nowrap">{fillFm.getLRCFee()}</td>
                       <td className="text-nowrap">
                         <a className="fs13" onClick={actions.goToEtherscan.bind(this, `https://etherscan.io/address/${item.Miner}`)}>
