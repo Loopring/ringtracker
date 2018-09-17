@@ -3,6 +3,7 @@ import { Chart, Geom, Axis, Tooltip, Coord, Legend, Guide } from 'bizcharts';
 import { DataView } from '@antv/data-set';
 import Currency from 'LoopringUI/components/Currency'
 import {toNumber, toFixed} from "LoopringJS/common/formatter";
+import {getFormatNum} from 'modules/formatter/common'
 
 const { Html } = Guide;
 
@@ -66,7 +67,7 @@ export default class PieDonutChart extends Component {
             (name, percent, value) => {
               const p = toFixed(toNumber(toFixed(percent, 2)) * 100, 0)
               percent = `${p}%`;
-              value = `${toFixed(value, 2)}(${percent})`
+              value = `${getFormatNum(toFixed(value, 2))}(${percent})`
               if(currencyDisplay) value = `${Currency()}${value}`
               return {
                 name: name,
