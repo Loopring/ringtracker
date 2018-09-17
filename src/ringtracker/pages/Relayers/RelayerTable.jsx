@@ -5,8 +5,7 @@ import routeActions from 'common/utils/routeActions'
 import intl from 'react-intl-universal'
 import Currency from 'LoopringUI/components/Currency'
 import {toFixed} from 'LoopringJS/common/formatter'
-
-
+import {getFormatNum} from 'modules/formatter/common'
 
 export default class TokenTable extends React.Component {
 
@@ -45,7 +44,7 @@ export default class TokenTable extends React.Component {
                         {item.trade}
                       </td>
                       <td>
-                        <div><Currency/> {toFixed(item.volume,8)}</div>
+                        <div><Currency/> {getFormatNum(toFixed(item.volume,8))}</div>
                       </td>
                       <td>
                         <a onClick={routeActions.gotoPath.bind(this, `/relays/${item.relay}`)}>{intl.get('options.view_detail')}</a>
