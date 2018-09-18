@@ -4,6 +4,7 @@ import { DataView } from '@antv/data-set';
 import Currency from 'LoopringUI/components/Currency'
 import {toNumber, toFixed} from "LoopringJS/common/formatter";
 import {getFormatNum} from 'modules/formatter/common'
+import intl from 'react-intl-universal'
 
 const { Html } = Guide;
 
@@ -26,7 +27,7 @@ export default class PieDonutChart extends Component {
       return {...item, value:item.value * 100}
     })
     if(chartDatas.length === 0) {
-      chartDatas.push({name: "No data", rate: 0, value: 0})
+      chartDatas.push({name: intl.get('common.list.no_data'), rate: 0, value: 0})
     }
     const dv = new DataView();
     dv.source(chartDatas).transform({
