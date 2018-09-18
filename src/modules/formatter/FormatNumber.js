@@ -51,19 +51,19 @@ export const simpleShortInteger = (value) => {
     return getFormatNum(toFixed(x, 0));
   }
   if(x.lt(1000000)) {
-    const shortNumber = toFixed(x.div(1000), 0)
+    const shortNumber = toFixed(x.div(1000), 1)
     return `${getFormatNum(shortNumber)}K`;
   }
   if(x.lt(10000000)) {
-    const shortNumber = toFixed(x.div(1000000), 0)
+    const shortNumber = toFixed(x.div(1000000), 1)
     return `${getFormatNum(shortNumber)}M`;
   }
   if(x.lt(1000000000)) {
-    const shortNumber = toFixed(x.div(1000000), 0)
+    const shortNumber = toFixed(x.div(1000000), 1)
     return `${getFormatNum(shortNumber)}M`;
   }
   if(x.lt(1000000000000)) {
-    const shortNumber = toFixed(x.div(1000000000), 0)
+    const shortNumber = toFixed(x.div(1000000000), 1)
     return `${getFormatNum(shortNumber)}B`;
   }
   return {d:"1T+", o:x.toString(10), s:true};
