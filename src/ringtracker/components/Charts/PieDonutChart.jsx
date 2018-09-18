@@ -23,9 +23,10 @@ export default class PieDonutChart extends Component {
   render() {
     //[{name: "Loopring Relay", rate: 0.9984542761211505, value: 13793.684157923904}]
     const {datas, currencyDisplay = false} = this.props
-    const chartDatas = datas.map(item=>{
-      return {...item, value:item.value * 100}
-    })
+    // const chartDatas = datas.map(item=>{
+    //   return {...item, value:item.value * 100}
+    // })
+    const chartDatas = datas
     if(chartDatas.length === 0) {
       chartDatas.push({name: intl.get('common.list.no_data'), rate: 0, value: 0})
     }
