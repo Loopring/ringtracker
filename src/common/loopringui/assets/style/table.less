@@ -18,19 +18,22 @@
   border-bottom:1px solid #f9f9f9 !important;
   font-size: 1.4rem;
   padding:1.5rem 0.75rem !important;
-  font-weight: 300 !important;
- color:rgba(0,0,0,0.6);
+  color:rgba(0,0,0,0.55);
  }
  .table>thead>tr>td, .table>thead>tr>th{
    background: @brand-primary-1; 
-   color:rgba(0,0,0,0.7);
-   font-weight:bold !important;
+   color:rgba(0,0,0,0.65);
+   font-weight:500 !important;
  }
-
  .tabe tr{
     &:nth-child(2n){
       &>td{
         background: #FBFBFB !important;
       }
     }
+ }
+
+// just hack lyd's ant-table
+.ant-table-thead > tr > th{
+   font-weight: 500 !important;
  }

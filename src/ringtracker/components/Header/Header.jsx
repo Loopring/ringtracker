@@ -69,7 +69,7 @@ export default class Header extends Component {
                       </Select>
                     </div>
                   </div>
-                <Search style={{ width: 320 }} onSearch={value => routeActions.gotoPath(`/search/${value}`)} enterButton={false} placeholder="Address, TxHash, OrderHash, RingHash" />
+                <Search style={{ width: 320 }} onSearch={value => routeActions.gotoPath(`/search/${value}`)} enterButton={true} placeholder="Address, TxHash, OrderHash, RingHash" />
               </div>
             </div>
           </div>
